@@ -12,14 +12,7 @@ seven_segment_pin	sven_seg1={PORTA_PIN0,PORTA_PIN1,PORTA_PIN2,PORTA_PIN3};
 seven_segment_pin	sven_seg2={PORTA_PIN4,PORTA_PIN5,PORTA_PIN6,PORTA_PIN7};
 seven_segment_pin	sven_seg3={PORTB_PIN0,PORTB_PIN1,PORTB_PIN2,PORTB_PIN3};
 seven_segment_pin	sven_seg4={PORTB_PIN4,PORTB_PIN5,PORTB_PIN6,PORTB_PIN7};
-
-void init_four_sev_Seg(void);
-void Sev_SegmentInit(seven_segment_pin* sev_seg);
-void Sev_SegmentShow(u8 val,seven_segment_pin* sev_seg);
-void Sev_SegmentCounter_up(u16 counter_value);
-
-
-
+u8 SEVEN_SEGArray[numbe_seven_Segment]={0};	
 void init_four_sev_Seg(void)
 {
 	ARR_SEV_SEG[0]=&sven_seg1;
@@ -30,6 +23,7 @@ void init_four_sev_Seg(void)
 	Sev_SegmentInit(ARR_SEV_SEG[1]);
 	Sev_SegmentInit(ARR_SEV_SEG[2]);
 	Sev_SegmentInit(ARR_SEV_SEG[3]);	
+
 }
 void Sev_SegmentInit(seven_segment_pin* sev_seg)
 {		
@@ -57,15 +51,13 @@ void Sev_SegmentShow(u8 val,seven_segment_pin* sev_seg)
 	DIO_WritrPin(sev_seg->Sev_SegPinB,GET_BIT(val,1));
 	DIO_WritrPin(sev_seg->Sev_SegPinC,GET_BIT(val,2));
 	DIO_WritrPin(sev_seg->Sev_SegPinD,GET_BIT(val,3));
-	_delay_ms(10);
+	_delay_ms(100);
 }
 
 void Sev_SegmentCounter_up(u16 counter_value)
 {
-u8 SEVEN_SEGArray[numbe_seven_Segment]={0};	
-for (u32 count=counter_value;count <10000;count++)
-{
-	u32 loc_var =count;
+
+	u32 loc_var =counter_value;
 	if (loc_var>=1000)
 	{
 		SEVEN_SEGArray[0]=loc_var/1000;
@@ -89,6 +81,3 @@ for (u32 count=counter_value;count <10000;count++)
 	}
 	
 }
-
-}
-	

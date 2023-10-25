@@ -16,15 +16,22 @@ int main(void)
 	
 init_four_sev_Seg();
 Port_SetPinMode(PORTC_PIN0,PIN_IN_PULLUP);
+u8 read_value=1;
+u8 counter=0;
+u8 debouncing =0;
 while(1)
 {	
-	u8 read_value=1;
-	
-	while (read_value==1)
+   DIO_READ_PIN(PORTC_PIN0,&read_value);
+	if(read_value==0)	
 	{
-	  DIO_READ_PIN(PORTC_PIN0,&read_value);
+		debouncing++;
 	}
-	Sev_SegmentCounter_up(0);
+	if (debouncing>3)
+	{
+	  	Sev_SegmentCounter_up(counter++);	
+		debouncing=0;  	
+	}
+
 }
 }
 
