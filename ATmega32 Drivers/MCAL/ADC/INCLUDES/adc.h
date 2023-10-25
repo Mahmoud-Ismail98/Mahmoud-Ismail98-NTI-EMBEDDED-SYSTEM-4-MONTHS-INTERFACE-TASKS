@@ -76,8 +76,8 @@ typedef struct
 
 /*=====================================================================================================================
  * [Function Name] : ADC_init
- * [Description]   : Disable the ADC peripheral.
- * [Arguments]     : The function takes no arguments.
+ * [Description]   : Initialize the ADC with specific configurations.
+ * [Arguments]     : <a_ptr2configurations>   -> Pointer to a structure holds the configurations.
  * [return]        : The function returns the error status: - No Errors.
  *                                                          - Prescaler Error.
  *                                                          - Null Pointer Error.
@@ -89,7 +89,7 @@ ADC_errorStatus ADC_init(ADC_configurations* a_ptr2configurations);
  * [Function Name] : ADC_enable
  * [Description]   : Enable the ADC peripheral.
  * [Arguments]     : The function takes no arguments.
- * [return]        : The function returns the digital value.
+ * [return]        : The function returns void.
  ====================================================================================================================*/
 void ADC_enable(void);
 
@@ -97,7 +97,7 @@ void ADC_enable(void);
  * [Function Name] : ADC_disable
  * [Description]   : Disable the ADC peripheral.
  * [Arguments]     : The function takes no arguments.
- * [return]        : The function returns the digital value.
+ * [return]        : The function returns void.
  ====================================================================================================================*/
 void ADC_disable(void);
 
@@ -107,6 +107,7 @@ void ADC_disable(void);
  * [Description]   : Read the analog value of a specific channel and convert it to corresponding digital
  *                   value using the ADC peripheral then return the digital value.
  * [Arguments]     : <a_channelID>      -> Indicates to the required channel.
+ *                   <a_ptr2value>      -> Pointer to variable to store the digital value.
  * [return]        : The function returns the error status: - No Errors.
  *                                                          - Channel ID Error.
  *                                                          - Null Pointer Error.
@@ -117,11 +118,11 @@ ADC_errorStatus ADC_readChannelSync(ADC_channelID a_channelID, uint16* a_ptr2val
 #if(ADC_API_INTERFACE_MODE == ADC_USING_INTERRUPT)
 /*=====================================================================================================================
  * [Function Name] : ADC_readChannelAsync
- * [Description]   : Read the analog value of a specific channel and convert it to corresponding digital
- *                   value using the ADC peripheral then return the digital value.
+ * [Description]   : Select the required channel that you need to read.
+ *                   Then, return and the result will be catched using the call-back function.
  * [Arguments]     : <a_channelID>      -> Indicates to the required channel.
  * [return]        : The function returns the error status: - No Errors.
- *                                                          - Null Pointer Error.
+ *                                                          - Channel ID Error.
  ====================================================================================================================*/
 ADC_errorStatus ADC_readChannelAsync(ADC_channelID a_channelID);
 
@@ -132,7 +133,7 @@ ADC_errorStatus ADC_readChannelAsync(ADC_channelID a_channelID);
  * [return]        : The function returns the error status: - No Errors.
  *                                                          - Null Pointer Error.
  ====================================================================================================================*/
-void ADC_setCallBackFunction(void (*a_ptr2CallBackFunction)(uint16));
+ADC_errorStatus ADC_setCallBackFunction(void (*a_ptr2CallBackFunction)(uint16));
 #endif
 
 #endif /* MCAL_ADC_INCLUDES_ADC_H_ */
