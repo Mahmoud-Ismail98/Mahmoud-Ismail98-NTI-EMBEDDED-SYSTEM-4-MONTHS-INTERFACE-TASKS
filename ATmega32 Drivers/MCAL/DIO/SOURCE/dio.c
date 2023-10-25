@@ -101,7 +101,7 @@ DIO_errorStatus DIO_writePort(uint8 a_portID, uint8 a_value)
         LOC_errorStatus = DIO_PORT_NUM_ERROR;
     }
 
-    else if(a_value > 255)  /* XXXX Magic Number XXXX */
+    else if(a_value > DIO_REGISTERS_MAX_VALUE)
     {
         LOC_errorStatus = DIO_LEVEL_ERROR;
     }
@@ -170,19 +170,19 @@ DIO_errorStatus DIO_readPin(uint8 a_portID, uint8 a_pinID, DIO_pinStatus* a_ptr2
         switch (a_portID)
         {
         case DIO_PORTA_ID:
-            *a_ptr2value = GET_BIT(PORTA,a_pinID);
+            *a_ptr2value = GET_BIT(PINA,a_pinID);
             break;
 
         case DIO_PORTB_ID:
-            *a_ptr2value = GET_BIT(PORTB,a_pinID);
+            *a_ptr2value = GET_BIT(PINB,a_pinID);
             break;
 
         case DIO_PORTC_ID:
-            *a_ptr2value = GET_BIT(PORTC,a_pinID);
+            *a_ptr2value = GET_BIT(PINC,a_pinID);
             break;
 
         case DIO_PORTD_ID:
-            *a_ptr2value = GET_BIT(PORTD,a_pinID);
+            *a_ptr2value = GET_BIT(PIND,a_pinID);
             break;
         
         default:
@@ -222,19 +222,19 @@ DIO_errorStatus DIO_readPort(uint8 a_portID, uint8* a_ptr2value)
         switch (a_portID)
         {
         case DIO_PORTA_ID:
-            *a_ptr2value = PORTA;
+            *a_ptr2value = PINA;
             break;
 
         case DIO_PORTB_ID:
-            *a_ptr2value = PORTB;
+            *a_ptr2value = PINB;
             break;
 
         case DIO_PORTC_ID:
-            *a_ptr2value = PORTC;
+            *a_ptr2value = PINC;
             break;
 
         case DIO_PORTD_ID:
-            *a_ptr2value = PORTD;
+            *a_ptr2value = PIND;
             break;
         
         default:

@@ -16,6 +16,6 @@ Description  : Private file for the ATmega32 DIO driver.
                                 < Definitions and Static Configurations >
 =====================================================================================================================*/
 
-
+#define DIO_REGISTERS_MAX_VALUE                    (255U)
 
 #endif /* MCAL_DIO_INCLUDES_DIO_PRV_H_ */
