@@ -426,15 +426,15 @@ LOAD c:/program files (x86)/atmel/atmel studio 6.0/extensions/atmel/avrgcc/3.4.1
  .debug_frame   0x00000144       0x24 main.o
  .debug_frame   0x00000168       0x44 port.o
 
-.debug_str      0x00000000      0x3d0
+.debug_str      0x00000000      0x42f
  *(.debug_str)
- .debug_str     0x00000000      0x239 sev_segment.o
-                                0x26d (size before relaxing)
- .debug_str     0x00000239      0x129 DIO.o
+ .debug_str     0x00000000      0x25a sev_segment.o
+                                0x28e (size before relaxing)
+ .debug_str     0x0000025a      0x129 DIO.o
                                 0x1bc (size before relaxing)
- .debug_str     0x00000362       0x11 main.o
+ .debug_str     0x00000383       0x4f main.o
                                  0xd2 (size before relaxing)
- .debug_str     0x00000373       0x5d port.o
+ .debug_str     0x000003d2       0x5d port.o
                                 0x194 (size before relaxing)
 
 .debug_loc      0x00000000      0x8b6
