@@ -1,0 +1,28 @@
+HAL/ICUSW/ICUSW.d HAL/ICUSW/ICUSW.o: ../HAL/ICUSW/ICUSW.c \
+ ../HAL/ICUSW/../../SERVICES/Std_types.h \
+ ../HAL/ICUSW/../../SERVICES/Bit_utils.h \
+ ../HAL/ICUSW/../../MCAL/DIO/DIO.h ../HAL/ICUSW/../../MCAL/TIMER/TIMER.h \
+ ../HAL/ICUSW/../../MCAL/EXT_INTERRUPT/EXT.h \
+ ../HAL/ICUSW/../../MCAL/EXT_INTERRUPT/../../SERVICES/Std_types.h \
+ ../HAL/ICUSW/../../MCAL/EXT_INTERRUPT/../../SERVICES/Bit_utils.h \
+ ../HAL/ICUSW/ICUSW.h ../HAL/ICUSW/ICUSW_prv.h ../HAL/ICUSW/ICUSW_cfg.h
+
+../HAL/ICUSW/../../SERVICES/Std_types.h:
+
+../HAL/ICUSW/../../SERVICES/Bit_utils.h:
+
+../HAL/ICUSW/../../MCAL/DIO/DIO.h:
+
+../HAL/ICUSW/../../MCAL/TIMER/TIMER.h:
+
+../HAL/ICUSW/../../MCAL/EXT_INTERRUPT/EXT.h:
+
+../HAL/ICUSW/../../MCAL/EXT_INTERRUPT/../../SERVICES/Std_types.h:
+
+../HAL/ICUSW/../../MCAL/EXT_INTERRUPT/../../SERVICES/Bit_utils.h:
+
+../HAL/ICUSW/ICUSW.h:
+
+../HAL/ICUSW/ICUSW_prv.h:
+
+../HAL/ICUSW/ICUSW_cfg.h:
