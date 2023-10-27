@@ -1,0 +1,12 @@
+HAL/BUTTON/BUTTON.d HAL/BUTTON/BUTTON.o: ../HAL/BUTTON/BUTTON.c \
+ ../HAL/BUTTON/../../SERVICES/Standard_Data_Types.h \
+ ../HAL/BUTTON/../../MCAL/PORT/PORT.h ../HAL/BUTTON/../../MCAL/DIO/DIO.h \
+ ../HAL/BUTTON/BUTTON.h
+
+../HAL/BUTTON/../../SERVICES/Standard_Data_Types.h:
+
+../HAL/BUTTON/../../MCAL/PORT/PORT.h:
+
+../HAL/BUTTON/../../MCAL/DIO/DIO.h:
+
+../HAL/BUTTON/BUTTON.h:
