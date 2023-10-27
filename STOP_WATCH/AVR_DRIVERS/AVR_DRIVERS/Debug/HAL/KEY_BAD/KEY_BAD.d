@@ -1,0 +1,12 @@
+HAL/KEY_BAD/KEY_BAD.d HAL/KEY_BAD/KEY_BAD.o: ../HAL/KEY_BAD/KEY_BAD.c \
+ ../HAL/KEY_BAD/../../SERVICES/Standard_Data_Types.h \
+ ../HAL/KEY_BAD/../../MCAL/PORT/PORT.h \
+ ../HAL/KEY_BAD/../../MCAL/DIO/DIO.h ../HAL/KEY_BAD/KEY_BAD.h
+
+../HAL/KEY_BAD/../../SERVICES/Standard_Data_Types.h:
+
+../HAL/KEY_BAD/../../MCAL/PORT/PORT.h:
+
+../HAL/KEY_BAD/../../MCAL/DIO/DIO.h:
+
+../HAL/KEY_BAD/KEY_BAD.h:

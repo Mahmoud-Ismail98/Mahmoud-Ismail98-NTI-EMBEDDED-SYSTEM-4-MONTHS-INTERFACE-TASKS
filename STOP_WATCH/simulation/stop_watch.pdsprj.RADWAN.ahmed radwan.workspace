@@ -94,7 +94,7 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="600" x="268" flags="0000002a" y="340" h="400" pid="1" iid="1">
+   <POPUP w="600" x="268" flags="0000002b" y="340" h="400" pid="1" iid="1">
     <PROPERTIES>
      <ITEM name="CaseSensitive">No</ITEM>
      <ITEM name="DISPADDRS">Yes</ITEM>

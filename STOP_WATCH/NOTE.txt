@@ -1,0 +1,2 @@
+Simulation on protues with 7 segment didn't worke because protues slow than the concept of POV
+it have  worked will on hardware pleas check the drive
