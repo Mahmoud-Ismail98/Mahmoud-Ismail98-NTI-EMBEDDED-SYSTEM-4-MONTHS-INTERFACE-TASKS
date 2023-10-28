@@ -158,8 +158,6 @@ void CLCD_VidDisplayCharacter(u8 Copy_u8Command){
  * character will be stored in.
  */
 void CLCD_VidCreatCustomCharacter(u8 Add_pu8CustomCharacter[8], u8 index){
-
-
     CLCD_VidSendCommand((64 + index*8) >> 4);
     _delay_ms(1);
     CLCD_VidSendCommand((64+index*8));
@@ -169,8 +167,11 @@ void CLCD_VidCreatCustomCharacter(u8 Add_pu8CustomCharacter[8], u8 index){
     	_delay_ms(1);
     }
     _delay_ms(1);
+    CLCD_VidSendCommand(0x80>>4);
+    _delay_ms(1);
     CLCD_VidSendCommand(0x80);
     _delay_ms(1);
+
 }
 
 /**
