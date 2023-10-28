@@ -53,6 +53,20 @@ https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/fa1a7616-dd4
 
 https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/6d7ae0db-4b98-4f2b-958d-12d8b6fb21fe
 
+## task6 Calculator program that supports 4 operations (+,-,*,/)
 
+###  TASK  Features:
+1.	**The program starts with initializing the LCD and keypad and initializing the calculator to start accepting inputs for the first operand**
 
+2.   **Every operand can consist of 5 digits and have a maximum of 65,535 because the variable is an unsigned 16-bit integer**
+
+3.   **The program doesn't support floats or negative values. If you make a subtraction operation, the program checks which operand is bigger and calculates the difference between them, avoiding negative values**
+## task6 simulation on Proteus
+
+https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/a44b9100-a129-4a59-a579-f253d97ee512
+
+##  TASK7 ALARM WITH SELECTED TIME
+
+## task7 simulation on Proteus
+https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/62b2c6df-6f00-4d11-83a0-a74441d53a45
 
