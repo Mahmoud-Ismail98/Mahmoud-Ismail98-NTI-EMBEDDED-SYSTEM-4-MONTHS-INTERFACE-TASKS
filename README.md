@@ -70,3 +70,11 @@ https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/a44b9100-a12
 ## task7 simulation on Proteus
 https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/62b2c6df-6f00-4d11-83a0-a74441d53a45
 
+
+
+##  TASK8 STOP WATCH ON  LCD
+
+## task8 simulation on Proteus
+
+
+https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/6d1bd510-6aa1-4e01-adfe-7f5e543567ea
