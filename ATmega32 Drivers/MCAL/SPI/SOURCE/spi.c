@@ -21,6 +21,14 @@ Description  : Source file for the ATmega32 SPI driver.
 #include <avr/io.h>
 
 /*=====================================================================================================================
+                                           < Global Variables >
+=====================================================================================================================*/
+
+#if((SPI_DEVICE_MODE == SPI_SLAVE_MODE) && (SPI_API_INTERFACE_MODE == SPI_USING_INTERRUPT))
+void (*g_ptr2callBackFunction)(uint8) = NULL_PTR;
+#endif
+
+/*=====================================================================================================================
                                           < Functions Definitions >
 =====================================================================================================================*/
 
@@ -140,10 +148,10 @@ SPI_errorStatus SPI_masterReceiveString(uint8* a_ptr2buffer)
 }
 #endif
 
-#if(SPI_DEVICE_MODE == SPI_SLAVE_MODE)
+#if((SPI_DEVICE_MODE == SPI_SLAVE_MODE) && (SPI_API_INTERFACE_MODE == SPI_USING_POLLING))
 /*=====================================================================================================================
  * [Function Name] : SPI_initSlave
- * [Description]   : Initialize this device as a Slave.
+ * [Description]   : Initialize this device as a Slave with polling technique.
  * [Arguments]     : The function takes no arguments.
  * [return]        : The function returns void.
  ====================================================================================================================*/
@@ -197,6 +205,60 @@ SPI_errorStatus SPI_slaveReceiveString(uint8* a_ptr2buffer)
     }
 
     return LOC_errorStatus;
+}
+#endif
+
+#if((SPI_DEVICE_MODE == SPI_SLAVE_MODE) && (SPI_API_INTERFACE_MODE == SPI_USING_INTERRUPT))
+/*=====================================================================================================================
+ * [Function Name] : SPI_initSlave
+ * [Description]   : Initialize this device as a Slave with receiving interrupt.
+ * [Arguments]     : The function takes no arguments.
+ * [return]        : The function returns void.
+ ====================================================================================================================*/
+void SPI_initSlave(void)
+{
+    SET_BIT(SPCR,SPIE);                                           /* Enable SPI Interrupt.       */
+    SET_BIT(SPCR,SPE);                                            /* Enable SPI Peripheral.      */
+}
+
+/*=====================================================================================================================
+ * [Function Name] : SPI_setCallBackFunction
+ * [Description]   : Set the address of the call-back function.
+ * [Arguments]     : <a_ptr2callBackFunction>      -> Pointer to the call-back function.
+ * [return]        : The function returns the error status: - No Errors.
+ *                                                          - Null Pointer Error.
+ ====================================================================================================================*/
+SPI_errorStatus SPI_setCallBackFunction(void (*a_ptr2callBackFunction)(uint8))
+{
+    SPI_errorStatus LOC_errorStatus = SPI_NO_ERRORS;
+
+    if(a_ptr2callBackFunction == NULL_PTR)
+    {
+        LOC_errorStatus = SPI_NULL_PTR_ERROR;
+    }
+
+    else
+    {
+        g_ptr2callBackFunction = a_ptr2callBackFunction;
+    }
+
+    return LOC_errorStatus;
+}
+
+/*=====================================================================================================================
+ * [Function Name] : SPI_STC_ISR
+ * [Description]   : Interrupt Service Routine of the SPI Transfere Complete.
+ * [Arguments]     : The function takes no arguments.
+ * [return]        : The function returns void.
+ ====================================================================================================================*/
+void __vector_12(void) __attribute__((signal));
+void __vector_12(void)
+{
+    if(g_ptr2callBackFunction != NULL_PTR)
+    {
+        /* Call the call-back function. */
+        g_ptr2callBackFunction(SPDR);
+    }
 }
 #endif
 

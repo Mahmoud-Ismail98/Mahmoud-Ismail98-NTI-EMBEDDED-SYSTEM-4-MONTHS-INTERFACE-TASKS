@@ -91,10 +91,10 @@ SPI_errorStatus SPI_masterSendString(uint8* a_ptr2string);
 SPI_errorStatus SPI_masterReceiveString(uint8* a_ptr2buffer);
 #endif
 
-#if(SPI_DEVICE_MODE == SPI_SLAVE_MODE)
+#if((SPI_DEVICE_MODE == SPI_SLAVE_MODE) && (SPI_API_INTERFACE_MODE == SPI_USING_POLLING))
 /*=====================================================================================================================
  * [Function Name] : SPI_initSlave
- * [Description]   : Initialize this device as a Slave.
+ * [Description]   : Initialize this device as a Slave with polling technique.
  * [Arguments]     : The function takes no arguments.
  * [return]        : The function returns void.
  ====================================================================================================================*/
@@ -116,6 +116,25 @@ uint8 SPI_slaveReceiveChar(void);
  *                                                          - Null Pointer Error.
  ====================================================================================================================*/
 SPI_errorStatus SPI_slaveReceiveString(uint8* a_ptr2buffer);
+#endif
+
+#if((SPI_DEVICE_MODE == SPI_SLAVE_MODE) && (SPI_API_INTERFACE_MODE == SPI_USING_INTERRUPT))
+/*=====================================================================================================================
+ * [Function Name] : SPI_initSlave
+ * [Description]   : Initialize this device as a Slave with receiving interrupt.
+ * [Arguments]     : The function takes no arguments.
+ * [return]        : The function returns void.
+ ====================================================================================================================*/
+void SPI_initSlave(void);
+
+/*=====================================================================================================================
+ * [Function Name] : SPI_setCallBackFunction
+ * [Description]   : Set the address of the call-back function.
+ * [Arguments]     : <a_ptr2callBackFunction>      -> Pointer to the call-back function.
+ * [return]        : The function returns the error status: - No Errors.
+ *                                                          - Null Pointer Error.
+ ====================================================================================================================*/
+SPI_errorStatus SPI_setCallBackFunction(void (*a_ptr2callBackFunction)(uint8));
 #endif
 
 /*=====================================================================================================================

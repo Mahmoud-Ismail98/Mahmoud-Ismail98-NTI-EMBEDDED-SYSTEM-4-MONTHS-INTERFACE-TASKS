@@ -16,6 +16,9 @@ Description  : Configuration file for the ATmega32 SPI driver.
                                 < Definitions and Static Configurations >
 =====================================================================================================================*/
 
+/* The SPI only has two API interface modes: [SPI_USING_POLLING - SPI_USING_INTERRUPT]. */
+#define SPI_API_INTERFACE_MODE                       (SPI_USING_INTERRUPT)
+
 /* The device can only configured as [SPI_MASTER_MODE or SPI_SLAVE_MODE]. */
 #define SPI_DEVICE_MODE                              (SPI_SLAVE_MODE)
 

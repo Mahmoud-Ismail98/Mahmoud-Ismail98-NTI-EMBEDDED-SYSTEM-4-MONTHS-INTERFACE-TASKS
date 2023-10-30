@@ -16,9 +16,14 @@ Description  : Private file for the ATmega32 SPI driver.
                                 < Definitions and Static Configurations >
 =====================================================================================================================*/
 
-#define SPI_SLAVE_MODE                              (0)
-#define SPI_MASTER_MODE                             (1)
+/* SPI API interface modes: [Interrupt or Polling]. */
+#define SPI_USING_POLLING                                (0U)
+#define SPI_USING_INTERRUPT                              (1U)
 
-#define SPI_DUMMY_BYTE                              (0XFF)
+/* SPI device modes: [Master or Slave]. */
+#define SPI_SLAVE_MODE                                   (0)
+#define SPI_MASTER_MODE                                  (1)
+
+#define SPI_DUMMY_BYTE                                   (0XFF)
 
 #endif /* MCAL_SPI_INCLUDES_SPI_PRV_H_ */
