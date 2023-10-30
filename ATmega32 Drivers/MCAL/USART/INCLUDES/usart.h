@@ -43,8 +43,8 @@ typedef enum
 
 typedef enum
 {
-    USART_ASYNCHRONOUS,
-    USART_SYNCHRONOUS
+    USART_ASYNCHRONOUS_MODE,
+    USART_SYNCHRONOUS_MODE
 }USART_communicationMode;
 
 typedef enum

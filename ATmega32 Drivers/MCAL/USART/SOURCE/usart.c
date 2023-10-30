@@ -24,7 +24,9 @@ Description  : Source file for the ATmega32 USART driver.
                                            < Global Variables >
 =====================================================================================================================*/
 
+#if(USART_API_INTERFACE_MODE == USART_USING_INTERRUPT)
 void (*g_ptr2callBackFunction)(uint8) = NULL_PTR;
+#endif
 
 /*=====================================================================================================================
                                       < Private Functions Prototypes >
@@ -132,7 +134,7 @@ static USART_errorStatus USART_baudRateCalculator(USART_configurations* a_ptr2co
 
     switch (a_ptr2configurations->communication_mode)
     {
-    case USART_ASYNCHRONOUS:
+    case USART_ASYNCHRONOUS_MODE:
         switch (a_ptr2configurations->double_baudrate_status)
         {
         case USART_DOUBLE_BAUD_RATE_DISABLE:
@@ -149,7 +151,7 @@ static USART_errorStatus USART_baudRateCalculator(USART_configurations* a_ptr2co
         }
         break;
     
-    case USART_SYNCHRONOUS:
+    case USART_SYNCHRONOUS_MODE:
         *a_regisetValue = ((F_CPU / (2 * a_ptr2configurations->baudrate)) - 1);
         break;
     
@@ -174,6 +176,7 @@ void USART_sendCharSync(uint8 a_byte)
     UDR = a_byte;
 }
 
+#if(USART_API_INTERFACE_MODE == USART_USING_POLLING)
 /*=====================================================================================================================
  * [Function Name] : USART_receiveCharSync
  * [Description]   : Receive a byte using USART with polling technique.
@@ -185,6 +188,7 @@ uint8 USART_receiveCharSync(void)
     while(BIT_IS_CLEAR(UCSRA,RXC));
     return UDR;
 }
+#endif
 
 /*=====================================================================================================================
  * [Function Name] : USART_sendStringSync
@@ -213,6 +217,7 @@ USART_errorStatus USART_sendStringSync(uint8* a_ptr2string)
     return LOC_errorStatus;
 }
 
+#if(USART_API_INTERFACE_MODE == USART_USING_POLLING)
 /*=====================================================================================================================
  * [Function Name] : USART_receiveStringSync
  * [Description]   : Receive a string using USART with polling technique.
@@ -248,6 +253,7 @@ USART_errorStatus USART_receiveStringSync(uint8* a_ptr2buffer)
 
     return LOC_errorStatus;
 }
+#endif
 
 #if(USART_API_INTERFACE_MODE == USART_USING_INTERRUPT)
 /*=====================================================================================================================
