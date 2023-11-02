@@ -1,0 +1,35 @@
+/*
+ * ADC_cfg.h
+ *
+ *  Created on: Oct 23, 2023
+ *      Author: Ismail
+ */
+
+#ifndef MCAL_ADC_ADC_CFG_H_
+#define MCAL_ADC_ADC_CFG_H_
+/*Options For Voltage References
+ *1-VREF_AREF_PIN
+ *1-VREF_AVCC_PIN
+ *1-VREF_2_56V_INTERNAL*/
+
+#define ADC_SET_VREF VREF_AVCC_PIN
+
+/*Options For Prescaler
+ *1-PRESCALER_DIVIDE_BY_2
+ *1-PRESCALER_DIVIDE_BY_4
+ *1-PRESCALER_DIVIDE_BY_8
+ *1-PRESCALER_DIVIDE_BY_16
+ *1-PRESCALER_DIVIDE_BY_32
+ *1-PRESCALER_DIVIDE_BY_64
+ *1-PRESCALER_DIVIDE_BY_128*/
+
+#define ADC_SET_PRESCALAR PRESCALER_DIVIDE_BY_8
+
+/*Options For Adjusting the ADC Register Value
+ *1-MADC_RIGHT_ADJUST
+ *1-MADC_LEFT_ADJUST*/
+
+#define ADC_SET_ADJUST_LEVEL ADC_RIGHT_ADJUST
+
+
+#endif /* MCAL_ADC_ADC_CFG_H_ */

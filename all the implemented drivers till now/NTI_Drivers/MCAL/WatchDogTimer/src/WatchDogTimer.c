@@ -1,0 +1,63 @@
+/*
+ * WatchDogTimer.c
+ *
+ *  Created on: Oct 27, 2023
+ *      Author: Ismail
+ */
+
+#include"../includes/WatchDogTimer.h"
+#include"../includes/WatchDogTimer_cfg.h"
+#include"../includes/WatchDogTimer_prv.h"
+#include "../../../Services/Bit_utils.h"
+#include "../../../Services/Std_types.h"
+void WATCHDOGTIMER_Init(){
+	/*set prescaler*/
+#if WATCHDOGTIMER_PRESCALER==KWDT16K
+		CLR_BIT(WDTCR,WDP2);
+		CLR_BIT(WDTCR,WDP1);
+		CLR_BIT(WDTCR,WDP0);
+	#elif WATCHDOGTIMER_PRESCALER==KWDT32K
+		CLR_BIT(WDTCR,WDP2);
+		CLR_BIT(WDTCR,WDP1);
+		SET_BIT(WDTCR,WDP0);
+	#elif WATCHDOGTIMER_PRESCALER==KWDT64K
+		CLR_BIT(WDTCR,WDP2);
+		SET_BIT(WDTCR,WDP1);
+		CLR_BIT(WDTCR,WDP0);
+#elif WATCHDOGTIMER_PRESCALER==KWDT128K
+		CLR_BIT(WDTCR,WDP2);
+		SET_BIT(WDTCR,WDP1);
+		SET_BIT(WDTCR,WDP0);
+#elif WATCHDOGTIMER_PRESCALER==KWDT256K
+		SET_BIT(WDTCR,WDP2);
+		CLR_BIT(WDTCR,WDP1);
+		CLR_BIT(WDTCR,WDP0);
+#elif WATCHDOGTIMER_PRESCALER==KWDT512K
+		SET_BIT(WDTCR,WDP2);
+		CLR_BIT(WDTCR,WDP1);
+		SET_BIT(WDTCR,WDP0);
+#elif WATCHDOGTIMER_PRESCALER==KWDT1024K
+		SET_BIT(WDTCR,WDP2);
+		SET_BIT(WDTCR,WDP1);
+		CLR_BIT(WDTCR,WDP0);
+#elif WATCHDOGTIMER_PRESCALER==KWDT2048K
+		SET_BIT(WDTCR,WDP2);
+		SET_BIT(WDTCR,WDP1);
+		SET_BIT(WDTCR,WDP0);
+	#else
+		#error "Wrong prescaler reference Chosen"
+	#endif
+
+
+
+}
+void WATCHDOGTIMER_Enable(){
+	SET_BIT(WDTCR,WDE);
+}
+void WATCHDOGTIMER_Disable(){
+	/* MUST WRITE 1 AT BOTH BIT 4 AND 3 AT THE SAME LINE, THE AFTER 4 CLK CYCLES BIT 3
+	 * IS AUTOMATICALLY CLEARED
+	 */
+	WDTCR = (1<<WDE) | (1<<WDTOE);
+	WDTCR = 0x00;
+}
