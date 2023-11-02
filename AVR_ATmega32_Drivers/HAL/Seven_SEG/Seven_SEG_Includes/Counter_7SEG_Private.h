@@ -1,0 +1,6 @@
+
+#ifndef COUNTER7SEG_PRIVATE_H_
+#define COUNTER7SEG_PRIVATE_H_
+
+
+#endif /* COUNTER7SEG_PRIVATE_H_ */
