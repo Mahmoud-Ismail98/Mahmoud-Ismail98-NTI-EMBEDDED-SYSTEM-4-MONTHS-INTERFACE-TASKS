@@ -1,0 +1,1030 @@
+
+7segment_v1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000476  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000004ea  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000a  00800060  00800060  000004ea  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000004ea  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000051c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000108  00000000  00000000  00000558  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000158c  00000000  00000000  00000660  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000009f1  00000000  00000000  00001bec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000e84  00000000  00000000  000025dd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000184  00000000  00000000  00003464  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000b68  00000000  00000000  000035e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000c31  00000000  00000000  00004150  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000a8  00000000  00000000  00004d81  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	aa 36       	cpi	r26, 0x6A	; 106
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 56 01 	call	0x2ac	; 0x2ac <main>
+  74:	0c 94 39 02 	jmp	0x472	; 0x472 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <app_init>:
+
+// init app
+void app_init(void)
+{
+	// port init to init 7segment and Buttons pins
+	PORT_voidInit();
+  7c:	0e 94 2d 02 	call	0x45a	; 0x45a <PORT_voidInit>
+  80:	08 95       	ret
+
+00000082 <calcTime>:
+void calcTime(void)
+{
+	static u32 loc_u32_counter = FALSE;
+	
+	// case timer off
+	if ( gl_u8_on_flag == FALSE)
+  82:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <gl_u8_on_flag>
+  86:	81 11       	cpse	r24, r1
+  88:	09 c0       	rjmp	.+18     	; 0x9c <calcTime+0x1a>
+	{
+		loc_u32_counter = FALSE;
+  8a:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+  8e:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  92:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+  96:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+  9a:	08 95       	ret
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  9c:	89 ef       	ldi	r24, 0xF9	; 249
+  9e:	90 e0       	ldi	r25, 0x00	; 0
+  a0:	01 97       	sbiw	r24, 0x01	; 1
+  a2:	f1 f7       	brne	.-4      	; 0xa0 <calcTime+0x1e>
+  a4:	00 c0       	rjmp	.+0      	; 0xa6 <calcTime+0x24>
+  a6:	00 00       	nop
+	}
+	// case timer on
+	else
+	{
+		_delay_ms(MILLI_SEC);
+		loc_u32_counter++;  // increament static loc counter
+  a8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  ac:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  b0:	a0 91 62 00 	lds	r26, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+  b4:	b0 91 63 00 	lds	r27, 0x0063	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+  b8:	01 96       	adiw	r24, 0x01	; 1
+  ba:	a1 1d       	adc	r26, r1
+  bc:	b1 1d       	adc	r27, r1
+  be:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+  c2:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  c6:	a0 93 62 00 	sts	0x0062, r26	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+  ca:	b0 93 63 00 	sts	0x0063, r27	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+		if (loc_u32_counter == COUNTER_MAX) // ONE SECOND PASSED?
+  ce:	8a 3f       	cpi	r24, 0xFA	; 250
+  d0:	91 05       	cpc	r25, r1
+  d2:	a1 05       	cpc	r26, r1
+  d4:	b1 05       	cpc	r27, r1
+  d6:	a9 f5       	brne	.+106    	; 0x142 <calcTime+0xc0>
+		{
+			gl_u8_SEC_unit++; // increament second
+  d8:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <gl_u8_SEC_unit>
+  dc:	8f 5f       	subi	r24, 0xFF	; 255
+  de:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <gl_u8_SEC_unit>
+			loc_u32_counter = FALSE; // Clear static loc counter
+  e2:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+  e6:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  ea:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+  ee:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+			
+			// check on seconds unit
+			if (gl_u8_SEC_unit > DISPLAY_MAX)
+  f2:	8a 30       	cpi	r24, 0x0A	; 10
+  f4:	40 f0       	brcs	.+16     	; 0x106 <calcTime+0x84>
+			{
+				gl_u8_SEC_tenth++; // increament tenth
+  f6:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <gl_u8_SEC_tenth>
+  fa:	8f 5f       	subi	r24, 0xFF	; 255
+  fc:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <gl_u8_SEC_tenth>
+				gl_u8_SEC_unit = FALSE; // clear unit
+ 100:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <gl_u8_SEC_unit>
+ 104:	08 95       	ret
+			}
+			// check on seconds tenth
+			else if (gl_u8_SEC_tenth > DISPLAY_MAX)
+ 106:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <gl_u8_SEC_tenth>
+ 10a:	8a 30       	cpi	r24, 0x0A	; 10
+ 10c:	40 f0       	brcs	.+16     	; 0x11e <calcTime+0x9c>
+			{
+				gl_u8_MIN_unit++;  // increament Minutes unit
+ 10e:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <gl_u8_MIN_unit>
+ 112:	8f 5f       	subi	r24, 0xFF	; 255
+ 114:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <gl_u8_MIN_unit>
+				gl_u8_SEC_tenth = FALSE; // clear second tenth
+ 118:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <gl_u8_SEC_tenth>
+ 11c:	08 95       	ret
+			}
+			// check on minutes unit
+			else if (gl_u8_MIN_unit > DISPLAY_MAX)
+ 11e:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <gl_u8_MIN_unit>
+ 122:	8a 30       	cpi	r24, 0x0A	; 10
+ 124:	40 f0       	brcs	.+16     	; 0x136 <calcTime+0xb4>
+			{
+				gl_u8_MIN_tenth++; // increament tenth
+ 126:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <gl_u8_MIN_tenth>
+ 12a:	8f 5f       	subi	r24, 0xFF	; 255
+ 12c:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <gl_u8_MIN_tenth>
+				gl_u8_MIN_unit = FALSE; //clear units
+ 130:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <gl_u8_MIN_unit>
+ 134:	08 95       	ret
+			}
+			// check on minutes tenth
+			else if (gl_u8_MIN_tenth > DISPLAY_MAX)
+ 136:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <gl_u8_MIN_tenth>
+ 13a:	8a 30       	cpi	r24, 0x0A	; 10
+ 13c:	10 f0       	brcs	.+4      	; 0x142 <calcTime+0xc0>
+			{
+				gl_u8_switches_flag = CLR_COUNT;//overflow and clear stop watch
+ 13e:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <gl_u8_switches_flag>
+ 142:	08 95       	ret
+
+00000144 <app_start>:
+	
+	// SuperLoop
+	while(1)
+	{
+		// read start button state
+		loc_u8_Buttons_State = PUSHBUTTON_vidGetState(START_SWITCH);
+ 144:	85 e0       	ldi	r24, 0x05	; 5
+ 146:	0e 94 46 01 	call	0x28c	; 0x28c <PUSHBUTTON_vidGetState>
+		
+		//case pressed
+		if (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+ 14a:	88 23       	and	r24, r24
+ 14c:	21 f0       	breq	.+8      	; 0x156 <app_start+0x12>
+ 14e:	09 c0       	rjmp	.+18     	; 0x162 <app_start+0x1e>
+		{
+			//loop until user realese the button 
+			while (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+			{
+				loc_u8_Buttons_State = PUSHBUTTON_vidGetState(START_SWITCH);
+ 150:	85 e0       	ldi	r24, 0x05	; 5
+ 152:	0e 94 46 01 	call	0x28c	; 0x28c <PUSHBUTTON_vidGetState>
+		
+		//case pressed
+		if (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+		{
+			//loop until user realese the button 
+			while (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+ 156:	88 23       	and	r24, r24
+ 158:	d9 f3       	breq	.-10     	; 0x150 <app_start+0xc>
+			{
+				loc_u8_Buttons_State = PUSHBUTTON_vidGetState(START_SWITCH);
+			}
+			
+			// assign switches flag to START_COUNT ---> start is pressed 
+			gl_u8_switches_flag = START_COUNT;
+ 15a:	81 e0       	ldi	r24, 0x01	; 1
+ 15c:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <gl_u8_switches_flag>
+ 160:	1c c0       	rjmp	.+56     	; 0x19a <app_start+0x56>
+		
+		// case start is not pressed
+		else
+		{
+			// read pause button state
+			loc_u8_Buttons_State = PUSHBUTTON_vidGetState(PAUSE_SWITCH);
+ 162:	86 e0       	ldi	r24, 0x06	; 6
+ 164:	0e 94 46 01 	call	0x28c	; 0x28c <PUSHBUTTON_vidGetState>
+			
+			//case pressed
+			if (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+ 168:	88 23       	and	r24, r24
+ 16a:	21 f0       	breq	.+8      	; 0x174 <app_start+0x30>
+ 16c:	09 c0       	rjmp	.+18     	; 0x180 <app_start+0x3c>
+			{
+				//loop until user realese the button 
+				while (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+				{
+					loc_u8_Buttons_State = PUSHBUTTON_vidGetState(PAUSE_SWITCH);
+ 16e:	86 e0       	ldi	r24, 0x06	; 6
+ 170:	0e 94 46 01 	call	0x28c	; 0x28c <PUSHBUTTON_vidGetState>
+			
+			//case pressed
+			if (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+			{
+				//loop until user realese the button 
+				while (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+ 174:	88 23       	and	r24, r24
+ 176:	d9 f3       	breq	.-10     	; 0x16e <app_start+0x2a>
+				{
+					loc_u8_Buttons_State = PUSHBUTTON_vidGetState(PAUSE_SWITCH);
+				}
+				
+				// assign switches flag to PAUSE_COUNT ---> pause is pressed 
+				gl_u8_switches_flag = PAUSE_COUNT;
+ 178:	82 e0       	ldi	r24, 0x02	; 2
+ 17a:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <gl_u8_switches_flag>
+ 17e:	0d c0       	rjmp	.+26     	; 0x19a <app_start+0x56>
+			
+			// case pause is not pressed
+			else
+			{
+				// read clear button state
+				loc_u8_Buttons_State = PUSHBUTTON_vidGetState(CLR_SWITCH);
+ 180:	87 e0       	ldi	r24, 0x07	; 7
+ 182:	0e 94 46 01 	call	0x28c	; 0x28c <PUSHBUTTON_vidGetState>
+				
+				//case pressed
+				if (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+ 186:	88 23       	and	r24, r24
+ 188:	21 f0       	breq	.+8      	; 0x192 <app_start+0x4e>
+ 18a:	07 c0       	rjmp	.+14     	; 0x19a <app_start+0x56>
+				{
+					//loop until user realese the button 
+					while (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+					{
+						loc_u8_Buttons_State = PUSHBUTTON_vidGetState(CLR_SWITCH);
+ 18c:	87 e0       	ldi	r24, 0x07	; 7
+ 18e:	0e 94 46 01 	call	0x28c	; 0x28c <PUSHBUTTON_vidGetState>
+				
+				//case pressed
+				if (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+				{
+					//loop until user realese the button 
+					while (loc_u8_Buttons_State == BUTTON_LOGIC_LOW)
+ 192:	88 23       	and	r24, r24
+ 194:	d9 f3       	breq	.-10     	; 0x18c <app_start+0x48>
+					{
+						loc_u8_Buttons_State = PUSHBUTTON_vidGetState(CLR_SWITCH);
+					}
+					
+					// assign switches flag to CLR_COUNT ---> clear is pressed 
+					gl_u8_switches_flag = CLR_COUNT;
+ 196:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <gl_u8_switches_flag>
+				}
+			}
+		}
+		
+		// switch which button is pressed
+		switch(gl_u8_switches_flag)
+ 19a:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <gl_u8_switches_flag>
+ 19e:	81 30       	cpi	r24, 0x01	; 1
+ 1a0:	91 f0       	breq	.+36     	; 0x1c6 <app_start+0x82>
+ 1a2:	18 f0       	brcs	.+6      	; 0x1aa <app_start+0x66>
+ 1a4:	82 30       	cpi	r24, 0x02	; 2
+ 1a6:	61 f0       	breq	.+24     	; 0x1c0 <app_start+0x7c>
+ 1a8:	11 c0       	rjmp	.+34     	; 0x1cc <app_start+0x88>
+		{
+			
+			//case clear is pressed
+			case CLR_COUNT:
+			{
+				gl_u8_SEC_unit  = FALSE;//CLEAR 
+ 1aa:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <gl_u8_SEC_unit>
+				gl_u8_SEC_tenth = FALSE;//CLEAR 
+ 1ae:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <gl_u8_SEC_tenth>
+				gl_u8_MIN_unit  = FALSE;//CLEAR 
+ 1b2:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <gl_u8_MIN_unit>
+				gl_u8_MIN_tenth = FALSE;//CLEAR 
+ 1b6:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <gl_u8_MIN_tenth>
+				gl_u8_on_flag   = FALSE;//CLEAR 
+ 1ba:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <gl_u8_on_flag>
+				break;
+ 1be:	06 c0       	rjmp	.+12     	; 0x1cc <app_start+0x88>
+			
+			//case pause is pressed
+			case PAUSE_COUNT:
+			{
+				// stop the timer
+				gl_u8_on_flag   = FALSE;
+ 1c0:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <gl_u8_on_flag>
+				break;
+ 1c4:	03 c0       	rjmp	.+6      	; 0x1cc <app_start+0x88>
+			
+			// case start is pressed
+			case START_COUNT:
+			{
+				// start timer
+				gl_u8_on_flag = TRUE;
+ 1c6:	81 e0       	ldi	r24, 0x01	; 1
+ 1c8:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <gl_u8_on_flag>
+			}
+		}
+		
+		
+		// DISPLAY CURRENT VALUE OF SECONDS AND MINUTES ON FOUR SEVEN SEGMENT
+		_7SEGMENT_vidDisplay(gl_u8_SEC_unit,FIRST_7SEGMENT);    
+ 1cc:	64 e0       	ldi	r22, 0x04	; 4
+ 1ce:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <gl_u8_SEC_unit>
+ 1d2:	0e 94 fd 00 	call	0x1fa	; 0x1fa <_7SEGMENT_vidDisplay>
+		_7SEGMENT_vidDisplay(gl_u8_SEC_tenth,SECOND_7SEGMENT);
+ 1d6:	63 e0       	ldi	r22, 0x03	; 3
+ 1d8:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <gl_u8_SEC_tenth>
+ 1dc:	0e 94 fd 00 	call	0x1fa	; 0x1fa <_7SEGMENT_vidDisplay>
+		_7SEGMENT_vidDisplay(gl_u8_MIN_unit,THIRD_7SEGMENT);
+ 1e0:	62 e0       	ldi	r22, 0x02	; 2
+ 1e2:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <gl_u8_MIN_unit>
+ 1e6:	0e 94 fd 00 	call	0x1fa	; 0x1fa <_7SEGMENT_vidDisplay>
+		_7SEGMENT_vidDisplay(gl_u8_MIN_tenth,FOURTH_7SEGMENT);
+ 1ea:	61 e0       	ldi	r22, 0x01	; 1
+ 1ec:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <gl_u8_MIN_tenth>
+ 1f0:	0e 94 fd 00 	call	0x1fa	; 0x1fa <_7SEGMENT_vidDisplay>
+		
+		// calculate time
+		calcTime();
+ 1f4:	0e 94 41 00 	call	0x82	; 0x82 <calcTime>
+	}
+ 1f8:	a5 cf       	rjmp	.-182    	; 0x144 <app_start>
+
+000001fa <_7SEGMENT_vidDisplay>:
+RET : void
+
+*/
+
+void _7SEGMENT_vidDisplay(u8 arg_u8_num,u8 arg_u8_select)
+{
+ 1fa:	cf 93       	push	r28
+ 1fc:	df 93       	push	r29
+ 1fe:	c8 2f       	mov	r28, r24
+ 200:	d6 2f       	mov	r29, r22
+	//// DISABLE ALL Enables
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_1,DIO_PIN_LEVEL_LOW);
+ 202:	60 e0       	ldi	r22, 0x00	; 0
+ 204:	83 e0       	ldi	r24, 0x03	; 3
+ 206:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_2,DIO_PIN_LEVEL_LOW);
+ 20a:	60 e0       	ldi	r22, 0x00	; 0
+ 20c:	82 e0       	ldi	r24, 0x02	; 2
+ 20e:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_3,DIO_PIN_LEVEL_LOW);
+ 212:	60 e0       	ldi	r22, 0x00	; 0
+ 214:	8d e0       	ldi	r24, 0x0D	; 13
+ 216:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_4,DIO_PIN_LEVEL_LOW);
+ 21a:	60 e0       	ldi	r22, 0x00	; 0
+ 21c:	8e e0       	ldi	r24, 0x0E	; 14
+ 21e:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+	
+	// write Data
+	DIO_enu_WriteChannel(_7SEGMENT_DATA_A,GET_BIT(arg_u8_num,BIT0));
+ 222:	6c 2f       	mov	r22, r28
+ 224:	61 70       	andi	r22, 0x01	; 1
+ 226:	88 e0       	ldi	r24, 0x08	; 8
+ 228:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_DATA_B,GET_BIT(arg_u8_num,BIT1));
+ 22c:	c1 fb       	bst	r28, 1
+ 22e:	66 27       	eor	r22, r22
+ 230:	60 f9       	bld	r22, 0
+ 232:	89 e0       	ldi	r24, 0x09	; 9
+ 234:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_DATA_C,GET_BIT(arg_u8_num,BIT2));
+ 238:	c2 fb       	bst	r28, 2
+ 23a:	66 27       	eor	r22, r22
+ 23c:	60 f9       	bld	r22, 0
+ 23e:	8a e0       	ldi	r24, 0x0A	; 10
+ 240:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_DATA_D,GET_BIT(arg_u8_num,BIT3));
+ 244:	c3 fb       	bst	r28, 3
+ 246:	66 27       	eor	r22, r22
+ 248:	60 f9       	bld	r22, 0
+ 24a:	8c e0       	ldi	r24, 0x0C	; 12
+ 24c:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+	
+	// Enable Select
+	if (arg_u8_select == FOURTH_7SEGMENT)
+ 250:	d1 30       	cpi	r29, 0x01	; 1
+ 252:	29 f4       	brne	.+10     	; 0x25e <_7SEGMENT_vidDisplay+0x64>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_1,DIO_PIN_LEVEL_HIGH);
+ 254:	61 e0       	ldi	r22, 0x01	; 1
+ 256:	83 e0       	ldi	r24, 0x03	; 3
+ 258:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+ 25c:	14 c0       	rjmp	.+40     	; 0x286 <_7SEGMENT_vidDisplay+0x8c>
+	else if (arg_u8_select == THIRD_7SEGMENT)
+ 25e:	d2 30       	cpi	r29, 0x02	; 2
+ 260:	29 f4       	brne	.+10     	; 0x26c <_7SEGMENT_vidDisplay+0x72>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_2,DIO_PIN_LEVEL_HIGH);
+ 262:	61 e0       	ldi	r22, 0x01	; 1
+ 264:	82 e0       	ldi	r24, 0x02	; 2
+ 266:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+ 26a:	0d c0       	rjmp	.+26     	; 0x286 <_7SEGMENT_vidDisplay+0x8c>
+	else if (arg_u8_select == SECOND_7SEGMENT)
+ 26c:	d3 30       	cpi	r29, 0x03	; 3
+ 26e:	29 f4       	brne	.+10     	; 0x27a <_7SEGMENT_vidDisplay+0x80>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_3,DIO_PIN_LEVEL_HIGH);
+ 270:	61 e0       	ldi	r22, 0x01	; 1
+ 272:	8d e0       	ldi	r24, 0x0D	; 13
+ 274:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+ 278:	06 c0       	rjmp	.+12     	; 0x286 <_7SEGMENT_vidDisplay+0x8c>
+	else if (arg_u8_select == FIRST_7SEGMENT)
+ 27a:	d4 30       	cpi	r29, 0x04	; 4
+ 27c:	21 f4       	brne	.+8      	; 0x286 <_7SEGMENT_vidDisplay+0x8c>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_4,DIO_PIN_LEVEL_HIGH);
+ 27e:	61 e0       	ldi	r22, 0x01	; 1
+ 280:	8e e0       	ldi	r24, 0x0E	; 14
+ 282:	0e 94 5d 01 	call	0x2ba	; 0x2ba <DIO_enu_WriteChannel>
+ 286:	df 91       	pop	r29
+ 288:	cf 91       	pop	r28
+ 28a:	08 95       	ret
+
+0000028c <PUSHBUTTON_vidGetState>:
+ARGS: DIO_enu_PinId_t arg_enu_ButtonPin --> Button Pin
+RET : PUSH_BUTTON_STATE_enu_t (LOGIC_HIGH,LOGIC_LOW)
+
+*/
+PUSH_BUTTON_STATE_enu_t PUSHBUTTON_vidGetState(DIO_enu_PinId_t arg_enu_ButtonPin)
+{
+ 28c:	cf 93       	push	r28
+ 28e:	df 93       	push	r29
+ 290:	1f 92       	push	r1
+ 292:	cd b7       	in	r28, 0x3d	; 61
+ 294:	de b7       	in	r29, 0x3e	; 62
+	u8 loc_u8_pinLogic = FALSE; // loc to hold pin status
+ 296:	19 82       	std	Y+1, r1	; 0x01
+	DIO_enu_ReadChannel(arg_enu_ButtonPin,&loc_u8_pinLogic); // read pin value
+ 298:	be 01       	movw	r22, r28
+ 29a:	6f 5f       	subi	r22, 0xFF	; 255
+ 29c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 29e:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <DIO_enu_ReadChannel>
+	return loc_u8_pinLogic; // return value
+ 2a2:	89 81       	ldd	r24, Y+1	; 0x01
+ 2a4:	0f 90       	pop	r0
+ 2a6:	df 91       	pop	r29
+ 2a8:	cf 91       	pop	r28
+ 2aa:	08 95       	ret
+
+000002ac <main>:
+
+
+int main(void)
+{
+	
+    app_init();
+ 2ac:	0e 94 3e 00 	call	0x7c	; 0x7c <app_init>
+	app_start();
+ 2b0:	0e 94 a2 00 	call	0x144	; 0x144 <app_start>
+}
+ 2b4:	80 e0       	ldi	r24, 0x00	; 0
+ 2b6:	90 e0       	ldi	r25, 0x00	; 0
+ 2b8:	08 95       	ret
+
+000002ba <DIO_enu_WriteChannel>:
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+	
+	// calculate pin number and port number
+	u8 loc_u8_pinNumber  = arg_enu_pinId % REG_SIZE ;
+ 2ba:	28 2f       	mov	r18, r24
+ 2bc:	27 70       	andi	r18, 0x07	; 7
+	u8 loc_u8_portNumber = arg_enu_pinId / REG_SIZE ;
+ 2be:	98 2f       	mov	r25, r24
+ 2c0:	96 95       	lsr	r25
+ 2c2:	96 95       	lsr	r25
+ 2c4:	96 95       	lsr	r25
+	
+	// case wrong pin
+	if( arg_enu_pinId >= DIO_PINID_ERROR)
+ 2c6:	80 32       	cpi	r24, 0x20	; 32
+ 2c8:	08 f0       	brcs	.+2      	; 0x2cc <DIO_enu_WriteChannel+0x12>
+ 2ca:	78 c0       	rjmp	.+240    	; 0x3bc <DIO_enu_WriteChannel+0x102>
+	{
+		loc_enu_return_status = STATUS_DIO_PIN_NUMBER_ERROR;
+	}
+	// case wrong level
+	else if( arg_enu_pinLevel >= DIO_PIN_LEVEL_ERROR)
+ 2cc:	62 30       	cpi	r22, 0x02	; 2
+ 2ce:	08 f0       	brcs	.+2      	; 0x2d2 <DIO_enu_WriteChannel+0x18>
+ 2d0:	77 c0       	rjmp	.+238    	; 0x3c0 <DIO_enu_WriteChannel+0x106>
+		loc_enu_return_status = STATUS_DIO_PIN_LEVEL_CHOICE_ERROR;
+	}
+	else
+	{
+		// switch port number
+		switch(loc_u8_portNumber)
+ 2d2:	91 30       	cpi	r25, 0x01	; 1
+ 2d4:	11 f1       	breq	.+68     	; 0x31a <DIO_enu_WriteChannel+0x60>
+ 2d6:	30 f0       	brcs	.+12     	; 0x2e4 <DIO_enu_WriteChannel+0x2a>
+ 2d8:	92 30       	cpi	r25, 0x02	; 2
+ 2da:	d1 f1       	breq	.+116    	; 0x350 <DIO_enu_WriteChannel+0x96>
+ 2dc:	93 30       	cpi	r25, 0x03	; 3
+ 2de:	09 f4       	brne	.+2      	; 0x2e2 <DIO_enu_WriteChannel+0x28>
+ 2e0:	52 c0       	rjmp	.+164    	; 0x386 <DIO_enu_WriteChannel+0xcc>
+ 2e2:	70 c0       	rjmp	.+224    	; 0x3c4 <DIO_enu_WriteChannel+0x10a>
+		{
+			case DIO_PORT_NUMBER_A :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTA,loc_u8_pinNumber):SET_BIT(DIO_PORTA,loc_u8_pinNumber);
+ 2e4:	61 11       	cpse	r22, r1
+ 2e6:	0d c0       	rjmp	.+26     	; 0x302 <DIO_enu_WriteChannel+0x48>
+ 2e8:	3b b3       	in	r19, 0x1b	; 27
+ 2ea:	81 e0       	ldi	r24, 0x01	; 1
+ 2ec:	90 e0       	ldi	r25, 0x00	; 0
+ 2ee:	02 c0       	rjmp	.+4      	; 0x2f4 <DIO_enu_WriteChannel+0x3a>
+ 2f0:	88 0f       	add	r24, r24
+ 2f2:	99 1f       	adc	r25, r25
+ 2f4:	2a 95       	dec	r18
+ 2f6:	e2 f7       	brpl	.-8      	; 0x2f0 <DIO_enu_WriteChannel+0x36>
+ 2f8:	80 95       	com	r24
+ 2fa:	83 23       	and	r24, r19
+ 2fc:	8b bb       	out	0x1b, r24	; 27
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 2fe:	80 e0       	ldi	r24, 0x00	; 0
+ 300:	08 95       	ret
+		switch(loc_u8_portNumber)
+		{
+			case DIO_PORT_NUMBER_A :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTA,loc_u8_pinNumber):SET_BIT(DIO_PORTA,loc_u8_pinNumber);
+ 302:	3b b3       	in	r19, 0x1b	; 27
+ 304:	81 e0       	ldi	r24, 0x01	; 1
+ 306:	90 e0       	ldi	r25, 0x00	; 0
+ 308:	02 c0       	rjmp	.+4      	; 0x30e <DIO_enu_WriteChannel+0x54>
+ 30a:	88 0f       	add	r24, r24
+ 30c:	99 1f       	adc	r25, r25
+ 30e:	2a 95       	dec	r18
+ 310:	e2 f7       	brpl	.-8      	; 0x30a <DIO_enu_WriteChannel+0x50>
+ 312:	83 2b       	or	r24, r19
+ 314:	8b bb       	out	0x1b, r24	; 27
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 316:	80 e0       	ldi	r24, 0x00	; 0
+ 318:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_B :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTB,loc_u8_pinNumber):SET_BIT(DIO_PORTB,loc_u8_pinNumber);
+ 31a:	61 11       	cpse	r22, r1
+ 31c:	0d c0       	rjmp	.+26     	; 0x338 <DIO_enu_WriteChannel+0x7e>
+ 31e:	38 b3       	in	r19, 0x18	; 24
+ 320:	81 e0       	ldi	r24, 0x01	; 1
+ 322:	90 e0       	ldi	r25, 0x00	; 0
+ 324:	02 c0       	rjmp	.+4      	; 0x32a <DIO_enu_WriteChannel+0x70>
+ 326:	88 0f       	add	r24, r24
+ 328:	99 1f       	adc	r25, r25
+ 32a:	2a 95       	dec	r18
+ 32c:	e2 f7       	brpl	.-8      	; 0x326 <DIO_enu_WriteChannel+0x6c>
+ 32e:	80 95       	com	r24
+ 330:	83 23       	and	r24, r19
+ 332:	88 bb       	out	0x18, r24	; 24
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 334:	80 e0       	ldi	r24, 0x00	; 0
+ 336:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_B :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTB,loc_u8_pinNumber):SET_BIT(DIO_PORTB,loc_u8_pinNumber);
+ 338:	38 b3       	in	r19, 0x18	; 24
+ 33a:	81 e0       	ldi	r24, 0x01	; 1
+ 33c:	90 e0       	ldi	r25, 0x00	; 0
+ 33e:	02 c0       	rjmp	.+4      	; 0x344 <DIO_enu_WriteChannel+0x8a>
+ 340:	88 0f       	add	r24, r24
+ 342:	99 1f       	adc	r25, r25
+ 344:	2a 95       	dec	r18
+ 346:	e2 f7       	brpl	.-8      	; 0x340 <DIO_enu_WriteChannel+0x86>
+ 348:	83 2b       	or	r24, r19
+ 34a:	88 bb       	out	0x18, r24	; 24
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 34c:	80 e0       	ldi	r24, 0x00	; 0
+ 34e:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_C :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTC,loc_u8_pinNumber):SET_BIT(DIO_PORTC,loc_u8_pinNumber);
+ 350:	61 11       	cpse	r22, r1
+ 352:	0d c0       	rjmp	.+26     	; 0x36e <DIO_enu_WriteChannel+0xb4>
+ 354:	35 b3       	in	r19, 0x15	; 21
+ 356:	81 e0       	ldi	r24, 0x01	; 1
+ 358:	90 e0       	ldi	r25, 0x00	; 0
+ 35a:	02 c0       	rjmp	.+4      	; 0x360 <DIO_enu_WriteChannel+0xa6>
+ 35c:	88 0f       	add	r24, r24
+ 35e:	99 1f       	adc	r25, r25
+ 360:	2a 95       	dec	r18
+ 362:	e2 f7       	brpl	.-8      	; 0x35c <DIO_enu_WriteChannel+0xa2>
+ 364:	80 95       	com	r24
+ 366:	83 23       	and	r24, r19
+ 368:	85 bb       	out	0x15, r24	; 21
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 36a:	80 e0       	ldi	r24, 0x00	; 0
+ 36c:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_C :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTC,loc_u8_pinNumber):SET_BIT(DIO_PORTC,loc_u8_pinNumber);
+ 36e:	35 b3       	in	r19, 0x15	; 21
+ 370:	81 e0       	ldi	r24, 0x01	; 1
+ 372:	90 e0       	ldi	r25, 0x00	; 0
+ 374:	02 c0       	rjmp	.+4      	; 0x37a <DIO_enu_WriteChannel+0xc0>
+ 376:	88 0f       	add	r24, r24
+ 378:	99 1f       	adc	r25, r25
+ 37a:	2a 95       	dec	r18
+ 37c:	e2 f7       	brpl	.-8      	; 0x376 <DIO_enu_WriteChannel+0xbc>
+ 37e:	83 2b       	or	r24, r19
+ 380:	85 bb       	out	0x15, r24	; 21
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 382:	80 e0       	ldi	r24, 0x00	; 0
+ 384:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_D :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTD,loc_u8_pinNumber):SET_BIT(DIO_PORTD,loc_u8_pinNumber);
+ 386:	61 11       	cpse	r22, r1
+ 388:	0d c0       	rjmp	.+26     	; 0x3a4 <DIO_enu_WriteChannel+0xea>
+ 38a:	32 b3       	in	r19, 0x12	; 18
+ 38c:	81 e0       	ldi	r24, 0x01	; 1
+ 38e:	90 e0       	ldi	r25, 0x00	; 0
+ 390:	02 c0       	rjmp	.+4      	; 0x396 <DIO_enu_WriteChannel+0xdc>
+ 392:	88 0f       	add	r24, r24
+ 394:	99 1f       	adc	r25, r25
+ 396:	2a 95       	dec	r18
+ 398:	e2 f7       	brpl	.-8      	; 0x392 <DIO_enu_WriteChannel+0xd8>
+ 39a:	80 95       	com	r24
+ 39c:	83 23       	and	r24, r19
+ 39e:	82 bb       	out	0x12, r24	; 18
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 3a0:	80 e0       	ldi	r24, 0x00	; 0
+ 3a2:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_D :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTD,loc_u8_pinNumber):SET_BIT(DIO_PORTD,loc_u8_pinNumber);
+ 3a4:	32 b3       	in	r19, 0x12	; 18
+ 3a6:	81 e0       	ldi	r24, 0x01	; 1
+ 3a8:	90 e0       	ldi	r25, 0x00	; 0
+ 3aa:	02 c0       	rjmp	.+4      	; 0x3b0 <DIO_enu_WriteChannel+0xf6>
+ 3ac:	88 0f       	add	r24, r24
+ 3ae:	99 1f       	adc	r25, r25
+ 3b0:	2a 95       	dec	r18
+ 3b2:	e2 f7       	brpl	.-8      	; 0x3ac <DIO_enu_WriteChannel+0xf2>
+ 3b4:	83 2b       	or	r24, r19
+ 3b6:	82 bb       	out	0x12, r24	; 18
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 3b8:	80 e0       	ldi	r24, 0x00	; 0
+ 3ba:	08 95       	ret
+	u8 loc_u8_portNumber = arg_enu_pinId / REG_SIZE ;
+	
+	// case wrong pin
+	if( arg_enu_pinId >= DIO_PINID_ERROR)
+	{
+		loc_enu_return_status = STATUS_DIO_PIN_NUMBER_ERROR;
+ 3bc:	81 e0       	ldi	r24, 0x01	; 1
+ 3be:	08 95       	ret
+	}
+	// case wrong level
+	else if( arg_enu_pinLevel >= DIO_PIN_LEVEL_ERROR)
+	{
+		loc_enu_return_status = STATUS_DIO_PIN_LEVEL_CHOICE_ERROR;
+ 3c0:	82 e0       	ldi	r24, 0x02	; 2
+ 3c2:	08 95       	ret
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 3c4:	80 e0       	ldi	r24, 0x00	; 0
+		}
+	}
+	
+	
+	return loc_enu_return_status;
+}
+ 3c6:	08 95       	ret
+
+000003c8 <DIO_enu_ReadChannel>:
+{
+	//loc for return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+	
+	// calculate pin and port numbers
+	u8 loc_u8_pinNumber  = arg_enu_pinId % REG_SIZE ;
+ 3c8:	28 2f       	mov	r18, r24
+ 3ca:	27 70       	andi	r18, 0x07	; 7
+	u8 loc_u8_portNumber = arg_enu_pinId / REG_SIZE ;
+ 3cc:	98 2f       	mov	r25, r24
+ 3ce:	96 95       	lsr	r25
+ 3d0:	96 95       	lsr	r25
+ 3d2:	96 95       	lsr	r25
+	
+	// check if address is null
+	if(ptr_value == PTR_NULL)
+ 3d4:	61 15       	cp	r22, r1
+ 3d6:	71 05       	cpc	r23, r1
+ 3d8:	d1 f1       	breq	.+116    	; 0x44e <__EEPROM_REGION_LENGTH__+0x4e>
+	{
+		loc_enu_return_status = STATUS_DIO_NULL_PTR_ERROR;
+	}
+	// check on channel
+	else if( arg_enu_pinId >= DIO_PINID_ERROR)
+ 3da:	80 32       	cpi	r24, 0x20	; 32
+ 3dc:	d0 f5       	brcc	.+116    	; 0x452 <__EEPROM_REGION_LENGTH__+0x52>
+	{
+		loc_enu_return_status = STATUS_DIO_PIN_NUMBER_ERROR;
+	}
+	else
+	{
+		switch(loc_u8_portNumber)
+ 3de:	91 30       	cpi	r25, 0x01	; 1
+ 3e0:	91 f0       	breq	.+36     	; 0x406 <__EEPROM_REGION_LENGTH__+0x6>
+ 3e2:	28 f0       	brcs	.+10     	; 0x3ee <DIO_enu_ReadChannel+0x26>
+ 3e4:	92 30       	cpi	r25, 0x02	; 2
+ 3e6:	d9 f0       	breq	.+54     	; 0x41e <__EEPROM_REGION_LENGTH__+0x1e>
+ 3e8:	93 30       	cpi	r25, 0x03	; 3
+ 3ea:	29 f1       	breq	.+74     	; 0x436 <__EEPROM_REGION_LENGTH__+0x36>
+ 3ec:	34 c0       	rjmp	.+104    	; 0x456 <__EEPROM_REGION_LENGTH__+0x56>
+		{
+			case DIO_PORT_NUMBER_A :
+			{
+				// asign level 
+				*ptr_value = GET_BIT(DIO_PINA,loc_u8_pinNumber);
+ 3ee:	89 b3       	in	r24, 0x19	; 25
+ 3f0:	90 e0       	ldi	r25, 0x00	; 0
+ 3f2:	02 c0       	rjmp	.+4      	; 0x3f8 <DIO_enu_ReadChannel+0x30>
+ 3f4:	95 95       	asr	r25
+ 3f6:	87 95       	ror	r24
+ 3f8:	2a 95       	dec	r18
+ 3fa:	e2 f7       	brpl	.-8      	; 0x3f4 <DIO_enu_ReadChannel+0x2c>
+ 3fc:	81 70       	andi	r24, 0x01	; 1
+ 3fe:	fb 01       	movw	r30, r22
+ 400:	80 83       	st	Z, r24
+
+*/
+DIO_enu_return_status_t DIO_enu_ReadChannel(DIO_enu_PinId_t arg_enu_pinId,u8 *ptr_value)
+{
+	//loc for return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 402:	80 e0       	ldi	r24, 0x00	; 0
+		{
+			case DIO_PORT_NUMBER_A :
+			{
+				// asign level 
+				*ptr_value = GET_BIT(DIO_PINA,loc_u8_pinNumber);
+				break;
+ 404:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_B :
+			{
+				// asign level 
+				*ptr_value = GET_BIT(DIO_PINB,loc_u8_pinNumber);
+ 406:	86 b3       	in	r24, 0x16	; 22
+ 408:	90 e0       	ldi	r25, 0x00	; 0
+ 40a:	02 c0       	rjmp	.+4      	; 0x410 <__EEPROM_REGION_LENGTH__+0x10>
+ 40c:	95 95       	asr	r25
+ 40e:	87 95       	ror	r24
+ 410:	2a 95       	dec	r18
+ 412:	e2 f7       	brpl	.-8      	; 0x40c <__EEPROM_REGION_LENGTH__+0xc>
+ 414:	81 70       	andi	r24, 0x01	; 1
+ 416:	fb 01       	movw	r30, r22
+ 418:	80 83       	st	Z, r24
+
+*/
+DIO_enu_return_status_t DIO_enu_ReadChannel(DIO_enu_PinId_t arg_enu_pinId,u8 *ptr_value)
+{
+	//loc for return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 41a:	80 e0       	ldi	r24, 0x00	; 0
+			
+			case DIO_PORT_NUMBER_B :
+			{
+				// asign level 
+				*ptr_value = GET_BIT(DIO_PINB,loc_u8_pinNumber);
+				break;
+ 41c:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_C :
+			{
+				// asign level 
+				*ptr_value = GET_BIT(DIO_PINC,loc_u8_pinNumber);
+ 41e:	83 b3       	in	r24, 0x13	; 19
+ 420:	90 e0       	ldi	r25, 0x00	; 0
+ 422:	02 c0       	rjmp	.+4      	; 0x428 <__EEPROM_REGION_LENGTH__+0x28>
+ 424:	95 95       	asr	r25
+ 426:	87 95       	ror	r24
+ 428:	2a 95       	dec	r18
+ 42a:	e2 f7       	brpl	.-8      	; 0x424 <__EEPROM_REGION_LENGTH__+0x24>
+ 42c:	81 70       	andi	r24, 0x01	; 1
+ 42e:	fb 01       	movw	r30, r22
+ 430:	80 83       	st	Z, r24
+
+*/
+DIO_enu_return_status_t DIO_enu_ReadChannel(DIO_enu_PinId_t arg_enu_pinId,u8 *ptr_value)
+{
+	//loc for return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 432:	80 e0       	ldi	r24, 0x00	; 0
+			
+			case DIO_PORT_NUMBER_C :
+			{
+				// asign level 
+				*ptr_value = GET_BIT(DIO_PINC,loc_u8_pinNumber);
+				break;
+ 434:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_D :
+			{
+				// asign level 
+				*ptr_value = GET_BIT(DIO_PIND,loc_u8_pinNumber);
+ 436:	80 b3       	in	r24, 0x10	; 16
+ 438:	90 e0       	ldi	r25, 0x00	; 0
+ 43a:	02 c0       	rjmp	.+4      	; 0x440 <__EEPROM_REGION_LENGTH__+0x40>
+ 43c:	95 95       	asr	r25
+ 43e:	87 95       	ror	r24
+ 440:	2a 95       	dec	r18
+ 442:	e2 f7       	brpl	.-8      	; 0x43c <__EEPROM_REGION_LENGTH__+0x3c>
+ 444:	81 70       	andi	r24, 0x01	; 1
+ 446:	fb 01       	movw	r30, r22
+ 448:	80 83       	st	Z, r24
+
+*/
+DIO_enu_return_status_t DIO_enu_ReadChannel(DIO_enu_PinId_t arg_enu_pinId,u8 *ptr_value)
+{
+	//loc for return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 44a:	80 e0       	ldi	r24, 0x00	; 0
+			
+			case DIO_PORT_NUMBER_D :
+			{
+				// asign level 
+				*ptr_value = GET_BIT(DIO_PIND,loc_u8_pinNumber);
+				break;
+ 44c:	08 95       	ret
+	u8 loc_u8_portNumber = arg_enu_pinId / REG_SIZE ;
+	
+	// check if address is null
+	if(ptr_value == PTR_NULL)
+	{
+		loc_enu_return_status = STATUS_DIO_NULL_PTR_ERROR;
+ 44e:	84 e0       	ldi	r24, 0x04	; 4
+ 450:	08 95       	ret
+	}
+	// check on channel
+	else if( arg_enu_pinId >= DIO_PINID_ERROR)
+	{
+		loc_enu_return_status = STATUS_DIO_PIN_NUMBER_ERROR;
+ 452:	81 e0       	ldi	r24, 0x01	; 1
+ 454:	08 95       	ret
+
+*/
+DIO_enu_return_status_t DIO_enu_ReadChannel(DIO_enu_PinId_t arg_enu_pinId,u8 *ptr_value)
+{
+	//loc for return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 456:	80 e0       	ldi	r24, 0x00	; 0
+		}
+	}
+	
+	
+	return loc_enu_return_status;
+}
+ 458:	08 95       	ret
+
+0000045a <PORT_voidInit>:
+	#undef  PORT_PIN_MODE_OUTPUT_HIGH
+	#define PORT_PIN_MODE_OUTPUT_HIGH         1
+	
+	// set direction 
+	
+	DDRA = CONC(PORTA_PIN7_MODE,PORTA_PIN6_MODE,PORTA_PIN5_MODE,PORTA_PIN4_MODE,PORTA_PIN3_MODE,PORTA_PIN2_MODE,PORTA_PIN1_MODE,PORTA_PIN0_MODE);
+ 45a:	8c e0       	ldi	r24, 0x0C	; 12
+ 45c:	8a bb       	out	0x1a, r24	; 26
+	DDRB = CONC(PORTB_PIN7_MODE,PORTB_PIN6_MODE,PORTB_PIN5_MODE,PORTB_PIN4_MODE,PORTB_PIN3_MODE,PORTB_PIN2_MODE,PORTB_PIN1_MODE,PORTB_PIN0_MODE);
+ 45e:	87 e7       	ldi	r24, 0x77	; 119
+ 460:	87 bb       	out	0x17, r24	; 23
+	DDRC = CONC(PORTC_PIN7_MODE,PORTC_PIN6_MODE,PORTC_PIN5_MODE,PORTC_PIN4_MODE,PORTC_PIN3_MODE,PORTC_PIN2_MODE,PORTC_PIN1_MODE,PORTC_PIN0_MODE);
+ 462:	14 ba       	out	0x14, r1	; 20
+	DDRD = CONC(PORTD_PIN7_MODE,PORTD_PIN6_MODE,PORTD_PIN5_MODE,PORTD_PIN4_MODE,PORTD_PIN3_MODE,PORTD_PIN2_MODE,PORTD_PIN1_MODE,PORTD_PIN0_MODE);
+ 464:	11 ba       	out	0x11, r1	; 17
+	#undef  PORT_PIN_MODE_OUTPUT_HIGH
+	#define PORT_PIN_MODE_OUTPUT_HIGH         1
+	
+	// set mode
+	
+	PORTA = CONC(PORTA_PIN7_MODE,PORTA_PIN6_MODE,PORTA_PIN5_MODE,PORTA_PIN4_MODE,PORTA_PIN3_MODE,PORTA_PIN2_MODE,PORTA_PIN1_MODE,PORTA_PIN0_MODE);
+ 466:	80 ee       	ldi	r24, 0xE0	; 224
+ 468:	8b bb       	out	0x1b, r24	; 27
+	PORTB = CONC(PORTB_PIN7_MODE,PORTB_PIN6_MODE,PORTB_PIN5_MODE,PORTB_PIN4_MODE,PORTB_PIN3_MODE,PORTB_PIN2_MODE,PORTB_PIN1_MODE,PORTB_PIN0_MODE);
+ 46a:	18 ba       	out	0x18, r1	; 24
+	PORTC = CONC(PORTC_PIN7_MODE,PORTC_PIN6_MODE,PORTC_PIN5_MODE,PORTC_PIN4_MODE,PORTC_PIN3_MODE,PORTC_PIN2_MODE,PORTC_PIN1_MODE,PORTC_PIN0_MODE);
+ 46c:	15 ba       	out	0x15, r1	; 21
+	PORTD = CONC(PORTD_PIN7_MODE,PORTD_PIN6_MODE,PORTD_PIN5_MODE,PORTD_PIN4_MODE,PORTD_PIN3_MODE,PORTD_PIN2_MODE,PORTD_PIN1_MODE,PORTD_PIN0_MODE);
+ 46e:	12 ba       	out	0x12, r1	; 18
+ 470:	08 95       	ret
+
+00000472 <_exit>:
+ 472:	f8 94       	cli
+
+00000474 <__stop_program>:
+ 474:	ff cf       	rjmp	.-2      	; 0x474 <__stop_program>
