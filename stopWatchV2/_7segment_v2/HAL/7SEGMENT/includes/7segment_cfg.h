@@ -1,0 +1,28 @@
+/*
+ * _7segment_cfg.h
+ *
+ * Created: 11/2/2023 11:49:20 AM
+ *  Author: sharb
+ */ 
+
+
+#ifndef _7SEGMENT_CFG_H_
+#define _7SEGMENT_CFG_H_
+
+
+// FOUR LINES OF DATA
+
+#define _7SEGMENT_DATA_A     DIO_PORTB_PIN0
+#define _7SEGMENT_DATA_B     DIO_PORTB_PIN1
+#define _7SEGMENT_DATA_C     DIO_PORTB_PIN2
+#define _7SEGMENT_DATA_D     DIO_PORTB_PIN4
+
+
+//  SEVEN SEGMENT Enables
+
+#define _7SEGMENT_ENABLE_1     DIO_PORTA_PIN3
+#define _7SEGMENT_ENABLE_2     DIO_PORTA_PIN2
+#define _7SEGMENT_ENABLE_3     DIO_PORTB_PIN5
+#define _7SEGMENT_ENABLE_4     DIO_PORTB_PIN6
+
+#endif /* 7SEGMENT_CFG_H_ */

@@ -1,0 +1,1372 @@
+
+_7segment_v2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000606  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000067a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000010  00800060  00800060  0000067a  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000067a  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000006ac  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000160  00000000  00000000  000006e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001643  00000000  00000000  00000848  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000ae1  00000000  00000000  00001e8b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000108f  00000000  00000000  0000296c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000002e8  00000000  00000000  000039fc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000d5b  00000000  00000000  00003ce4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000fc2  00000000  00000000  00004a3f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000f0  00000000  00000000  00005a01  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 66 02 	jmp	0x4cc	; 0x4cc <__vector_1>
+   8:	0c 94 8f 02 	jmp	0x51e	; 0x51e <__vector_2>
+   c:	0c 94 b8 02 	jmp	0x570	; 0x570 <__vector_3>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a0 37       	cpi	r26, 0x70	; 112
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 3b 01 	call	0x276	; 0x276 <main>
+  74:	0c 94 01 03 	jmp	0x602	; 0x602 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <start_fire>:
+}
+
+
+void start_fire(void)
+{
+	gl_u8_switches_flag = START_COUNT;
+  7c:	81 e0       	ldi	r24, 0x01	; 1
+  7e:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <gl_u8_switches_flag>
+  82:	08 95       	ret
+
+00000084 <pause_fire>:
+}
+void pause_fire(void)
+{
+	gl_u8_switches_flag = PAUSE_COUNT;
+  84:	82 e0       	ldi	r24, 0x02	; 2
+  86:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <gl_u8_switches_flag>
+  8a:	08 95       	ret
+
+0000008c <clear_fire>:
+}
+void clear_fire(void)
+{
+	gl_u8_switches_flag = CLR_COUNT;
+  8c:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <gl_u8_switches_flag>
+  90:	08 95       	ret
+
+00000092 <app_init>:
+
+// init modules for app
+void app_init(void)
+{
+	// port init to init 7segment
+	PORT_voidInit();
+  92:	0e 94 f5 02 	call	0x5ea	; 0x5ea <PORT_voidInit>
+	EXTINT_enum_Init(EXT_INT0,EXT_INT_FALLING_EDGE,start_fire);// init EXT interrupt for start switch
+  96:	4e e3       	ldi	r20, 0x3E	; 62
+  98:	50 e0       	ldi	r21, 0x00	; 0
+  9a:	61 e0       	ldi	r22, 0x01	; 1
+  9c:	80 e0       	ldi	r24, 0x00	; 0
+  9e:	0e 94 db 01 	call	0x3b6	; 0x3b6 <EXTINT_enum_Init>
+	EXTINT_enum_Init(EXT_INT1,EXT_INT_FALLING_EDGE,pause_fire);// init EXT interrupt for pause switch
+  a2:	42 e4       	ldi	r20, 0x42	; 66
+  a4:	50 e0       	ldi	r21, 0x00	; 0
+  a6:	61 e0       	ldi	r22, 0x01	; 1
+  a8:	81 e0       	ldi	r24, 0x01	; 1
+  aa:	0e 94 db 01 	call	0x3b6	; 0x3b6 <EXTINT_enum_Init>
+	EXTINT_enum_Init(EXT_INT2,EXT_INT_FALLING_EDGE,clear_fire);// init EXT interrupt for clear switch
+  ae:	46 e4       	ldi	r20, 0x46	; 70
+  b0:	50 e0       	ldi	r21, 0x00	; 0
+  b2:	61 e0       	ldi	r22, 0x01	; 1
+  b4:	82 e0       	ldi	r24, 0x02	; 2
+  b6:	0e 94 db 01 	call	0x3b6	; 0x3b6 <EXTINT_enum_Init>
+	
+	// enable global intterrupt
+	GIE_status(GIE_ENABLE);
+  ba:	80 e0       	ldi	r24, 0x00	; 0
+  bc:	0e 94 e1 02 	call	0x5c2	; 0x5c2 <GIE_status>
+  c0:	08 95       	ret
+
+000000c2 <calcTime>:
+void calcTime(void)
+{
+	static u32 loc_u32_counter = FALSE;
+	
+	// case timer off
+	if ( gl_u8_on_flag == FALSE)
+  c2:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <gl_u8_on_flag>
+  c6:	81 11       	cpse	r24, r1
+  c8:	09 c0       	rjmp	.+18     	; 0xdc <calcTime+0x1a>
+	{
+		loc_u32_counter = FALSE;
+  ca:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+  ce:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  d2:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+  d6:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+  da:	08 95       	ret
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  dc:	89 ef       	ldi	r24, 0xF9	; 249
+  de:	90 e0       	ldi	r25, 0x00	; 0
+  e0:	01 97       	sbiw	r24, 0x01	; 1
+  e2:	f1 f7       	brne	.-4      	; 0xe0 <calcTime+0x1e>
+  e4:	00 c0       	rjmp	.+0      	; 0xe6 <calcTime+0x24>
+  e6:	00 00       	nop
+	}
+	// case timer on
+	else
+	{
+		_delay_ms(MILLI_SEC);
+		loc_u32_counter++;  // increament static loc counter
+  e8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  ec:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  f0:	a0 91 62 00 	lds	r26, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+  f4:	b0 91 63 00 	lds	r27, 0x0063	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+  f8:	01 96       	adiw	r24, 0x01	; 1
+  fa:	a1 1d       	adc	r26, r1
+  fc:	b1 1d       	adc	r27, r1
+  fe:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 102:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 106:	a0 93 62 00 	sts	0x0062, r26	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 10a:	b0 93 63 00 	sts	0x0063, r27	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+		if (loc_u32_counter == COUNTER_MAX) // ONE SECOND PASSED?
+ 10e:	8a 3f       	cpi	r24, 0xFA	; 250
+ 110:	91 05       	cpc	r25, r1
+ 112:	a1 05       	cpc	r26, r1
+ 114:	b1 05       	cpc	r27, r1
+ 116:	a9 f5       	brne	.+106    	; 0x182 <calcTime+0xc0>
+		{
+			gl_u8_SEC_unit++; // increament second
+ 118:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <gl_u8_SEC_unit>
+ 11c:	8f 5f       	subi	r24, 0xFF	; 255
+ 11e:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <gl_u8_SEC_unit>
+			loc_u32_counter = FALSE; // Clear static loc counter
+ 122:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 126:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 12a:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 12e:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+			
+			// check on seconds unit
+			if (gl_u8_SEC_unit > DISPLAY_MAX)
+ 132:	8a 30       	cpi	r24, 0x0A	; 10
+ 134:	40 f0       	brcs	.+16     	; 0x146 <calcTime+0x84>
+			{
+				gl_u8_SEC_tenth++; // increament tenth
+ 136:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <gl_u8_SEC_tenth>
+ 13a:	8f 5f       	subi	r24, 0xFF	; 255
+ 13c:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <gl_u8_SEC_tenth>
+				gl_u8_SEC_unit = FALSE; // clear unit
+ 140:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <gl_u8_SEC_unit>
+ 144:	08 95       	ret
+			}
+			// check on seconds tenth
+			else if (gl_u8_SEC_tenth > DISPLAY_MAX)
+ 146:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <gl_u8_SEC_tenth>
+ 14a:	8a 30       	cpi	r24, 0x0A	; 10
+ 14c:	40 f0       	brcs	.+16     	; 0x15e <calcTime+0x9c>
+			{
+				gl_u8_MIN_unit++;  // increament Minutes unit
+ 14e:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <gl_u8_MIN_unit>
+ 152:	8f 5f       	subi	r24, 0xFF	; 255
+ 154:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <gl_u8_MIN_unit>
+				gl_u8_SEC_tenth = FALSE; // clear second tenth
+ 158:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <gl_u8_SEC_tenth>
+ 15c:	08 95       	ret
+			}
+			// check on minutes unit
+			else if (gl_u8_MIN_unit > DISPLAY_MAX)
+ 15e:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <gl_u8_MIN_unit>
+ 162:	8a 30       	cpi	r24, 0x0A	; 10
+ 164:	40 f0       	brcs	.+16     	; 0x176 <calcTime+0xb4>
+			{
+				gl_u8_MIN_tenth++; // increament tenth
+ 166:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <gl_u8_MIN_tenth>
+ 16a:	8f 5f       	subi	r24, 0xFF	; 255
+ 16c:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <gl_u8_MIN_tenth>
+				gl_u8_MIN_unit = FALSE; //clear units
+ 170:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <gl_u8_MIN_unit>
+ 174:	08 95       	ret
+			}
+			// check on minutes tenth
+			else if (gl_u8_MIN_tenth > DISPLAY_MAX)
+ 176:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <gl_u8_MIN_tenth>
+ 17a:	8a 30       	cpi	r24, 0x0A	; 10
+ 17c:	10 f0       	brcs	.+4      	; 0x182 <calcTime+0xc0>
+			{
+				gl_u8_switches_flag = CLR_COUNT;//overflow and clear stop watch
+ 17e:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <gl_u8_switches_flag>
+ 182:	08 95       	ret
+
+00000184 <app_start>:
+   // super loop
+	while(1)
+	{
+		
+		// switch which button is pressed
+		switch(gl_u8_switches_flag)
+ 184:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <gl_u8_switches_flag>
+ 188:	81 30       	cpi	r24, 0x01	; 1
+ 18a:	91 f0       	breq	.+36     	; 0x1b0 <app_start+0x2c>
+ 18c:	18 f0       	brcs	.+6      	; 0x194 <app_start+0x10>
+ 18e:	82 30       	cpi	r24, 0x02	; 2
+ 190:	61 f0       	breq	.+24     	; 0x1aa <app_start+0x26>
+ 192:	11 c0       	rjmp	.+34     	; 0x1b6 <app_start+0x32>
+		{
+			
+			//case clear is pressed
+			case CLR_COUNT:
+			{
+				gl_u8_SEC_unit  = FALSE;//CLEAR 
+ 194:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <gl_u8_SEC_unit>
+				gl_u8_SEC_tenth = FALSE;//CLEAR 
+ 198:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <gl_u8_SEC_tenth>
+				gl_u8_MIN_unit  = FALSE;//CLEAR 
+ 19c:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <gl_u8_MIN_unit>
+				gl_u8_MIN_tenth = FALSE;//CLEAR 
+ 1a0:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <gl_u8_MIN_tenth>
+				gl_u8_on_flag   = FALSE;//CLEAR 
+ 1a4:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <gl_u8_on_flag>
+				break;
+ 1a8:	06 c0       	rjmp	.+12     	; 0x1b6 <app_start+0x32>
+			
+			//case pause is pressed
+			case PAUSE_COUNT:
+			{
+				// stop the timer
+				gl_u8_on_flag   = FALSE;
+ 1aa:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <gl_u8_on_flag>
+				break;
+ 1ae:	03 c0       	rjmp	.+6      	; 0x1b6 <app_start+0x32>
+			
+			// case start is pressed
+			case START_COUNT:
+			{
+				// start timer
+				gl_u8_on_flag = TRUE;
+ 1b0:	81 e0       	ldi	r24, 0x01	; 1
+ 1b2:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <gl_u8_on_flag>
+			}
+		}
+		
+		
+		// DISPLAY CURRENT VALUE OF SECONDS AND MINUTES ON FOUR SEVEN SEGMENT
+		_7SEGMENT_vidDisplay(gl_u8_SEC_unit,FIRST_7SEGMENT);    
+ 1b6:	64 e0       	ldi	r22, 0x04	; 4
+ 1b8:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <gl_u8_SEC_unit>
+ 1bc:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <_7SEGMENT_vidDisplay>
+		_7SEGMENT_vidDisplay(gl_u8_SEC_tenth,SECOND_7SEGMENT);
+ 1c0:	63 e0       	ldi	r22, 0x03	; 3
+ 1c2:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <gl_u8_SEC_tenth>
+ 1c6:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <_7SEGMENT_vidDisplay>
+		_7SEGMENT_vidDisplay(gl_u8_MIN_unit,THIRD_7SEGMENT);
+ 1ca:	62 e0       	ldi	r22, 0x02	; 2
+ 1cc:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <gl_u8_MIN_unit>
+ 1d0:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <_7SEGMENT_vidDisplay>
+		_7SEGMENT_vidDisplay(gl_u8_MIN_tenth,FOURTH_7SEGMENT);
+ 1d4:	61 e0       	ldi	r22, 0x01	; 1
+ 1d6:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <gl_u8_MIN_tenth>
+ 1da:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <_7SEGMENT_vidDisplay>
+		
+		// calculate time
+		calcTime();
+ 1de:	0e 94 61 00 	call	0xc2	; 0xc2 <calcTime>
+	}
+ 1e2:	d0 cf       	rjmp	.-96     	; 0x184 <app_start>
+
+000001e4 <_7SEGMENT_vidDisplay>:
+RET : void
+
+*/
+
+void _7SEGMENT_vidDisplay(u8 arg_u8_num,u8 arg_u8_select)
+{
+ 1e4:	cf 93       	push	r28
+ 1e6:	df 93       	push	r29
+ 1e8:	c8 2f       	mov	r28, r24
+ 1ea:	d6 2f       	mov	r29, r22
+	//// DISABLE ALL Enables
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_1,DIO_PIN_LEVEL_LOW);
+ 1ec:	60 e0       	ldi	r22, 0x00	; 0
+ 1ee:	83 e0       	ldi	r24, 0x03	; 3
+ 1f0:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_2,DIO_PIN_LEVEL_LOW);
+ 1f4:	60 e0       	ldi	r22, 0x00	; 0
+ 1f6:	82 e0       	ldi	r24, 0x02	; 2
+ 1f8:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_3,DIO_PIN_LEVEL_LOW);
+ 1fc:	60 e0       	ldi	r22, 0x00	; 0
+ 1fe:	8d e0       	ldi	r24, 0x0D	; 13
+ 200:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_4,DIO_PIN_LEVEL_LOW);
+ 204:	60 e0       	ldi	r22, 0x00	; 0
+ 206:	8e e0       	ldi	r24, 0x0E	; 14
+ 208:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+	
+	// write Data
+	DIO_enu_WriteChannel(_7SEGMENT_DATA_A,GET_BIT(arg_u8_num,BIT0));
+ 20c:	6c 2f       	mov	r22, r28
+ 20e:	61 70       	andi	r22, 0x01	; 1
+ 210:	88 e0       	ldi	r24, 0x08	; 8
+ 212:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_DATA_B,GET_BIT(arg_u8_num,BIT1));
+ 216:	c1 fb       	bst	r28, 1
+ 218:	66 27       	eor	r22, r22
+ 21a:	60 f9       	bld	r22, 0
+ 21c:	89 e0       	ldi	r24, 0x09	; 9
+ 21e:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_DATA_C,GET_BIT(arg_u8_num,BIT2));
+ 222:	c2 fb       	bst	r28, 2
+ 224:	66 27       	eor	r22, r22
+ 226:	60 f9       	bld	r22, 0
+ 228:	8a e0       	ldi	r24, 0x0A	; 10
+ 22a:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+	DIO_enu_WriteChannel(_7SEGMENT_DATA_D,GET_BIT(arg_u8_num,BIT3));
+ 22e:	c3 fb       	bst	r28, 3
+ 230:	66 27       	eor	r22, r22
+ 232:	60 f9       	bld	r22, 0
+ 234:	8c e0       	ldi	r24, 0x0C	; 12
+ 236:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+	
+	// Enable Select
+	if (arg_u8_select == FOURTH_7SEGMENT)
+ 23a:	d1 30       	cpi	r29, 0x01	; 1
+ 23c:	29 f4       	brne	.+10     	; 0x248 <_7SEGMENT_vidDisplay+0x64>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_1,DIO_PIN_LEVEL_HIGH);
+ 23e:	61 e0       	ldi	r22, 0x01	; 1
+ 240:	83 e0       	ldi	r24, 0x03	; 3
+ 242:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+ 246:	14 c0       	rjmp	.+40     	; 0x270 <_7SEGMENT_vidDisplay+0x8c>
+	else if (arg_u8_select == THIRD_7SEGMENT)
+ 248:	d2 30       	cpi	r29, 0x02	; 2
+ 24a:	29 f4       	brne	.+10     	; 0x256 <_7SEGMENT_vidDisplay+0x72>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_2,DIO_PIN_LEVEL_HIGH);
+ 24c:	61 e0       	ldi	r22, 0x01	; 1
+ 24e:	82 e0       	ldi	r24, 0x02	; 2
+ 250:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+ 254:	0d c0       	rjmp	.+26     	; 0x270 <_7SEGMENT_vidDisplay+0x8c>
+	else if (arg_u8_select == SECOND_7SEGMENT)
+ 256:	d3 30       	cpi	r29, 0x03	; 3
+ 258:	29 f4       	brne	.+10     	; 0x264 <_7SEGMENT_vidDisplay+0x80>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_3,DIO_PIN_LEVEL_HIGH);
+ 25a:	61 e0       	ldi	r22, 0x01	; 1
+ 25c:	8d e0       	ldi	r24, 0x0D	; 13
+ 25e:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+ 262:	06 c0       	rjmp	.+12     	; 0x270 <_7SEGMENT_vidDisplay+0x8c>
+	else if (arg_u8_select == FIRST_7SEGMENT)
+ 264:	d4 30       	cpi	r29, 0x04	; 4
+ 266:	21 f4       	brne	.+8      	; 0x270 <_7SEGMENT_vidDisplay+0x8c>
+	DIO_enu_WriteChannel(_7SEGMENT_ENABLE_4,DIO_PIN_LEVEL_HIGH);
+ 268:	61 e0       	ldi	r22, 0x01	; 1
+ 26a:	8e e0       	ldi	r24, 0x0E	; 14
+ 26c:	0e 94 42 01 	call	0x284	; 0x284 <DIO_enu_WriteChannel>
+ 270:	df 91       	pop	r29
+ 272:	cf 91       	pop	r28
+ 274:	08 95       	ret
+
+00000276 <main>:
+
+#include "APP/includes/app.h"
+
+int main(void)
+{
+    app_init();
+ 276:	0e 94 49 00 	call	0x92	; 0x92 <app_init>
+	app_start();
+ 27a:	0e 94 c2 00 	call	0x184	; 0x184 <app_start>
+}
+ 27e:	80 e0       	ldi	r24, 0x00	; 0
+ 280:	90 e0       	ldi	r25, 0x00	; 0
+ 282:	08 95       	ret
+
+00000284 <DIO_enu_WriteChannel>:
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+	
+	// calculate pin number and port number
+	u8 loc_u8_pinNumber  = arg_enu_pinId % REG_SIZE ;
+ 284:	28 2f       	mov	r18, r24
+ 286:	27 70       	andi	r18, 0x07	; 7
+	u8 loc_u8_portNumber = arg_enu_pinId / REG_SIZE ;
+ 288:	98 2f       	mov	r25, r24
+ 28a:	96 95       	lsr	r25
+ 28c:	96 95       	lsr	r25
+ 28e:	96 95       	lsr	r25
+	
+	// case wrong pin
+	if( arg_enu_pinId >= DIO_PINID_ERROR)
+ 290:	80 32       	cpi	r24, 0x20	; 32
+ 292:	08 f0       	brcs	.+2      	; 0x296 <DIO_enu_WriteChannel+0x12>
+ 294:	78 c0       	rjmp	.+240    	; 0x386 <DIO_enu_WriteChannel+0x102>
+	{
+		loc_enu_return_status = STATUS_DIO_PIN_NUMBER_ERROR;
+	}
+	// case wrong level
+	else if( arg_enu_pinLevel >= DIO_PIN_LEVEL_ERROR)
+ 296:	62 30       	cpi	r22, 0x02	; 2
+ 298:	08 f0       	brcs	.+2      	; 0x29c <DIO_enu_WriteChannel+0x18>
+ 29a:	77 c0       	rjmp	.+238    	; 0x38a <DIO_enu_WriteChannel+0x106>
+		loc_enu_return_status = STATUS_DIO_PIN_LEVEL_CHOICE_ERROR;
+	}
+	else
+	{
+		// switch port number
+		switch(loc_u8_portNumber)
+ 29c:	91 30       	cpi	r25, 0x01	; 1
+ 29e:	11 f1       	breq	.+68     	; 0x2e4 <DIO_enu_WriteChannel+0x60>
+ 2a0:	30 f0       	brcs	.+12     	; 0x2ae <DIO_enu_WriteChannel+0x2a>
+ 2a2:	92 30       	cpi	r25, 0x02	; 2
+ 2a4:	d1 f1       	breq	.+116    	; 0x31a <DIO_enu_WriteChannel+0x96>
+ 2a6:	93 30       	cpi	r25, 0x03	; 3
+ 2a8:	09 f4       	brne	.+2      	; 0x2ac <DIO_enu_WriteChannel+0x28>
+ 2aa:	52 c0       	rjmp	.+164    	; 0x350 <DIO_enu_WriteChannel+0xcc>
+ 2ac:	70 c0       	rjmp	.+224    	; 0x38e <DIO_enu_WriteChannel+0x10a>
+		{
+			case DIO_PORT_NUMBER_A :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTA,loc_u8_pinNumber):SET_BIT(DIO_PORTA,loc_u8_pinNumber);
+ 2ae:	61 11       	cpse	r22, r1
+ 2b0:	0d c0       	rjmp	.+26     	; 0x2cc <DIO_enu_WriteChannel+0x48>
+ 2b2:	3b b3       	in	r19, 0x1b	; 27
+ 2b4:	81 e0       	ldi	r24, 0x01	; 1
+ 2b6:	90 e0       	ldi	r25, 0x00	; 0
+ 2b8:	02 c0       	rjmp	.+4      	; 0x2be <DIO_enu_WriteChannel+0x3a>
+ 2ba:	88 0f       	add	r24, r24
+ 2bc:	99 1f       	adc	r25, r25
+ 2be:	2a 95       	dec	r18
+ 2c0:	e2 f7       	brpl	.-8      	; 0x2ba <DIO_enu_WriteChannel+0x36>
+ 2c2:	80 95       	com	r24
+ 2c4:	83 23       	and	r24, r19
+ 2c6:	8b bb       	out	0x1b, r24	; 27
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 2c8:	80 e0       	ldi	r24, 0x00	; 0
+ 2ca:	08 95       	ret
+		switch(loc_u8_portNumber)
+		{
+			case DIO_PORT_NUMBER_A :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTA,loc_u8_pinNumber):SET_BIT(DIO_PORTA,loc_u8_pinNumber);
+ 2cc:	3b b3       	in	r19, 0x1b	; 27
+ 2ce:	81 e0       	ldi	r24, 0x01	; 1
+ 2d0:	90 e0       	ldi	r25, 0x00	; 0
+ 2d2:	02 c0       	rjmp	.+4      	; 0x2d8 <DIO_enu_WriteChannel+0x54>
+ 2d4:	88 0f       	add	r24, r24
+ 2d6:	99 1f       	adc	r25, r25
+ 2d8:	2a 95       	dec	r18
+ 2da:	e2 f7       	brpl	.-8      	; 0x2d4 <DIO_enu_WriteChannel+0x50>
+ 2dc:	83 2b       	or	r24, r19
+ 2de:	8b bb       	out	0x1b, r24	; 27
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 2e0:	80 e0       	ldi	r24, 0x00	; 0
+ 2e2:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_B :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTB,loc_u8_pinNumber):SET_BIT(DIO_PORTB,loc_u8_pinNumber);
+ 2e4:	61 11       	cpse	r22, r1
+ 2e6:	0d c0       	rjmp	.+26     	; 0x302 <DIO_enu_WriteChannel+0x7e>
+ 2e8:	38 b3       	in	r19, 0x18	; 24
+ 2ea:	81 e0       	ldi	r24, 0x01	; 1
+ 2ec:	90 e0       	ldi	r25, 0x00	; 0
+ 2ee:	02 c0       	rjmp	.+4      	; 0x2f4 <DIO_enu_WriteChannel+0x70>
+ 2f0:	88 0f       	add	r24, r24
+ 2f2:	99 1f       	adc	r25, r25
+ 2f4:	2a 95       	dec	r18
+ 2f6:	e2 f7       	brpl	.-8      	; 0x2f0 <DIO_enu_WriteChannel+0x6c>
+ 2f8:	80 95       	com	r24
+ 2fa:	83 23       	and	r24, r19
+ 2fc:	88 bb       	out	0x18, r24	; 24
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 2fe:	80 e0       	ldi	r24, 0x00	; 0
+ 300:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_B :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTB,loc_u8_pinNumber):SET_BIT(DIO_PORTB,loc_u8_pinNumber);
+ 302:	38 b3       	in	r19, 0x18	; 24
+ 304:	81 e0       	ldi	r24, 0x01	; 1
+ 306:	90 e0       	ldi	r25, 0x00	; 0
+ 308:	02 c0       	rjmp	.+4      	; 0x30e <DIO_enu_WriteChannel+0x8a>
+ 30a:	88 0f       	add	r24, r24
+ 30c:	99 1f       	adc	r25, r25
+ 30e:	2a 95       	dec	r18
+ 310:	e2 f7       	brpl	.-8      	; 0x30a <DIO_enu_WriteChannel+0x86>
+ 312:	83 2b       	or	r24, r19
+ 314:	88 bb       	out	0x18, r24	; 24
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 316:	80 e0       	ldi	r24, 0x00	; 0
+ 318:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_C :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTC,loc_u8_pinNumber):SET_BIT(DIO_PORTC,loc_u8_pinNumber);
+ 31a:	61 11       	cpse	r22, r1
+ 31c:	0d c0       	rjmp	.+26     	; 0x338 <DIO_enu_WriteChannel+0xb4>
+ 31e:	35 b3       	in	r19, 0x15	; 21
+ 320:	81 e0       	ldi	r24, 0x01	; 1
+ 322:	90 e0       	ldi	r25, 0x00	; 0
+ 324:	02 c0       	rjmp	.+4      	; 0x32a <DIO_enu_WriteChannel+0xa6>
+ 326:	88 0f       	add	r24, r24
+ 328:	99 1f       	adc	r25, r25
+ 32a:	2a 95       	dec	r18
+ 32c:	e2 f7       	brpl	.-8      	; 0x326 <DIO_enu_WriteChannel+0xa2>
+ 32e:	80 95       	com	r24
+ 330:	83 23       	and	r24, r19
+ 332:	85 bb       	out	0x15, r24	; 21
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 334:	80 e0       	ldi	r24, 0x00	; 0
+ 336:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_C :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTC,loc_u8_pinNumber):SET_BIT(DIO_PORTC,loc_u8_pinNumber);
+ 338:	35 b3       	in	r19, 0x15	; 21
+ 33a:	81 e0       	ldi	r24, 0x01	; 1
+ 33c:	90 e0       	ldi	r25, 0x00	; 0
+ 33e:	02 c0       	rjmp	.+4      	; 0x344 <DIO_enu_WriteChannel+0xc0>
+ 340:	88 0f       	add	r24, r24
+ 342:	99 1f       	adc	r25, r25
+ 344:	2a 95       	dec	r18
+ 346:	e2 f7       	brpl	.-8      	; 0x340 <DIO_enu_WriteChannel+0xbc>
+ 348:	83 2b       	or	r24, r19
+ 34a:	85 bb       	out	0x15, r24	; 21
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 34c:	80 e0       	ldi	r24, 0x00	; 0
+ 34e:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_D :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTD,loc_u8_pinNumber):SET_BIT(DIO_PORTD,loc_u8_pinNumber);
+ 350:	61 11       	cpse	r22, r1
+ 352:	0d c0       	rjmp	.+26     	; 0x36e <DIO_enu_WriteChannel+0xea>
+ 354:	32 b3       	in	r19, 0x12	; 18
+ 356:	81 e0       	ldi	r24, 0x01	; 1
+ 358:	90 e0       	ldi	r25, 0x00	; 0
+ 35a:	02 c0       	rjmp	.+4      	; 0x360 <DIO_enu_WriteChannel+0xdc>
+ 35c:	88 0f       	add	r24, r24
+ 35e:	99 1f       	adc	r25, r25
+ 360:	2a 95       	dec	r18
+ 362:	e2 f7       	brpl	.-8      	; 0x35c <DIO_enu_WriteChannel+0xd8>
+ 364:	80 95       	com	r24
+ 366:	83 23       	and	r24, r19
+ 368:	82 bb       	out	0x12, r24	; 18
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 36a:	80 e0       	ldi	r24, 0x00	; 0
+ 36c:	08 95       	ret
+			}
+			
+			case DIO_PORT_NUMBER_D :
+			{
+				// if low level clear bit in PORT reg else set bit 
+				(arg_enu_pinLevel == DIO_PIN_LEVEL_LOW)?CLR_BIT(DIO_PORTD,loc_u8_pinNumber):SET_BIT(DIO_PORTD,loc_u8_pinNumber);
+ 36e:	32 b3       	in	r19, 0x12	; 18
+ 370:	81 e0       	ldi	r24, 0x01	; 1
+ 372:	90 e0       	ldi	r25, 0x00	; 0
+ 374:	02 c0       	rjmp	.+4      	; 0x37a <DIO_enu_WriteChannel+0xf6>
+ 376:	88 0f       	add	r24, r24
+ 378:	99 1f       	adc	r25, r25
+ 37a:	2a 95       	dec	r18
+ 37c:	e2 f7       	brpl	.-8      	; 0x376 <DIO_enu_WriteChannel+0xf2>
+ 37e:	83 2b       	or	r24, r19
+ 380:	82 bb       	out	0x12, r24	; 18
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 382:	80 e0       	ldi	r24, 0x00	; 0
+ 384:	08 95       	ret
+	u8 loc_u8_portNumber = arg_enu_pinId / REG_SIZE ;
+	
+	// case wrong pin
+	if( arg_enu_pinId >= DIO_PINID_ERROR)
+	{
+		loc_enu_return_status = STATUS_DIO_PIN_NUMBER_ERROR;
+ 386:	81 e0       	ldi	r24, 0x01	; 1
+ 388:	08 95       	ret
+	}
+	// case wrong level
+	else if( arg_enu_pinLevel >= DIO_PIN_LEVEL_ERROR)
+	{
+		loc_enu_return_status = STATUS_DIO_PIN_LEVEL_CHOICE_ERROR;
+ 38a:	82 e0       	ldi	r24, 0x02	; 2
+ 38c:	08 95       	ret
+*/
+DIO_enu_return_status_t DIO_enu_WriteChannel(DIO_enu_PinId_t arg_enu_pinId,DIO_enu_PinLevel_t arg_enu_pinLevel)
+{
+	
+	// loc return status
+	DIO_enu_return_status_t loc_enu_return_status = STATUS_DIO_OKAY;
+ 38e:	80 e0       	ldi	r24, 0x00	; 0
+		}
+	}
+	
+	
+	return loc_enu_return_status;
+}
+ 390:	08 95       	ret
+
+00000392 <EXT_INT_enable_PIE>:
+
+
+
+static void EXT_INT_enable_PIE(enum_EXT_INT_index_t arg_enum_EXTINT_Index)
+{
+	if ( arg_enum_EXTINT_Index == EXT_INT0 )
+ 392:	81 11       	cpse	r24, r1
+ 394:	04 c0       	rjmp	.+8      	; 0x39e <EXT_INT_enable_PIE+0xc>
+	{
+		SET_BIT(GICR,INT0);
+ 396:	8b b7       	in	r24, 0x3b	; 59
+ 398:	80 64       	ori	r24, 0x40	; 64
+ 39a:	8b bf       	out	0x3b, r24	; 59
+ 39c:	08 95       	ret
+	}
+	else if ( arg_enum_EXTINT_Index == EXT_INT1 )
+ 39e:	81 30       	cpi	r24, 0x01	; 1
+ 3a0:	21 f4       	brne	.+8      	; 0x3aa <EXT_INT_enable_PIE+0x18>
+	{
+		SET_BIT(GICR,INT1);
+ 3a2:	8b b7       	in	r24, 0x3b	; 59
+ 3a4:	80 68       	ori	r24, 0x80	; 128
+ 3a6:	8b bf       	out	0x3b, r24	; 59
+ 3a8:	08 95       	ret
+	}
+	else if ( arg_enum_EXTINT_Index == EXT_INT2 )
+ 3aa:	82 30       	cpi	r24, 0x02	; 2
+ 3ac:	19 f4       	brne	.+6      	; 0x3b4 <EXT_INT_enable_PIE+0x22>
+	{
+		SET_BIT(GICR,INT2);
+ 3ae:	8b b7       	in	r24, 0x3b	; 59
+ 3b0:	80 62       	ori	r24, 0x20	; 32
+ 3b2:	8b bf       	out	0x3b, r24	; 59
+ 3b4:	08 95       	ret
+
+000003b6 <EXTINT_enum_Init>:
+RET : enum_EXT_INT_ERROR_t status code (EXT_INT_OKAY,EXT_INT_INDEX_ERROR,EXT_INT_SENSE_ERROR,EXT_INT_PTRNULL_ERROR)
+
+*/
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+ 3b6:	cf 93       	push	r28
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+	
+	// case wrong index
+	if( arg_enum_ExtIntIndex >= EXT_INT_INDEX_MAX)
+ 3b8:	83 30       	cpi	r24, 0x03	; 3
+ 3ba:	08 f0       	brcs	.+2      	; 0x3be <EXTINT_enum_Init+0x8>
+ 3bc:	7f c0       	rjmp	.+254    	; 0x4bc <__EEPROM_REGION_LENGTH__+0xbc>
+	{
+		loc_enum_returnStatus = EXT_INT_INDEX_ERROR;
+	}
+	// case wrong sense choice
+	else if( arg_enum_SenseControl >= EXT_INT_SENSE_MAX)
+ 3be:	64 30       	cpi	r22, 0x04	; 4
+ 3c0:	08 f0       	brcs	.+2      	; 0x3c4 <EXTINT_enum_Init+0xe>
+ 3c2:	7e c0       	rjmp	.+252    	; 0x4c0 <__EEPROM_REGION_LENGTH__+0xc0>
+	{
+		loc_enum_returnStatus = EXT_INT_SENSE_ERROR;
+	}
+	
+	//case NULL ptr
+	else if( ptrFunc == PTR_NULL)
+ 3c4:	41 15       	cp	r20, r1
+ 3c6:	51 05       	cpc	r21, r1
+ 3c8:	09 f4       	brne	.+2      	; 0x3cc <EXTINT_enum_Init+0x16>
+ 3ca:	7c c0       	rjmp	.+248    	; 0x4c4 <__EEPROM_REGION_LENGTH__+0xc4>
+		loc_enum_returnStatus = EXT_INT_PTRNULL_ERROR;
+	}
+	else
+	{
+		// set call back
+		gl_ptrtoFunc_arr[arg_enum_ExtIntIndex]	= ptrFunc;
+ 3cc:	e8 2f       	mov	r30, r24
+ 3ce:	f0 e0       	ldi	r31, 0x00	; 0
+ 3d0:	ee 0f       	add	r30, r30
+ 3d2:	ff 1f       	adc	r31, r31
+ 3d4:	e6 59       	subi	r30, 0x96	; 150
+ 3d6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3d8:	51 83       	std	Z+1, r21	; 0x01
+ 3da:	40 83       	st	Z, r20
+		
+		
+		//switch EXT  interrupt index
+		switch(arg_enum_ExtIntIndex)
+ 3dc:	81 30       	cpi	r24, 0x01	; 1
+ 3de:	71 f1       	breq	.+92     	; 0x43c <__EEPROM_REGION_LENGTH__+0x3c>
+ 3e0:	20 f0       	brcs	.+8      	; 0x3ea <EXTINT_enum_Init+0x34>
+ 3e2:	82 30       	cpi	r24, 0x02	; 2
+ 3e4:	09 f4       	brne	.+2      	; 0x3e8 <EXTINT_enum_Init+0x32>
+ 3e6:	52 c0       	rjmp	.+164    	; 0x48c <__EEPROM_REGION_LENGTH__+0x8c>
+ 3e8:	5f c0       	rjmp	.+190    	; 0x4a8 <__EEPROM_REGION_LENGTH__+0xa8>
+		{
+			case EXT_INT0 :
+			{
+				if ( arg_enum_SenseControl == EXT_INT_RISING_EDGE )
+ 3ea:	61 11       	cpse	r22, r1
+ 3ec:	08 c0       	rjmp	.+16     	; 0x3fe <EXTINT_enum_Init+0x48>
+				{
+					SET_BIT(MCUCR,ISC00);
+ 3ee:	95 b7       	in	r25, 0x35	; 53
+ 3f0:	91 60       	ori	r25, 0x01	; 1
+ 3f2:	95 bf       	out	0x35, r25	; 53
+					SET_BIT(MCUCR,ISC01);
+ 3f4:	95 b7       	in	r25, 0x35	; 53
+ 3f6:	92 60       	ori	r25, 0x02	; 2
+ 3f8:	95 bf       	out	0x35, r25	; 53
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 3fa:	c0 e0       	ldi	r28, 0x00	; 0
+ 3fc:	5c c0       	rjmp	.+184    	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				if ( arg_enum_SenseControl == EXT_INT_RISING_EDGE )
+				{
+					SET_BIT(MCUCR,ISC00);
+					SET_BIT(MCUCR,ISC01);
+				}
+				else if ( arg_enum_SenseControl == EXT_INT_FALLING_EDGE )
+ 3fe:	61 30       	cpi	r22, 0x01	; 1
+ 400:	41 f4       	brne	.+16     	; 0x412 <__EEPROM_REGION_LENGTH__+0x12>
+				{
+					CLR_BIT(MCUCR,ISC00);
+ 402:	95 b7       	in	r25, 0x35	; 53
+ 404:	9e 7f       	andi	r25, 0xFE	; 254
+ 406:	95 bf       	out	0x35, r25	; 53
+					SET_BIT(MCUCR,ISC01);
+ 408:	95 b7       	in	r25, 0x35	; 53
+ 40a:	92 60       	ori	r25, 0x02	; 2
+ 40c:	95 bf       	out	0x35, r25	; 53
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 40e:	c0 e0       	ldi	r28, 0x00	; 0
+ 410:	52 c0       	rjmp	.+164    	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				else if ( arg_enum_SenseControl == EXT_INT_FALLING_EDGE )
+				{
+					CLR_BIT(MCUCR,ISC00);
+					SET_BIT(MCUCR,ISC01);
+				}
+				else if ( arg_enum_SenseControl == EXT_INT_LOW_LEVEL )
+ 412:	62 30       	cpi	r22, 0x02	; 2
+ 414:	41 f4       	brne	.+16     	; 0x426 <__EEPROM_REGION_LENGTH__+0x26>
+				{
+					CLR_BIT(MCUCR,ISC00);
+ 416:	95 b7       	in	r25, 0x35	; 53
+ 418:	9e 7f       	andi	r25, 0xFE	; 254
+ 41a:	95 bf       	out	0x35, r25	; 53
+					CLR_BIT(MCUCR,ISC01);
+ 41c:	95 b7       	in	r25, 0x35	; 53
+ 41e:	9d 7f       	andi	r25, 0xFD	; 253
+ 420:	95 bf       	out	0x35, r25	; 53
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 422:	c0 e0       	ldi	r28, 0x00	; 0
+ 424:	48 c0       	rjmp	.+144    	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				else if ( arg_enum_SenseControl == EXT_INT_LOW_LEVEL )
+				{
+					CLR_BIT(MCUCR,ISC00);
+					CLR_BIT(MCUCR,ISC01);
+				}
+				else if ( arg_enum_SenseControl == EXT_INT_ANY_CHANGE )
+ 426:	63 30       	cpi	r22, 0x03	; 3
+ 428:	09 f0       	breq	.+2      	; 0x42c <__EEPROM_REGION_LENGTH__+0x2c>
+ 42a:	40 c0       	rjmp	.+128    	; 0x4ac <__EEPROM_REGION_LENGTH__+0xac>
+				{
+					SET_BIT(MCUCR,ISC00);
+ 42c:	95 b7       	in	r25, 0x35	; 53
+ 42e:	91 60       	ori	r25, 0x01	; 1
+ 430:	95 bf       	out	0x35, r25	; 53
+					CLR_BIT(MCUCR,ISC01);
+ 432:	95 b7       	in	r25, 0x35	; 53
+ 434:	9d 7f       	andi	r25, 0xFD	; 253
+ 436:	95 bf       	out	0x35, r25	; 53
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 438:	c0 e0       	ldi	r28, 0x00	; 0
+ 43a:	3d c0       	rjmp	.+122    	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				break;
+			}
+			
+			case EXT_INT1 :
+			{
+				if ( arg_enum_SenseControl == EXT_INT_RISING_EDGE )
+ 43c:	61 11       	cpse	r22, r1
+ 43e:	08 c0       	rjmp	.+16     	; 0x450 <__EEPROM_REGION_LENGTH__+0x50>
+				{
+					SET_BIT(MCUCR,ISC10);
+ 440:	95 b7       	in	r25, 0x35	; 53
+ 442:	94 60       	ori	r25, 0x04	; 4
+ 444:	95 bf       	out	0x35, r25	; 53
+					SET_BIT(MCUCR,ISC11);
+ 446:	95 b7       	in	r25, 0x35	; 53
+ 448:	98 60       	ori	r25, 0x08	; 8
+ 44a:	95 bf       	out	0x35, r25	; 53
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 44c:	c0 e0       	ldi	r28, 0x00	; 0
+ 44e:	33 c0       	rjmp	.+102    	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				if ( arg_enum_SenseControl == EXT_INT_RISING_EDGE )
+				{
+					SET_BIT(MCUCR,ISC10);
+					SET_BIT(MCUCR,ISC11);
+				}
+				else if ( arg_enum_SenseControl == EXT_INT_FALLING_EDGE )
+ 450:	61 30       	cpi	r22, 0x01	; 1
+ 452:	41 f4       	brne	.+16     	; 0x464 <__EEPROM_REGION_LENGTH__+0x64>
+				{
+					CLR_BIT(MCUCR,ISC10);
+ 454:	95 b7       	in	r25, 0x35	; 53
+ 456:	9b 7f       	andi	r25, 0xFB	; 251
+ 458:	95 bf       	out	0x35, r25	; 53
+					SET_BIT(MCUCR,ISC11);
+ 45a:	95 b7       	in	r25, 0x35	; 53
+ 45c:	98 60       	ori	r25, 0x08	; 8
+ 45e:	95 bf       	out	0x35, r25	; 53
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 460:	c0 e0       	ldi	r28, 0x00	; 0
+ 462:	29 c0       	rjmp	.+82     	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				else if ( arg_enum_SenseControl == EXT_INT_FALLING_EDGE )
+				{
+					CLR_BIT(MCUCR,ISC10);
+					SET_BIT(MCUCR,ISC11);
+				}
+				else if ( arg_enum_SenseControl == EXT_INT_LOW_LEVEL )
+ 464:	62 30       	cpi	r22, 0x02	; 2
+ 466:	41 f4       	brne	.+16     	; 0x478 <__EEPROM_REGION_LENGTH__+0x78>
+				{
+					CLR_BIT(MCUCR,ISC10);
+ 468:	95 b7       	in	r25, 0x35	; 53
+ 46a:	9b 7f       	andi	r25, 0xFB	; 251
+ 46c:	95 bf       	out	0x35, r25	; 53
+					CLR_BIT(MCUCR,ISC11);
+ 46e:	95 b7       	in	r25, 0x35	; 53
+ 470:	97 7f       	andi	r25, 0xF7	; 247
+ 472:	95 bf       	out	0x35, r25	; 53
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 474:	c0 e0       	ldi	r28, 0x00	; 0
+ 476:	1f c0       	rjmp	.+62     	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				else if ( arg_enum_SenseControl == EXT_INT_LOW_LEVEL )
+				{
+					CLR_BIT(MCUCR,ISC10);
+					CLR_BIT(MCUCR,ISC11);
+				}
+				else if ( arg_enum_SenseControl == EXT_INT_ANY_CHANGE )
+ 478:	63 30       	cpi	r22, 0x03	; 3
+ 47a:	d1 f4       	brne	.+52     	; 0x4b0 <__EEPROM_REGION_LENGTH__+0xb0>
+				{
+					SET_BIT(MCUCR,ISC10);
+ 47c:	95 b7       	in	r25, 0x35	; 53
+ 47e:	94 60       	ori	r25, 0x04	; 4
+ 480:	95 bf       	out	0x35, r25	; 53
+					CLR_BIT(MCUCR,ISC11);
+ 482:	95 b7       	in	r25, 0x35	; 53
+ 484:	97 7f       	andi	r25, 0xF7	; 247
+ 486:	95 bf       	out	0x35, r25	; 53
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 488:	c0 e0       	ldi	r28, 0x00	; 0
+ 48a:	15 c0       	rjmp	.+42     	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				break;
+			}
+			
+			case EXT_INT2 :
+			{
+				if ( arg_enum_SenseControl == EXT_INT_RISING_EDGE )
+ 48c:	61 11       	cpse	r22, r1
+ 48e:	05 c0       	rjmp	.+10     	; 0x49a <__EEPROM_REGION_LENGTH__+0x9a>
+				{
+					SET_BIT(MCUCSR,ISC2);
+ 490:	94 b7       	in	r25, 0x34	; 52
+ 492:	90 64       	ori	r25, 0x40	; 64
+ 494:	94 bf       	out	0x34, r25	; 52
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 496:	c0 e0       	ldi	r28, 0x00	; 0
+ 498:	0e c0       	rjmp	.+28     	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+			{
+				if ( arg_enum_SenseControl == EXT_INT_RISING_EDGE )
+				{
+					SET_BIT(MCUCSR,ISC2);
+				}
+				else if ( arg_enum_SenseControl == EXT_INT_FALLING_EDGE )
+ 49a:	61 30       	cpi	r22, 0x01	; 1
+ 49c:	59 f4       	brne	.+22     	; 0x4b4 <__EEPROM_REGION_LENGTH__+0xb4>
+				{
+					CLR_BIT(MCUCSR,ISC2);
+ 49e:	94 b7       	in	r25, 0x34	; 52
+ 4a0:	9f 7b       	andi	r25, 0xBF	; 191
+ 4a2:	94 bf       	out	0x34, r25	; 52
+
+enum_EXT_INT_ERROR_t EXTINT_enum_Init(enum_EXT_INT_index_t arg_enum_ExtIntIndex,enum_EXT_INT_SenseControl_t arg_enum_SenseControl,void(*ptrFunc)(void))
+{
+	
+	// loc return status code
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+ 4a4:	c0 e0       	ldi	r28, 0x00	; 0
+ 4a6:	07 c0       	rjmp	.+14     	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+ 4a8:	c0 e0       	ldi	r28, 0x00	; 0
+ 4aa:	05 c0       	rjmp	.+10     	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+ 4ac:	c0 e0       	ldi	r28, 0x00	; 0
+ 4ae:	03 c0       	rjmp	.+6      	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+ 4b0:	c0 e0       	ldi	r28, 0x00	; 0
+ 4b2:	01 c0       	rjmp	.+2      	; 0x4b6 <__EEPROM_REGION_LENGTH__+0xb6>
+				{
+					CLR_BIT(MCUCSR,ISC2);
+				}
+				else
+				{
+					loc_enum_returnStatus = EXT_INT_SENSE_ERROR;
+ 4b4:	c2 e0       	ldi	r28, 0x02	; 2
+				}
+				break;
+			}
+		}
+		
+		EXT_INT_enable_PIE(arg_enum_ExtIntIndex);
+ 4b6:	0e 94 c9 01 	call	0x392	; 0x392 <EXT_INT_enable_PIE>
+ 4ba:	05 c0       	rjmp	.+10     	; 0x4c6 <__EEPROM_REGION_LENGTH__+0xc6>
+	enum_EXT_INT_ERROR_t loc_enum_returnStatus = EXT_INT_OKAY;
+	
+	// case wrong index
+	if( arg_enum_ExtIntIndex >= EXT_INT_INDEX_MAX)
+	{
+		loc_enum_returnStatus = EXT_INT_INDEX_ERROR;
+ 4bc:	c1 e0       	ldi	r28, 0x01	; 1
+ 4be:	03 c0       	rjmp	.+6      	; 0x4c6 <__EEPROM_REGION_LENGTH__+0xc6>
+	}
+	// case wrong sense choice
+	else if( arg_enum_SenseControl >= EXT_INT_SENSE_MAX)
+	{
+		loc_enum_returnStatus = EXT_INT_SENSE_ERROR;
+ 4c0:	c2 e0       	ldi	r28, 0x02	; 2
+ 4c2:	01 c0       	rjmp	.+2      	; 0x4c6 <__EEPROM_REGION_LENGTH__+0xc6>
+	}
+	
+	//case NULL ptr
+	else if( ptrFunc == PTR_NULL)
+	{
+		loc_enum_returnStatus = EXT_INT_PTRNULL_ERROR;
+ 4c4:	c3 e0       	ldi	r28, 0x03	; 3
+		
+	}
+
+
+	return loc_enum_returnStatus;
+}
+ 4c6:	8c 2f       	mov	r24, r28
+ 4c8:	cf 91       	pop	r28
+ 4ca:	08 95       	ret
+
+000004cc <__vector_1>:
+	}
+}
+
+
+ISR(EXT_INT_0)
+{
+ 4cc:	1f 92       	push	r1
+ 4ce:	0f 92       	push	r0
+ 4d0:	0f b6       	in	r0, 0x3f	; 63
+ 4d2:	0f 92       	push	r0
+ 4d4:	11 24       	eor	r1, r1
+ 4d6:	2f 93       	push	r18
+ 4d8:	3f 93       	push	r19
+ 4da:	4f 93       	push	r20
+ 4dc:	5f 93       	push	r21
+ 4de:	6f 93       	push	r22
+ 4e0:	7f 93       	push	r23
+ 4e2:	8f 93       	push	r24
+ 4e4:	9f 93       	push	r25
+ 4e6:	af 93       	push	r26
+ 4e8:	bf 93       	push	r27
+ 4ea:	ef 93       	push	r30
+ 4ec:	ff 93       	push	r31
+	if( gl_ptrtoFunc_arr[EXT_INT0] != PTR_NULL)
+ 4ee:	e0 91 6a 00 	lds	r30, 0x006A	; 0x80006a <gl_ptrtoFunc_arr>
+ 4f2:	f0 91 6b 00 	lds	r31, 0x006B	; 0x80006b <gl_ptrtoFunc_arr+0x1>
+ 4f6:	30 97       	sbiw	r30, 0x00	; 0
+ 4f8:	09 f0       	breq	.+2      	; 0x4fc <__vector_1+0x30>
+	{
+		gl_ptrtoFunc_arr[EXT_INT0]();
+ 4fa:	09 95       	icall
+	}
+	else 
+	{
+		// do nothing
+	}
+}
+ 4fc:	ff 91       	pop	r31
+ 4fe:	ef 91       	pop	r30
+ 500:	bf 91       	pop	r27
+ 502:	af 91       	pop	r26
+ 504:	9f 91       	pop	r25
+ 506:	8f 91       	pop	r24
+ 508:	7f 91       	pop	r23
+ 50a:	6f 91       	pop	r22
+ 50c:	5f 91       	pop	r21
+ 50e:	4f 91       	pop	r20
+ 510:	3f 91       	pop	r19
+ 512:	2f 91       	pop	r18
+ 514:	0f 90       	pop	r0
+ 516:	0f be       	out	0x3f, r0	; 63
+ 518:	0f 90       	pop	r0
+ 51a:	1f 90       	pop	r1
+ 51c:	18 95       	reti
+
+0000051e <__vector_2>:
+
+ISR(EXT_INT_1)
+{
+ 51e:	1f 92       	push	r1
+ 520:	0f 92       	push	r0
+ 522:	0f b6       	in	r0, 0x3f	; 63
+ 524:	0f 92       	push	r0
+ 526:	11 24       	eor	r1, r1
+ 528:	2f 93       	push	r18
+ 52a:	3f 93       	push	r19
+ 52c:	4f 93       	push	r20
+ 52e:	5f 93       	push	r21
+ 530:	6f 93       	push	r22
+ 532:	7f 93       	push	r23
+ 534:	8f 93       	push	r24
+ 536:	9f 93       	push	r25
+ 538:	af 93       	push	r26
+ 53a:	bf 93       	push	r27
+ 53c:	ef 93       	push	r30
+ 53e:	ff 93       	push	r31
+	if( gl_ptrtoFunc_arr[EXT_INT1] != PTR_NULL)
+ 540:	e0 91 6c 00 	lds	r30, 0x006C	; 0x80006c <gl_ptrtoFunc_arr+0x2>
+ 544:	f0 91 6d 00 	lds	r31, 0x006D	; 0x80006d <gl_ptrtoFunc_arr+0x3>
+ 548:	30 97       	sbiw	r30, 0x00	; 0
+ 54a:	09 f0       	breq	.+2      	; 0x54e <__vector_2+0x30>
+	{
+		gl_ptrtoFunc_arr[EXT_INT1]();
+ 54c:	09 95       	icall
+	}
+	else
+	{
+		// do nothing
+	}
+}
+ 54e:	ff 91       	pop	r31
+ 550:	ef 91       	pop	r30
+ 552:	bf 91       	pop	r27
+ 554:	af 91       	pop	r26
+ 556:	9f 91       	pop	r25
+ 558:	8f 91       	pop	r24
+ 55a:	7f 91       	pop	r23
+ 55c:	6f 91       	pop	r22
+ 55e:	5f 91       	pop	r21
+ 560:	4f 91       	pop	r20
+ 562:	3f 91       	pop	r19
+ 564:	2f 91       	pop	r18
+ 566:	0f 90       	pop	r0
+ 568:	0f be       	out	0x3f, r0	; 63
+ 56a:	0f 90       	pop	r0
+ 56c:	1f 90       	pop	r1
+ 56e:	18 95       	reti
+
+00000570 <__vector_3>:
+
+ISR(EXT_INT_2)
+{
+ 570:	1f 92       	push	r1
+ 572:	0f 92       	push	r0
+ 574:	0f b6       	in	r0, 0x3f	; 63
+ 576:	0f 92       	push	r0
+ 578:	11 24       	eor	r1, r1
+ 57a:	2f 93       	push	r18
+ 57c:	3f 93       	push	r19
+ 57e:	4f 93       	push	r20
+ 580:	5f 93       	push	r21
+ 582:	6f 93       	push	r22
+ 584:	7f 93       	push	r23
+ 586:	8f 93       	push	r24
+ 588:	9f 93       	push	r25
+ 58a:	af 93       	push	r26
+ 58c:	bf 93       	push	r27
+ 58e:	ef 93       	push	r30
+ 590:	ff 93       	push	r31
+	if( gl_ptrtoFunc_arr[EXT_INT2] != PTR_NULL)
+ 592:	e0 91 6e 00 	lds	r30, 0x006E	; 0x80006e <gl_ptrtoFunc_arr+0x4>
+ 596:	f0 91 6f 00 	lds	r31, 0x006F	; 0x80006f <gl_ptrtoFunc_arr+0x5>
+ 59a:	30 97       	sbiw	r30, 0x00	; 0
+ 59c:	09 f0       	breq	.+2      	; 0x5a0 <__vector_3+0x30>
+	{
+		gl_ptrtoFunc_arr[EXT_INT2]();
+ 59e:	09 95       	icall
+	}
+	else
+	{
+		// do nothing
+	}
+ 5a0:	ff 91       	pop	r31
+ 5a2:	ef 91       	pop	r30
+ 5a4:	bf 91       	pop	r27
+ 5a6:	af 91       	pop	r26
+ 5a8:	9f 91       	pop	r25
+ 5aa:	8f 91       	pop	r24
+ 5ac:	7f 91       	pop	r23
+ 5ae:	6f 91       	pop	r22
+ 5b0:	5f 91       	pop	r21
+ 5b2:	4f 91       	pop	r20
+ 5b4:	3f 91       	pop	r19
+ 5b6:	2f 91       	pop	r18
+ 5b8:	0f 90       	pop	r0
+ 5ba:	0f be       	out	0x3f, r0	; 63
+ 5bc:	0f 90       	pop	r0
+ 5be:	1f 90       	pop	r1
+ 5c0:	18 95       	reti
+
+000005c2 <GIE_status>:
+
+
+GIE_ERROR_t GIE_status(GIE_STATUS_t arg_enu_GIE_status)
+{
+	GIE_ERROR_t loc_enu_returnValue = GIE_OKAY;
+	if( arg_enu_GIE_status >= GIE_STATUS_ERROR)
+ 5c2:	82 30       	cpi	r24, 0x02	; 2
+ 5c4:	70 f4       	brcc	.+28     	; 0x5e2 <GIE_status+0x20>
+	{
+		loc_enu_returnValue = GIE_ERROR;
+	}
+	else if ( arg_enu_GIE_status == GIE_ENABLE)
+ 5c6:	81 11       	cpse	r24, r1
+ 5c8:	05 c0       	rjmp	.+10     	; 0x5d4 <GIE_status+0x12>
+	{
+		SET_BIT(SREG,ENABLE_BIT);
+ 5ca:	8f b7       	in	r24, 0x3f	; 63
+ 5cc:	80 68       	ori	r24, 0x80	; 128
+ 5ce:	8f bf       	out	0x3f, r24	; 63
+#include "../includes/Gie.h"
+
+
+GIE_ERROR_t GIE_status(GIE_STATUS_t arg_enu_GIE_status)
+{
+	GIE_ERROR_t loc_enu_returnValue = GIE_OKAY;
+ 5d0:	80 e0       	ldi	r24, 0x00	; 0
+ 5d2:	08 95       	ret
+	}
+	else if ( arg_enu_GIE_status == GIE_ENABLE)
+	{
+		SET_BIT(SREG,ENABLE_BIT);
+	}
+	else if ( arg_enu_GIE_status == GIE_ENABLE)
+ 5d4:	81 11       	cpse	r24, r1
+ 5d6:	07 c0       	rjmp	.+14     	; 0x5e6 <GIE_status+0x24>
+	{
+		CLR_BIT(SREG,ENABLE_BIT);
+ 5d8:	8f b7       	in	r24, 0x3f	; 63
+ 5da:	8f 77       	andi	r24, 0x7F	; 127
+ 5dc:	8f bf       	out	0x3f, r24	; 63
+#include "../includes/Gie.h"
+
+
+GIE_ERROR_t GIE_status(GIE_STATUS_t arg_enu_GIE_status)
+{
+	GIE_ERROR_t loc_enu_returnValue = GIE_OKAY;
+ 5de:	80 e0       	ldi	r24, 0x00	; 0
+ 5e0:	08 95       	ret
+	if( arg_enu_GIE_status >= GIE_STATUS_ERROR)
+	{
+		loc_enu_returnValue = GIE_ERROR;
+ 5e2:	81 e0       	ldi	r24, 0x01	; 1
+ 5e4:	08 95       	ret
+#include "../includes/Gie.h"
+
+
+GIE_ERROR_t GIE_status(GIE_STATUS_t arg_enu_GIE_status)
+{
+	GIE_ERROR_t loc_enu_returnValue = GIE_OKAY;
+ 5e6:	80 e0       	ldi	r24, 0x00	; 0
+	{
+		// do nothing
+	}
+	
+	return loc_enu_returnValue;
+ 5e8:	08 95       	ret
+
+000005ea <PORT_voidInit>:
+	#undef  PORT_PIN_MODE_OUTPUT_HIGH
+	#define PORT_PIN_MODE_OUTPUT_HIGH         1
+	
+	// set direction 
+	
+	DDRA = CONC(PORTA_PIN7_MODE,PORTA_PIN6_MODE,PORTA_PIN5_MODE,PORTA_PIN4_MODE,PORTA_PIN3_MODE,PORTA_PIN2_MODE,PORTA_PIN1_MODE,PORTA_PIN0_MODE);
+ 5ea:	8c e0       	ldi	r24, 0x0C	; 12
+ 5ec:	8a bb       	out	0x1a, r24	; 26
+	DDRB = CONC(PORTB_PIN7_MODE,PORTB_PIN6_MODE,PORTB_PIN5_MODE,PORTB_PIN4_MODE,PORTB_PIN3_MODE,PORTB_PIN2_MODE,PORTB_PIN1_MODE,PORTB_PIN0_MODE);
+ 5ee:	9b e7       	ldi	r25, 0x7B	; 123
+ 5f0:	97 bb       	out	0x17, r25	; 23
+	DDRC = CONC(PORTC_PIN7_MODE,PORTC_PIN6_MODE,PORTC_PIN5_MODE,PORTC_PIN4_MODE,PORTC_PIN3_MODE,PORTC_PIN2_MODE,PORTC_PIN1_MODE,PORTC_PIN0_MODE);
+ 5f2:	14 ba       	out	0x14, r1	; 20
+	DDRD = CONC(PORTD_PIN7_MODE,PORTD_PIN6_MODE,PORTD_PIN5_MODE,PORTD_PIN4_MODE,PORTD_PIN3_MODE,PORTD_PIN2_MODE,PORTD_PIN1_MODE,PORTD_PIN0_MODE);
+ 5f4:	11 ba       	out	0x11, r1	; 17
+	#undef  PORT_PIN_MODE_OUTPUT_HIGH
+	#define PORT_PIN_MODE_OUTPUT_HIGH         1
+	
+	// set mode
+	
+	PORTA = CONC(PORTA_PIN7_MODE,PORTA_PIN6_MODE,PORTA_PIN5_MODE,PORTA_PIN4_MODE,PORTA_PIN3_MODE,PORTA_PIN2_MODE,PORTA_PIN1_MODE,PORTA_PIN0_MODE);
+ 5f6:	1b ba       	out	0x1b, r1	; 27
+	PORTB = CONC(PORTB_PIN7_MODE,PORTB_PIN6_MODE,PORTB_PIN5_MODE,PORTB_PIN4_MODE,PORTB_PIN3_MODE,PORTB_PIN2_MODE,PORTB_PIN1_MODE,PORTB_PIN0_MODE);
+ 5f8:	94 e0       	ldi	r25, 0x04	; 4
+ 5fa:	98 bb       	out	0x18, r25	; 24
+	PORTC = CONC(PORTC_PIN7_MODE,PORTC_PIN6_MODE,PORTC_PIN5_MODE,PORTC_PIN4_MODE,PORTC_PIN3_MODE,PORTC_PIN2_MODE,PORTC_PIN1_MODE,PORTC_PIN0_MODE);
+ 5fc:	15 ba       	out	0x15, r1	; 21
+	PORTD = CONC(PORTD_PIN7_MODE,PORTD_PIN6_MODE,PORTD_PIN5_MODE,PORTD_PIN4_MODE,PORTD_PIN3_MODE,PORTD_PIN2_MODE,PORTD_PIN1_MODE,PORTD_PIN0_MODE);
+ 5fe:	82 bb       	out	0x12, r24	; 18
+ 600:	08 95       	ret
+
+00000602 <_exit>:
+ 602:	f8 94       	cli
+
+00000604 <__stop_program>:
+ 604:	ff cf       	rjmp	.-2      	; 0x604 <__stop_program>
