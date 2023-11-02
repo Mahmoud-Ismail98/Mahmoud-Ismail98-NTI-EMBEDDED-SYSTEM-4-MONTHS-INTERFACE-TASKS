@@ -15,9 +15,9 @@
 void KPD_Init(void){
 
          Port_enuSetPinDirection(pin16,OUT_PIN);
-	     Port_enuSetPinDirection(pin17,OUT_PIN);
-		 Port_enuSetPinDirection(pin18,OUT_PIN);
-		Port_enuSetPinDirection(pin19,OUT_PIN);
+	 Port_enuSetPinDirection(pin17,OUT_PIN);
+         Port_enuSetPinDirection(pin18,OUT_PIN);
+	 Port_enuSetPinDirection(pin19,OUT_PIN);
 			
 		SetPinMode(pin24,INPUT_PULLUP);
 		SetPinMode(pin25,INPUT_PULLUP);
