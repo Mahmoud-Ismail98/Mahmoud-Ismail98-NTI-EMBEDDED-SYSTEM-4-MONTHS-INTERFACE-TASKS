@@ -5,8 +5,9 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././Std_types.h .././Bit_utils.h .././Port.h .././Dio.h .././ADC.h \
- .././ADC_prv.h .././LCD.h
+ ../LIB/Std_types.h ../LIB/Bit_utils.h .././MCAL/Port/inc/Port.h \
+ .././MCAL/Dio/inc/Dio.h .././MCAL/ADC/inc/ADC.h \
+ .././MCAL/ADC/inc/ADC_prv.h .././HAL/LCD/inc/LCD.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -20,16 +21,16 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-.././Std_types.h:
+../LIB/Std_types.h:
 
-.././Bit_utils.h:
+../LIB/Bit_utils.h:
 
-.././Port.h:
+.././MCAL/Port/inc/Port.h:
 
-.././Dio.h:
+.././MCAL/Dio/inc/Dio.h:
 
-.././ADC.h:
+.././MCAL/ADC/inc/ADC.h:
 
-.././ADC_prv.h:
+.././MCAL/ADC/inc/ADC_prv.h:
 
-.././LCD.h:
+.././HAL/LCD/inc/LCD.h:

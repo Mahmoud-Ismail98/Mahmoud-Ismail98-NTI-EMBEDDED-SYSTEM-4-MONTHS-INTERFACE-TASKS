@@ -17,12 +17,15 @@
  */
 #define F_CPU 16000000
 #include "util/delay.h"
+
 #include "Bit_utils.h"
 #include "Std_types.h"
-#include "Dio.h"
-#include "Port.h"
-#include "Keypad.h"
-#include "LCD.h"
+
+#include "MCAL/Port/inc/Port.h"
+#include "MCAL/Dio/inc/Dio.h"
+
+#include "HAL/LCD/inc/LCD.h"
+#include "HAL/KeyPad/inc/Keypad.h"
 
 
 #define INPUT_BUFFER_SIZE 10

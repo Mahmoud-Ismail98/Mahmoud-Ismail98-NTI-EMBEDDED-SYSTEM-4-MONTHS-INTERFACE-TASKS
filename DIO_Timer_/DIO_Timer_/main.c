@@ -13,12 +13,12 @@ Counting Up Timer
 	PORT
 	SegBCD
  */
-#include"Bit_utils.h"
-#include"Std_types.h"
+#include "Bit_utils.h"
+#include "Std_types.h"
 
-#include "Dio.h"
-#include "Port.h"
-#include "SegBCD.h"
+#include "MCAL/Port/inc/Port.h"
+#include "MCAL/Dio/inc/Dio.h"
+#include "HAL/SegBCD/inc/SegBCD.h"
 
 #define F_CPU 16000000
 #include "util/delay.h"

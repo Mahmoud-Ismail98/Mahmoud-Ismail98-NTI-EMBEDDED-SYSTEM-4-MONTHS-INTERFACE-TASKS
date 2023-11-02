@@ -2,15 +2,15 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-Dio.c
-
-Dio_cfg.c
+HAL\SegBCD\src\SegBCD.c
 
 main.c
 
-Port.c
+MCAL\Dio\inc\Dio_cfg.c
 
-Port_cfg.c
+MCAL\Dio\src\Dio.c
 
-SegBCD.c
+MCAL\Port\inc\Port_cfg.c
+
+MCAL\Port\src\Port.c
 

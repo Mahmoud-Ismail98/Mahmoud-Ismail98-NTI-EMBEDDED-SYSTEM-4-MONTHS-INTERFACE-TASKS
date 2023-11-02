@@ -17,10 +17,12 @@
 #include "util/delay.h"
 #include "Std_types.h"
 #include "Bit_utils.h"
-#include "Port.h"
-#include "Dio.h"
-#include "ADC.h"
-#include "LCD.h"
+
+#include "MCAL/Port/inc/Port.h"
+#include "MCAL/Dio/inc/Dio.h"
+#include "MCAL/ADC/inc/ADC.h"
+
+#include "HAL/LCD/inc/LCD.h"
 
 u8 Level_1[] =
 {
@@ -173,7 +175,7 @@ int main (void)
 	LCD_voidCreateCustomChar(Level_5,5);
 	LCD_voidCreateCustomChar(Level_6,6);
 	LCD_voidCreateCustomChar(Level_7,7);
-	
+
 	Volume_voidWelcome();
 	LCD_voidClear();
 

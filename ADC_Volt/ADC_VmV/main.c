@@ -3,11 +3,11 @@
  *
  * Created: 10/23/2023 11:19:14 PM
  * Author : Ahmed Wael
- 
+
 -> Description:
 		This Project reads voltage from Potentiometer and display it on LCD, with voltage and milli voltage.
-		
--> Peripherals & Drivers Used: 
+
+-> Peripherals & Drivers Used:
 		ADC,
 		EXTI,
 		DIO,
@@ -20,11 +20,14 @@
 
 #include "Bit_utils.h"
 #include "Std_types.h"
-#include "Port.h"
-#include "Dio.h"
-#include "LCD.h"
-#include "ADC.h"
-#include "EXTI.h"
+
+#include "MCAL/Port/inc/Port.h"
+#include "MCAL/Dio/inc/Dio.h"
+#include "MCAL/EXTI/inc/EXTI.h"
+#include "MCAL/ADC/inc/ADC.h"
+
+#include "HAL/LCD/inc/LCD.h"
+
 
 volatile u8 Global_u8Mode = 1;
 
@@ -79,26 +82,26 @@ void LCD_DisplayVolt(u16 Copy_u16Volt)
 int main(void)
 {
 	Port_vidInit();
-	
+
 	LCD_voidInit();
-	
+
 	ADC_voidInit(ADC_VREF_AVCC,ADC_Prescaler_128);
 	ADC_Enable();
-	
+
 	EXTI_voidEnable(EXTI_INT0);
 	EXTI_voidSetCallBack(EXTI_INT0,T_voidSetMode);
-	EXTI_voidSetPinMode(EXTI_INT0,EXTI_FALLING);	
-	
+	EXTI_voidSetPinMode(EXTI_INT0,EXTI_FALLING);
+
 	GIE();
-	
+
 	LCD_voidDisplayString("VOLT:");
 	LCD_voidGoToXY(18,1);
 	LCD_voidDisplayString("mV");
-	
+
 	u16 mV;
 	u16 V;
-	
-	
+
+
 	while (1)
 	{
 		switch(Global_u8Mode)

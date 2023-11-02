@@ -3,11 +3,11 @@ Archive member included to satisfy reference by file (symbol)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_mulsi3.o)
                               main.o (__mulsi3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
-                              LCD.o (__udivmodsi4)
+                              HAL/LCD/src/LCD.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
-                              Keypad.o (__do_copy_data)
+                              HAL/KeyPad/src/Keypad.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
                               main.o (__do_clear_bss)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_muluhisi3.o)
@@ -19,45 +19,45 @@ Discarded input sections
 
  .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .text          0x00000000        0x0 Dio.o
- .data          0x00000000        0x0 Dio.o
- .bss           0x00000000        0x0 Dio.o
- .text.Dio_enuWritePort
-                0x00000000       0x26 Dio.o
- .text.Dio_enuReadPort
-                0x00000000       0x32 Dio.o
- .text.Dio_enuFlipChannel
-                0x00000000       0xde Dio.o
- .text          0x00000000        0x0 Dio_cfg.o
- .data          0x00000000        0x0 Dio_cfg.o
- .bss           0x00000000        0x0 Dio_cfg.o
- .comment       0x00000000       0x31 Dio_cfg.o
- .text          0x00000000        0x0 Keypad.o
- .data          0x00000000        0x0 Keypad.o
- .bss           0x00000000        0x0 Keypad.o
+ .text          0x00000000        0x0 HAL/KeyPad/src/Keypad.o
+ .data          0x00000000        0x0 HAL/KeyPad/src/Keypad.o
+ .bss           0x00000000        0x0 HAL/KeyPad/src/Keypad.o
  .text.KeyPad_voidGetNumber
-                0x00000000       0x64 Keypad.o
- .text          0x00000000        0x0 LCD.o
- .data          0x00000000        0x0 LCD.o
- .bss           0x00000000        0x0 LCD.o
+                0x00000000       0x64 HAL/KeyPad/src/Keypad.o
+ .text          0x00000000        0x0 HAL/LCD/src/LCD.o
+ .data          0x00000000        0x0 HAL/LCD/src/LCD.o
+ .bss           0x00000000        0x0 HAL/LCD/src/LCD.o
  .text.LCD_voidDisplayString
-                0x00000000       0x26 LCD.o
+                0x00000000       0x26 HAL/LCD/src/LCD.o
  .text.LCD_voidCreateCustomChar
-                0x00000000       0x34 LCD.o
+                0x00000000       0x34 HAL/LCD/src/LCD.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000        0x0 Port.o
- .data          0x00000000        0x0 Port.o
- .bss           0x00000000        0x0 Port.o
+ .text          0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .data          0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .bss           0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .comment       0x00000000       0x31 MCAL/Dio/inc/Dio_cfg.o
+ .text          0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .data          0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .bss           0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .text.Dio_enuWritePort
+                0x00000000       0x26 MCAL/Dio/src/Dio.o
+ .text.Dio_enuReadPort
+                0x00000000       0x32 MCAL/Dio/src/Dio.o
+ .text.Dio_enuFlipChannel
+                0x00000000       0xde MCAL/Dio/src/Dio.o
+ .text          0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .data          0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .bss           0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .comment       0x00000000       0x31 MCAL/Port/inc/Port_cfg.o
+ .text          0x00000000        0x0 MCAL/Port/src/Port.o
+ .data          0x00000000        0x0 MCAL/Port/src/Port.o
+ .bss           0x00000000        0x0 MCAL/Port/src/Port.o
  .text.Port_enuSetPinDirection
-                0x00000000       0xf6 Port.o
+                0x00000000       0xf6 MCAL/Port/src/Port.o
  .text.Port_enuSetPinMode
-                0x00000000      0x218 Port.o
- .text          0x00000000        0x0 Port_cfg.o
- .data          0x00000000        0x0 Port_cfg.o
- .bss           0x00000000        0x0 Port_cfg.o
- .comment       0x00000000       0x31 Port_cfg.o
+                0x00000000      0x218 MCAL/Port/src/Port.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_mulsi3.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_mulsi3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_mulsi3.o)
@@ -178,13 +178,13 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
-LOAD Dio.o
-LOAD Dio_cfg.o
-LOAD Keypad.o
-LOAD LCD.o
+LOAD HAL/KeyPad/src/Keypad.o
+LOAD HAL/LCD/src/LCD.o
 LOAD main.o
-LOAD Port.o
-LOAD Port_cfg.o
+LOAD MCAL/Dio/inc/Dio_cfg.o
+LOAD MCAL/Dio/src/Dio.o
+LOAD MCAL/Port/inc/Port_cfg.o
+LOAD MCAL/Port/src/Port.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -376,48 +376,48 @@ END GROUP
                 0x0000008e                __vector_20
                 0x00000092                . = ALIGN (0x2)
  *(.text.*)
- .text.Dio_enuWriteChannel
-                0x00000092      0x17c Dio.o
-                0x00000092                Dio_enuWriteChannel
- .text.Dio_enuReadChannel
-                0x0000020e       0xa8 Dio.o
-                0x0000020e                Dio_enuReadChannel
  .text.KeyPad_voidGetButton
-                0x000002b6      0x170 Keypad.o
-                0x000002b6                KeyPad_voidGetButton
+                0x00000092      0x170 HAL/KeyPad/src/Keypad.o
+                0x00000092                KeyPad_voidGetButton
  .text.LCD_voidSendCommand
-                0x00000426       0xc0 LCD.o
+                0x00000202       0xc0 HAL/LCD/src/LCD.o
  .text.LCD_voidSendData
-                0x000004e6       0xc0 LCD.o
+                0x000002c2       0xc0 HAL/LCD/src/LCD.o
  .text.LCD_voidInit
-                0x000005a6       0x62 LCD.o
-                0x000005a6                LCD_voidInit
+                0x00000382       0x62 HAL/LCD/src/LCD.o
+                0x00000382                LCD_voidInit
  .text.LCD_voidDisplayChar
-                0x00000608        0x4 LCD.o
-                0x00000608                LCD_voidDisplayChar
+                0x000003e4        0x4 HAL/LCD/src/LCD.o
+                0x000003e4                LCD_voidDisplayChar
  .text.LCD_voidGoToXY
-                0x0000060c       0x24 LCD.o
-                0x0000060c                LCD_voidGoToXY
+                0x000003e8       0x24 HAL/LCD/src/LCD.o
+                0x000003e8                LCD_voidGoToXY
  .text.LCD_voidDisplayNumbers
-                0x00000630       0xbc LCD.o
-                0x00000630                LCD_voidDisplayNumbers
+                0x0000040c       0xbc HAL/LCD/src/LCD.o
+                0x0000040c                LCD_voidDisplayNumbers
  .text.LCD_voidClear
-                0x000006ec       0x14 LCD.o
-                0x000006ec                LCD_voidClear
+                0x000004c8       0x14 HAL/LCD/src/LCD.o
+                0x000004c8                LCD_voidClear
  .text.Calc_voidFlushInputBuffer
-                0x00000700       0x10 main.o
-                0x00000700                Calc_voidFlushInputBuffer
+                0x000004dc       0x10 main.o
+                0x000004dc                Calc_voidFlushInputBuffer
  .text.Calc_voidGetInput
-                0x00000710       0x4e main.o
-                0x00000710                Calc_voidGetInput
+                0x000004ec       0x4e main.o
+                0x000004ec                Calc_voidGetInput
  .text.Calc_s32Calculate_Result
-                0x0000075e       0xf2 main.o
-                0x0000075e                Calc_s32Calculate_Result
+                0x0000053a       0xf2 main.o
+                0x0000053a                Calc_s32Calculate_Result
  .text.startup.main
-                0x00000850       0x48 main.o
-                0x00000850                main
+                0x0000062c       0x48 main.o
+                0x0000062c                main
+ .text.Dio_enuWriteChannel
+                0x00000674      0x17c MCAL/Dio/src/Dio.o
+                0x00000674                Dio_enuWriteChannel
+ .text.Dio_enuReadChannel
+                0x000007f0       0xa8 MCAL/Dio/src/Dio.o
+                0x000007f0                Dio_enuReadChannel
  .text.Port_vidInit
-                0x00000898       0x16 Port.o
+                0x00000898       0x16 MCAL/Port/src/Port.o
                 0x00000898                Port_vidInit
  .text.libgcc.mul
                 0x000008ae       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_mulsi3.o)
@@ -463,13 +463,13 @@ END GROUP
  *(.data)
  *(.data*)
  .data.KeyPad_u8SymbolArr
-                0x00800060       0x10 Keypad.o
+                0x00800060       0x10 HAL/KeyPad/src/Keypad.o
                 0x00800060                KeyPad_u8SymbolArr
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  .rodata.Pattern_Arr
-                0x00800070        0x4 Keypad.o
+                0x00800070        0x4 HAL/KeyPad/src/Keypad.o
  *(.gnu.linkonce.r*)
                 0x00800074                . = ALIGN (0x2)
                 0x00800074                _edata = .
@@ -533,12 +533,12 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 Dio.o
+ .comment       0x00000000       0x30 HAL/KeyPad/src/Keypad.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 Keypad.o
- .comment       0x00000030       0x31 LCD.o
+ .comment       0x00000030       0x31 HAL/LCD/src/LCD.o
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 Port.o
+ .comment       0x00000030       0x31 MCAL/Dio/src/Dio.o
+ .comment       0x00000030       0x31 MCAL/Port/src/Port.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c

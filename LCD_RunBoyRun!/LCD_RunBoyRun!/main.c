@@ -10,9 +10,9 @@
 
 #include "Bit_utils.h"
 #include "Std_types.h"
-#include "Port.h"
-#include "Dio.h"
-#include "LCD.h"
+#include "MCAL/Port/inc/Port.h"
+#include "MCAL/Dio/inc/Dio.h"
+#include "HAL/LCD/inc/LCD.h"
 
 #define MAN 0
 #define MAN_ON_SHELF 1

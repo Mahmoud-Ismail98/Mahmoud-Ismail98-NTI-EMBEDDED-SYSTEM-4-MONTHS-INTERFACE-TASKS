@@ -1,65 +1,65 @@
 Archive member included to satisfy reference by file (symbol)
 
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
-                              LCD.o (__udivmodsi4)
+                              HAL/LCD/src/LCD.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                               main.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                              ADC.o (__do_clear_bss)
+                              MCAL/ADC/src/ADC.o (__do_clear_bss)
 
 Discarded input sections
 
  .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .text          0x00000000        0x0 ADC.o
- .data          0x00000000        0x0 ADC.o
- .bss           0x00000000        0x0 ADC.o
- .text.ADC_Disable
-                0x00000000        0x4 ADC.o
- .text.ADC_voidStartConversionInterrupt
-                0x00000000       0x10 ADC.o
- .text.ADC_InterruptEnable
-                0x00000000        0x4 ADC.o
- .text.ADC_InterruptSetCallBack
-                0x00000000        0xa ADC.o
- .text.ADC_InterruptDisable
-                0x00000000        0x4 ADC.o
- .text          0x00000000        0x0 Dio.o
- .data          0x00000000        0x0 Dio.o
- .bss           0x00000000        0x0 Dio.o
- .text.Dio_enuReadChannel
-                0x00000000       0xa8 Dio.o
- .text.Dio_enuWritePort
-                0x00000000       0x26 Dio.o
- .text.Dio_enuReadPort
-                0x00000000       0x32 Dio.o
- .text.Dio_enuFlipChannel
-                0x00000000       0xde Dio.o
- .text          0x00000000        0x0 Dio_cfg.o
- .data          0x00000000        0x0 Dio_cfg.o
- .bss           0x00000000        0x0 Dio_cfg.o
- .comment       0x00000000       0x31 Dio_cfg.o
- .text          0x00000000        0x0 LCD.o
- .data          0x00000000        0x0 LCD.o
- .bss           0x00000000        0x0 LCD.o
+ .text          0x00000000        0x0 HAL/LCD/src/LCD.o
+ .data          0x00000000        0x0 HAL/LCD/src/LCD.o
+ .bss           0x00000000        0x0 HAL/LCD/src/LCD.o
  .text.LCD_voidDisplayNumbers
-                0x00000000       0xbc LCD.o
+                0x00000000       0xbc HAL/LCD/src/LCD.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000        0x0 Port.o
- .data          0x00000000        0x0 Port.o
- .bss           0x00000000        0x0 Port.o
+ .text          0x00000000        0x0 MCAL/ADC/src/ADC.o
+ .data          0x00000000        0x0 MCAL/ADC/src/ADC.o
+ .bss           0x00000000        0x0 MCAL/ADC/src/ADC.o
+ .text.ADC_Disable
+                0x00000000        0x4 MCAL/ADC/src/ADC.o
+ .text.ADC_voidStartConversionInterrupt
+                0x00000000       0x10 MCAL/ADC/src/ADC.o
+ .text.ADC_InterruptEnable
+                0x00000000        0x4 MCAL/ADC/src/ADC.o
+ .text.ADC_InterruptSetCallBack
+                0x00000000        0xa MCAL/ADC/src/ADC.o
+ .text.ADC_InterruptDisable
+                0x00000000        0x4 MCAL/ADC/src/ADC.o
+ .text          0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .data          0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .bss           0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .comment       0x00000000       0x31 MCAL/Dio/inc/Dio_cfg.o
+ .text          0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .data          0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .bss           0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .text.Dio_enuReadChannel
+                0x00000000       0xa8 MCAL/Dio/src/Dio.o
+ .text.Dio_enuWritePort
+                0x00000000       0x26 MCAL/Dio/src/Dio.o
+ .text.Dio_enuReadPort
+                0x00000000       0x32 MCAL/Dio/src/Dio.o
+ .text.Dio_enuFlipChannel
+                0x00000000       0xde MCAL/Dio/src/Dio.o
+ .text          0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .data          0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .bss           0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .comment       0x00000000       0x31 MCAL/Port/inc/Port_cfg.o
+ .text          0x00000000        0x0 MCAL/Port/src/Port.o
+ .data          0x00000000        0x0 MCAL/Port/src/Port.o
+ .bss           0x00000000        0x0 MCAL/Port/src/Port.o
  .text.Port_enuSetPinDirection
-                0x00000000       0xf6 Port.o
+                0x00000000       0xf6 MCAL/Port/src/Port.o
  .text.Port_enuSetPinMode
-                0x00000000      0x218 Port.o
- .text          0x00000000        0x0 Port_cfg.o
- .data          0x00000000        0x0 Port_cfg.o
- .bss           0x00000000        0x0 Port_cfg.o
- .comment       0x00000000       0x31 Port_cfg.o
+                0x00000000      0x218 MCAL/Port/src/Port.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
@@ -140,13 +140,13 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
-LOAD ADC.o
-LOAD Dio.o
-LOAD Dio_cfg.o
-LOAD LCD.o
+LOAD HAL/LCD/src/LCD.o
 LOAD main.o
-LOAD Port.o
-LOAD Port_cfg.o
+LOAD MCAL/ADC/src/ADC.o
+LOAD MCAL/Dio/inc/Dio_cfg.o
+LOAD MCAL/Dio/src/Dio.o
+LOAD MCAL/Port/inc/Port_cfg.o
+LOAD MCAL/Port/src/Port.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -337,54 +337,54 @@ END GROUP
                 0x0000008e                __vector_20
                 0x00000092                . = ALIGN (0x2)
  *(.text.*)
- .text.ADC_voidInit
-                0x00000092       0x22 ADC.o
-                0x00000092                ADC_voidInit
- .text.ADC_Enable
-                0x000000b4        0x4 ADC.o
-                0x000000b4                ADC_Enable
- .text.ADC_voidReadPolling
-                0x000000b8       0x1e ADC.o
-                0x000000b8                ADC_voidReadPolling
- .text.__vector_16
-                0x000000d6       0x4e ADC.o
-                0x000000d6                __vector_16
- .text.Dio_enuWriteChannel
-                0x00000124      0x17c Dio.o
-                0x00000124                Dio_enuWriteChannel
  .text.LCD_voidSendCommand
-                0x000002a0       0xc0 LCD.o
+                0x00000092       0xc0 HAL/LCD/src/LCD.o
  .text.LCD_voidSendData
-                0x00000360       0xc0 LCD.o
+                0x00000152       0xc0 HAL/LCD/src/LCD.o
  .text.LCD_voidInit
-                0x00000420       0x62 LCD.o
-                0x00000420                LCD_voidInit
+                0x00000212       0x62 HAL/LCD/src/LCD.o
+                0x00000212                LCD_voidInit
  .text.LCD_voidDisplayChar
-                0x00000482        0x4 LCD.o
-                0x00000482                LCD_voidDisplayChar
+                0x00000274        0x4 HAL/LCD/src/LCD.o
+                0x00000274                LCD_voidDisplayChar
  .text.LCD_voidDisplayString
-                0x00000486       0x26 LCD.o
-                0x00000486                LCD_voidDisplayString
+                0x00000278       0x26 HAL/LCD/src/LCD.o
+                0x00000278                LCD_voidDisplayString
  .text.LCD_voidGoToXY
-                0x000004ac       0x24 LCD.o
-                0x000004ac                LCD_voidGoToXY
+                0x0000029e       0x24 HAL/LCD/src/LCD.o
+                0x0000029e                LCD_voidGoToXY
  .text.LCD_voidCreateCustomChar
-                0x000004d0       0x34 LCD.o
-                0x000004d0                LCD_voidCreateCustomChar
+                0x000002c2       0x34 HAL/LCD/src/LCD.o
+                0x000002c2                LCD_voidCreateCustomChar
  .text.LCD_voidClear
-                0x00000504       0x14 LCD.o
-                0x00000504                LCD_voidClear
+                0x000002f6       0x14 HAL/LCD/src/LCD.o
+                0x000002f6                LCD_voidClear
  .text.LCD_voidDisplayVolumeHelper
-                0x00000518       0x24 main.o
-                0x00000518                LCD_voidDisplayVolumeHelper
+                0x0000030a       0x24 main.o
+                0x0000030a                LCD_voidDisplayVolumeHelper
  .text.Volume_voidWelcome
-                0x0000053c      0x1d2 main.o
-                0x0000053c                Volume_voidWelcome
+                0x0000032e      0x1d2 main.o
+                0x0000032e                Volume_voidWelcome
  .text.startup.main
-                0x0000070e       0xa0 main.o
-                0x0000070e                main
+                0x00000500       0xa0 main.o
+                0x00000500                main
+ .text.ADC_voidInit
+                0x000005a0       0x22 MCAL/ADC/src/ADC.o
+                0x000005a0                ADC_voidInit
+ .text.ADC_Enable
+                0x000005c2        0x4 MCAL/ADC/src/ADC.o
+                0x000005c2                ADC_Enable
+ .text.ADC_voidReadPolling
+                0x000005c6       0x1e MCAL/ADC/src/ADC.o
+                0x000005c6                ADC_voidReadPolling
+ .text.__vector_16
+                0x000005e4       0x4e MCAL/ADC/src/ADC.o
+                0x000005e4                __vector_16
+ .text.Dio_enuWriteChannel
+                0x00000632      0x17c MCAL/Dio/src/Dio.o
+                0x00000632                Dio_enuWriteChannel
  .text.Port_vidInit
-                0x000007ae       0x1c Port.o
+                0x000007ae       0x1c MCAL/Port/src/Port.o
                 0x000007ae                Port_vidInit
                 0x000007ca                . = ALIGN (0x2)
  *(.fini9)
@@ -446,7 +446,7 @@ END GROUP
                 0x008000b0                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.FptrG     0x008000b0        0x2 ADC.o
+ .bss.FptrG     0x008000b0        0x2 MCAL/ADC/src/ADC.o
                 0x008000b0                FptrG
  *(COMMON)
                 0x008000b2                PROVIDE (__bss_end, .)
@@ -499,12 +499,12 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 ADC.o
+ .comment       0x00000000       0x30 HAL/LCD/src/LCD.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 Dio.o
- .comment       0x00000030       0x31 LCD.o
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 Port.o
+ .comment       0x00000030       0x31 MCAL/ADC/src/ADC.o
+ .comment       0x00000030       0x31 MCAL/Dio/src/Dio.o
+ .comment       0x00000030       0x31 MCAL/Port/src/Port.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c

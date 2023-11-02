@@ -10,12 +10,12 @@
 
 #include "Std_types.h"
 #include "Bit_utils.h"
-#include "Port.h"
-#include "Dio.h"
-#include "EXTI.h"
-#include "Timers.h"
-#include "LCD.h"
-#include "Keypad.h"
+#include "MCAL/Port/inc/Port.h"
+#include "MCAL/Dio/inc/Dio.h"
+#include "MCAL/EXTI/inc/EXTI.h"
+#include "MCAL/Timers//inc/Timers.h"
+#include "HAL/LCD/inc/LCD.h"
+#include "HAL/KeyPad/inc/Keypad.h"
 
 
 #define BUZZ_PIN DIO_u8CHANNEL22
@@ -95,7 +95,6 @@ int main(void)
 	EXTI_voidSetPinMode(EXTI_INT0, EXTI_FALLING);
 	EXTI_voidSetCallBack(EXTI_INT0,EXTI_voidFunc);
 	GIE();
-
     while (1)
     {
 		switch(Mode)
@@ -113,7 +112,7 @@ int main(void)
 			Timer0_voidOVF_InterruptEnable();
 			Mode = Counting_Time;
 			break;
-////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 			case Counting_Time:
 			if(Global_u16Time == 0)
 			{

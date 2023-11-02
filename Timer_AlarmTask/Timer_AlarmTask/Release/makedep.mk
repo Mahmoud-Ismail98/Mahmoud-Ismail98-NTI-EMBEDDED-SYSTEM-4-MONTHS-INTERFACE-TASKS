@@ -2,21 +2,21 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-Dio.c
+HAL\KeyPad\src\Keypad.c
 
-Dio_cfg.c
-
-EXTI.c
-
-Keypad.c
-
-LCD.c
+HAL\LCD\src\LCD.c
 
 main.c
 
-Port.c
+MCAL\Dio\inc\Dio_cfg.c
 
-Port_cfg.c
+MCAL\Dio\src\Dio.c
 
-Timers.c
+MCAL\EXTI\src\EXTI.c
+
+MCAL\Port\inc\Port_cfg.c
+
+MCAL\Port\src\Port.c
+
+MCAL\Timers\src\Timers.c
 

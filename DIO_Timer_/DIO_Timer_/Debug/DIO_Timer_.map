@@ -1,7 +1,7 @@
 Archive member included to satisfy reference by file (symbol)
 
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
-                              SegBCD.o (__udivmodsi4)
+                              HAL/SegBCD/src/SegBCD.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
@@ -11,40 +11,40 @@ Discarded input sections
 
  .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .text          0x00000000        0x0 Dio.o
- .data          0x00000000        0x0 Dio.o
- .bss           0x00000000        0x0 Dio.o
- .text.Dio_enuWritePort
-                0x00000000       0x34 Dio.o
- .text.Dio_enuReadPort
-                0x00000000       0x4e Dio.o
- .text          0x00000000        0x0 Dio_cfg.o
- .data          0x00000000        0x0 Dio_cfg.o
- .bss           0x00000000        0x0 Dio_cfg.o
- .debug_line    0x00000000        0x0 Dio_cfg.o
- .debug_str     0x00000000       0xec Dio_cfg.o
- .comment       0x00000000       0x31 Dio_cfg.o
+ .text          0x00000000        0x0 HAL/SegBCD/src/SegBCD.o
+ .data          0x00000000        0x0 HAL/SegBCD/src/SegBCD.o
+ .bss           0x00000000        0x0 HAL/SegBCD/src/SegBCD.o
+ .text.SegBCD_vInit
+                0x00000000       0x22 HAL/SegBCD/src/SegBCD.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text          0x00000000        0x0 Port.o
- .data          0x00000000        0x0 Port.o
- .bss           0x00000000        0x0 Port.o
+ .text          0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .data          0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .bss           0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .debug_line    0x00000000        0x0 MCAL/Dio/inc/Dio_cfg.o
+ .debug_str     0x00000000       0xf4 MCAL/Dio/inc/Dio_cfg.o
+ .comment       0x00000000       0x31 MCAL/Dio/inc/Dio_cfg.o
+ .text          0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .data          0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .bss           0x00000000        0x0 MCAL/Dio/src/Dio.o
+ .text.Dio_enuWritePort
+                0x00000000       0x34 MCAL/Dio/src/Dio.o
+ .text.Dio_enuReadPort
+                0x00000000       0x4e MCAL/Dio/src/Dio.o
+ .text          0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .data          0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .bss           0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .debug_line    0x00000000        0x0 MCAL/Port/inc/Port_cfg.o
+ .debug_str     0x00000000       0xf6 MCAL/Port/inc/Port_cfg.o
+ .comment       0x00000000       0x31 MCAL/Port/inc/Port_cfg.o
+ .text          0x00000000        0x0 MCAL/Port/src/Port.o
+ .data          0x00000000        0x0 MCAL/Port/src/Port.o
+ .bss           0x00000000        0x0 MCAL/Port/src/Port.o
  .text.Port_enuSetPinDirection
-                0x00000000      0x12e Port.o
+                0x00000000      0x12e MCAL/Port/src/Port.o
  .text.Port_enuSetPinMode
-                0x00000000      0x2e0 Port.o
- .text          0x00000000        0x0 Port_cfg.o
- .data          0x00000000        0x0 Port_cfg.o
- .bss           0x00000000        0x0 Port_cfg.o
- .debug_line    0x00000000        0x0 Port_cfg.o
- .debug_str     0x00000000       0xed Port_cfg.o
- .comment       0x00000000       0x31 Port_cfg.o
- .text          0x00000000        0x0 SegBCD.o
- .data          0x00000000        0x0 SegBCD.o
- .bss           0x00000000        0x0 SegBCD.o
- .text.SegBCD_vInit
-                0x00000000       0x22 SegBCD.o
+                0x00000000      0x2e0 MCAL/Port/src/Port.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
@@ -107,12 +107,12 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
-LOAD Dio.o
-LOAD Dio_cfg.o
+LOAD HAL/SegBCD/src/SegBCD.o
 LOAD main.o
-LOAD Port.o
-LOAD Port_cfg.o
-LOAD SegBCD.o
+LOAD MCAL/Dio/inc/Dio_cfg.o
+LOAD MCAL/Dio/src/Dio.o
+LOAD MCAL/Port/inc/Port_cfg.o
+LOAD MCAL/Port/src/Port.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -302,31 +302,31 @@ END GROUP
                 0x00000078                __vector_20
                 0x0000007c                . = ALIGN (0x2)
  *(.text.*)
- .text.Dio_enuWriteChannel
-                0x0000007c      0x1b4 Dio.o
-                0x0000007c                Dio_enuWriteChannel
- .text.Dio_enuReadChannel
-                0x00000230      0x106 Dio.o
-                0x00000230                Dio_enuReadChannel
- .text.Dio_enuFlipChannel
-                0x00000336       0xfa Dio.o
-                0x00000336                Dio_enuFlipChannel
- .text.SegBSD_vTime
-                0x00000430      0x146 main.o
-                0x00000430                SegBSD_vTime
- .text.main     0x00000576        0xa main.o
-                0x00000576                main
- .text.Port_vidInit
-                0x00000580       0x16 Port.o
-                0x00000580                Port_vidInit
  .text.Choose_Seg
-                0x00000596       0x22 SegBCD.o
+                0x0000007c       0x22 HAL/SegBCD/src/SegBCD.o
  .text.SegBSD_vWriteVal
-                0x000005b8       0x6a SegBCD.o
-                0x000005b8                SegBSD_vWriteVal
+                0x0000009e       0x6a HAL/SegBCD/src/SegBCD.o
+                0x0000009e                SegBSD_vWriteVal
  .text.SegBSD_vWriteValMUX
-                0x00000622       0x8a SegBCD.o
-                0x00000622                SegBSD_vWriteValMUX
+                0x00000108       0x8a HAL/SegBCD/src/SegBCD.o
+                0x00000108                SegBSD_vWriteValMUX
+ .text.SegBSD_vTime
+                0x00000192      0x146 main.o
+                0x00000192                SegBSD_vTime
+ .text.main     0x000002d8        0xa main.o
+                0x000002d8                main
+ .text.Dio_enuWriteChannel
+                0x000002e2      0x1b4 MCAL/Dio/src/Dio.o
+                0x000002e2                Dio_enuWriteChannel
+ .text.Dio_enuReadChannel
+                0x00000496      0x106 MCAL/Dio/src/Dio.o
+                0x00000496                Dio_enuReadChannel
+ .text.Dio_enuFlipChannel
+                0x0000059c       0xfa MCAL/Dio/src/Dio.o
+                0x0000059c                Dio_enuFlipChannel
+ .text.Port_vidInit
+                0x00000696       0x16 MCAL/Port/src/Port.o
+                0x00000696                Port_vidInit
  .text.libgcc.div
                 0x000006ac       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodsi4.o)
                 0x000006ac                __udivmodsi4
@@ -428,11 +428,11 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 Dio.o
+ .comment       0x00000000       0x30 HAL/SegBCD/src/SegBCD.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 Port.o
- .comment       0x00000030       0x31 SegBCD.o
+ .comment       0x00000030       0x31 MCAL/Dio/src/Dio.o
+ .comment       0x00000030       0x31 MCAL/Port/src/Port.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x3c
@@ -457,13 +457,13 @@ END GROUP
 .debug_aranges  0x00000000       0xd0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x40 Dio.o
+                0x00000000       0x38 HAL/SegBCD/src/SegBCD.o
  .debug_aranges
-                0x00000040       0x28 main.o
+                0x00000038       0x28 main.o
  .debug_aranges
-                0x00000068       0x30 Port.o
+                0x00000060       0x40 MCAL/Dio/src/Dio.o
  .debug_aranges
-                0x00000098       0x38 SegBCD.o
+                0x000000a0       0x30 MCAL/Port/src/Port.o
 
 .debug_pubnames
  *(.debug_pubnames)
@@ -471,52 +471,52 @@ END GROUP
 .debug_info     0x00000000      0xe55
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_info    0x000004e6      0x285 Dio.o
- .debug_info    0x0000076b      0x223 main.o
- .debug_info    0x0000098e      0x17c Port.o
- .debug_info    0x00000b0a      0x34b SegBCD.o
+ .debug_info    0x000004e6      0x34b HAL/SegBCD/src/SegBCD.o
+ .debug_info    0x00000831      0x223 main.o
+ .debug_info    0x00000a54      0x285 MCAL/Dio/src/Dio.o
+ .debug_info    0x00000cd9      0x17c MCAL/Port/src/Port.o
 
 .debug_abbrev   0x00000000      0x87e
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_abbrev  0x000004a3       0xdd Dio.o
- .debug_abbrev  0x00000580       0xc6 main.o
- .debug_abbrev  0x00000646       0xbf Port.o
- .debug_abbrev  0x00000705      0x179 SegBCD.o
+ .debug_abbrev  0x000004a3      0x179 HAL/SegBCD/src/SegBCD.o
+ .debug_abbrev  0x0000061c       0xc6 main.o
+ .debug_abbrev  0x000006e2       0xdd MCAL/Dio/src/Dio.o
+ .debug_abbrev  0x000007bf       0xbf MCAL/Port/src/Port.o
 
-.debug_line     0x00000000      0xb43
+.debug_line     0x00000000      0xc02
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x00000116      0x3a8 Dio.o
- .debug_line    0x000004be      0x112 main.o
- .debug_line    0x000005d0      0x344 Port.o
- .debug_line    0x00000914      0x22f SegBCD.o
+ .debug_line    0x00000116      0x25a HAL/SegBCD/src/SegBCD.o
+ .debug_line    0x00000370      0x152 main.o
+ .debug_line    0x000004c2      0x3d1 MCAL/Dio/src/Dio.o
+ .debug_line    0x00000893      0x36f MCAL/Port/src/Port.o
 
 .debug_frame    0x00000000      0x1a4
  *(.debug_frame)
- .debug_frame   0x00000000       0x64 Dio.o
- .debug_frame   0x00000064       0x6c main.o
- .debug_frame   0x000000d0       0x44 Port.o
- .debug_frame   0x00000114       0x90 SegBCD.o
+ .debug_frame   0x00000000       0x90 HAL/SegBCD/src/SegBCD.o
+ .debug_frame   0x00000090       0x6c main.o
+ .debug_frame   0x000000fc       0x64 MCAL/Dio/src/Dio.o
+ .debug_frame   0x00000160       0x44 MCAL/Port/src/Port.o
 
-.debug_str      0x00000000      0x60a
+.debug_str      0x00000000      0x62b
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x2a2 Dio.o
-                                0x2c9 (size before relaxing)
- .debug_str     0x00000438       0x83 main.o
-                                0x212 (size before relaxing)
- .debug_str     0x000004bb       0xb0 Port.o
-                                0x23a (size before relaxing)
- .debug_str     0x0000056b       0x9f SegBCD.o
-                                0x228 (size before relaxing)
+ .debug_str     0x00000196      0x1fe HAL/SegBCD/src/SegBCD.o
+                                0x232 (size before relaxing)
+ .debug_str     0x00000394       0x95 main.o
+                                0x20f (size before relaxing)
+ .debug_str     0x00000429      0x146 MCAL/Dio/src/Dio.o
+                                0x2d1 (size before relaxing)
+ .debug_str     0x0000056f       0xbc MCAL/Port/src/Port.o
+                                0x243 (size before relaxing)
 
 .debug_loc      0x00000000     0x13fe
  *(.debug_loc)
- .debug_loc     0x00000000      0x7ce Dio.o
- .debug_loc     0x000007ce      0x135 main.o
- .debug_loc     0x00000903      0x87d Port.o
- .debug_loc     0x00001180      0x27e SegBCD.o
+ .debug_loc     0x00000000      0x27e HAL/SegBCD/src/SegBCD.o
+ .debug_loc     0x0000027e      0x135 main.o
+ .debug_loc     0x000003b3      0x7ce MCAL/Dio/src/Dio.o
+ .debug_loc     0x00000b81      0x87d MCAL/Port/src/Port.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -538,10 +538,10 @@ END GROUP
 
 .debug_ranges   0x00000000       0x90
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x30 Dio.o
- .debug_ranges  0x00000030       0x18 main.o
- .debug_ranges  0x00000048       0x20 Port.o
- .debug_ranges  0x00000068       0x28 SegBCD.o
+ .debug_ranges  0x00000000       0x28 HAL/SegBCD/src/SegBCD.o
+ .debug_ranges  0x00000028       0x18 main.o
+ .debug_ranges  0x00000040       0x30 MCAL/Dio/src/Dio.o
+ .debug_ranges  0x00000070       0x20 MCAL/Port/src/Port.o
 
 .debug_macro
  *(.debug_macro)

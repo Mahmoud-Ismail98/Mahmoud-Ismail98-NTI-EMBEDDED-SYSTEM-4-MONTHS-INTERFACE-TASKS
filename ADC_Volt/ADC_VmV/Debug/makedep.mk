@@ -2,19 +2,19 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-ADC.c
-
-Dio.c
-
-Dio_cfg.c
-
-EXTI.c
-
-LCD.c
+HAL\LCD\src\LCD.c
 
 main.c
 
-Port.c
+MCAL\ADC\src\ADC.c
 
-Port_cfg.c
+MCAL\Dio\inc\Dio_cfg.c
+
+MCAL\Dio\src\Dio.c
+
+MCAL\EXTI\src\EXTI.c
+
+MCAL\Port\inc\Port_cfg.c
+
+MCAL\Port\src\Port.c
 
