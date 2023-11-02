@@ -26,7 +26,7 @@ SPI_enuError_T spi_INT(SPI_st_T*SPI)
 			SPI_LSB_FIRST();
 			break;
 		default:
-		   break;	
+		break;	
 	}
 		switch(SPI->mode_s)
 		{		
