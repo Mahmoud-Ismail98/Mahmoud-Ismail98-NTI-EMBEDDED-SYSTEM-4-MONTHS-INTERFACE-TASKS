@@ -1,0 +1,206 @@
+/*
+ * ADC.c
+ *
+ * Created: 10/26/2023 6:43:51 PM
+ *  Author: Mahmoud Tariq
+ */ 
+
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "CLCK.h"
+
+#include "PORT.h"
+#include "DIO.h"
+#include "ADC.h"
+#include "ADC_CFG.h"
+#include "ADC_PRIVATE.h"
+
+
+
+static void (*ptr_func)(void) = NULL;
+
+void ADC_vidInit(void)
+{
+	
+	/* Setting ADC Vref*/
+	#if (1 == ADC_AREF_INTERNAL_VrefOFF)
+	CLR_BIT(ADMUX,ADMUX_REFS1);
+	CLR_BIT(ADMUX,ADMUX_REFS0);
+
+	#elif (1 == ADC_AVCC_WITH_CAP_AT_AREF)
+	CLR_BIT(ADMUX,ADMUX_REFS1);
+	SET_BIT(ADMUX,ADMUX_REFS0);
+
+	#elif (1 == ADC_INTERNAL_2_56V_WITH_CAP_AT_AREF)
+	SET_BIT(ADMUX,ADMUX_REFS1);
+	SET_BIT(ADMUX,ADMUX_REFS0);
+	#endif
+	
+	/* Setting ADC Data Adjust */
+	#if (1 == ADC_LEFT_ADJUST)
+	SET_BIT(ADMUX,ADMUX_ADLAR);
+	
+	#elif (1 == ADC_RIGHT_ADJUST)
+	CLR_BIT(ADMUX,ADMUX_ADLAR);
+	#endif
+
+
+	/*Setting Prescale value*/
+	#if  (1 == ADC_PRESCALE_2)
+	CLR_BIT(ADCSRA,ADCSRA_ADPS2);
+	CLR_BIT(ADCSRA,ADCSRA_ADPS1);
+	CLR_BIT(ADCSRA,ADCSRA_ADPS0);
+	
+	#elif (1 == ADC_PRESCALE_4)
+	CLR_BIT(ADCSRA,ADCSRA_ADPS2);
+	SET_BIT(ADCSRA,ADCSRA_ADPS1);
+	CLR_BIT(ADCSRA,ADCSRA_ADPS0);
+	
+	#elif (1 == ADC_PRESCALE_8)
+	CLR_BIT(ADCSRA,ADCSRA_ADPS2);
+	SET_BIT(ADCSRA,ADCSRA_ADPS1);
+	SET_BIT(ADCSRA,ADCSRA_ADPS0);
+	
+	#elif (1 == ADC_PRESCALE_16)
+	SET_BIT(ADCSRA,ADCSRA_ADPS2);
+	CLR_BIT(ADCSRA,ADCSRA_ADPS1);
+	CLR_BIT(ADCSRA,ADCSRA_ADPS0);
+	
+	#elif (1 == ADC_PRESCALE_32)
+	SET_BIT(ADCSRA,ADCSRA_ADPS2);
+	CLR_BIT(ADCSRA,ADCSRA_ADPS1);
+	SET_BIT(ADCSRA,ADCSRA_ADPS0);
+	
+	#elif (1 == ADC_PRESCALE_64)
+	SET_BIT(ADCSRA,ADCSRA_ADPS2);
+	SET_BIT(ADCSRA,ADCSRA_ADPS1);
+	CLR_BIT(ADCSRA,ADCSRA_ADPS0);
+	
+	#elif (1 == ADC_PRESCALE_128)
+	SET_BIT(ADCSRA,ADCSRA_ADPS2);
+	SET_BIT(ADCSRA,ADCSRA_ADPS1);
+	SET_BIT(ADCSRA,ADCSRA_ADPS0);
+	#endif
+
+	/* Setting Trigger Source*/
+
+	#if (1 == ADC_Free_Running_Mode)
+	SET_BIT(ADCSRA,ADCSRA_ADATE);
+	CLR_BIT(SFIOR,SFIOR_ADTS2);
+	CLR_BIT(SFIOR,SFIOR_ADTS1);
+	CLR_BIT(SFIOR,SFIOR_ADTS0);
+
+	#elif (1 == ADC_Analog_Comparator)
+	SET_BIT(ADCSRA,ADCSRA_ADATE);
+	CLR_BIT(SFIOR,SFIOR_ADTS2);
+	CLR_BIT(SFIOR,SFIOR_ADTS1);
+	SET_BIT(SFIOR,SFIOR_ADTS0);
+	
+	#elif (1 == ADC_External_Interrupt_Request0)
+	CLR_BIT(SFIOR,SFIOR_ADTS2);
+	SET_BIT(SFIOR,SFIOR_ADTS1);
+	CLR_BIT(SFIOR,SFIOR_ADTS0);
+	
+	#elif (1 == ADC_TIMER0_COMPARE_MATCH)
+	CLR_BIT(SFIOR,SFIOR_ADTS2);
+	SET_BIT(SFIOR,SFIOR_ADTS1);
+	SET_BIT(SFIOR,SFIOR_ADTS0);
+	
+	#elif (1 == ADC_TIMER0_OVERFLOW)
+	SET_BIT(SFIOR,SFIOR_ADTS2);
+	CLR_BIT(SFIOR,SFIOR_ADTS1);
+	CLR_BIT(SFIOR,SFIOR_ADTS0);
+	
+	#elif (1 == ADC_TIMER_COMPARE_MATCH_B)
+	SET_BIT(SFIOR,SFIOR_ADTS2);
+	CLR_BIT(SFIOR,SFIOR_ADTS1);
+	SET_BIT(SFIOR,SFIOR_ADTS0);
+	
+	#elif (1 == ADC_TIMER1_OverFlow)
+	SET_BIT(SFIOR,SFIOR_ADTS2);
+	SET_BIT(SFIOR,SFIOR_ADTS1);
+	CLR_BIT(SFIOR,SFIOR_ADTS0);
+	
+	#elif (1 == ADC_TIMER1_CAPTURE_EVENT)
+	SET_BIT(SFIOR,SFIOR_ADTS2);
+	SET_BIT(SFIOR,SFIOR_ADTS1);
+	SET_BIT(SFIOR,SFIOR_ADTS0);
+
+	#endif
+
+
+	/*Setting Interrupt Mode*/
+
+	#if (1 == ADC_INTERRUPT_ENABLE)
+	SET_BIT(ADCSRA,ADCSRA_ADIE);
+	#elif (0 == ADC_INTERRUPT_ENABLE)
+	CLR_BIT(ADCSRA,ADCSRA_ADIE);
+	#endif
+	
+	
+SET_BIT(ADCSRA,ADCSRA_ADEN);   //SETTING ADC ENABLE BIT
+SET_BIT(ADCSRA,ADCSRA_STARTCONV );   //ADC START CONVERSION
+}
+
+void ADC_vidDeInit(void)
+{
+	CLR_BIT(ADCSRA,ADCSRA_ADEN);
+}
+
+ADC_enuErrorStatus_t ADC_ReadChannel(u8 copy_u8ADC_Channel,pu16 add_pu16ADCValue)
+{
+	
+	ADC_enuErrorStatus_t Return_val = ADC_STATUS_FAILED;
+	SET_BIT(ADCSRA,ADCSRA_ADATE);
+	ADMUX  &= 0b11100000;
+	ADMUX  |= copy_u8ADC_Channel;
+	SET_BIT(ADCSRA,ADCSRA_STARTCONV );   //ADC START CONVERSION
+	if(NULL == add_pu16ADCValue) Return_val = ADC_NULL_PTR_ERR;
+	
+	else{
+		 
+		 
+		while( GET_BIT(ADCSRA,4) == 0 );  //wait until conversion is completed
+		
+		
+		#if (1 == ADC_RIGHT_ADJUST)
+			    *add_pu16ADCValue = ADCL  ;
+			    *add_pu16ADCValue |= ADCH<<8 ;
+				
+				Return_val = ADC_STATUS_OK;
+								
+		
+		#elif ( 1== ADC_LEFT_ADJUST)
+			*add_pu16ADCValue = (ADCL>>6)  + (ADCH<<2) ;
+			
+			Return_val = ADC_STATUS_OK;
+		#endif
+									
+			
+	
+		}
+SET_BIT(ADCSRA,ADCSRA_ADIF);
+//ADC_vidDeInit();
+
+return Return_val;		
+	}
+			
+			
+
+void ADC_SetCallBack(void (*pF) (void) ){
+	
+	if(pF != NULL)
+	ptr_func = pF;
+	
+}
+
+void __vector_16	(void)	__attribute__((signal,used));
+void __vector_16	(void)
+{
+	if(ptr_func != NULL)
+	{
+		ptr_func();
+			
+			
+	}
+}
