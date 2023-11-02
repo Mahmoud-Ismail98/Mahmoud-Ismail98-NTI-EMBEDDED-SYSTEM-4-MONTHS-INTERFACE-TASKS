@@ -1,0 +1,15 @@
+MCAL/USART/SRC/USART.d MCAL/USART/SRC/USART.o: ../MCAL/USART/SRC/USART.c \
+ ../MCAL/USART/SRC/../../../SERVICES/Std_types.h \
+ ../MCAL/USART/SRC/../../../SERVICES/Bit_utils.h \
+ ../MCAL/USART/SRC/../INC/USART.h ../MCAL/USART/SRC/../INC/USART_prv.h \
+ ../MCAL/USART/SRC/../INC/USART_cfg.h
+
+../MCAL/USART/SRC/../../../SERVICES/Std_types.h:
+
+../MCAL/USART/SRC/../../../SERVICES/Bit_utils.h:
+
+../MCAL/USART/SRC/../INC/USART.h:
+
+../MCAL/USART/SRC/../INC/USART_prv.h:
+
+../MCAL/USART/SRC/../INC/USART_cfg.h:

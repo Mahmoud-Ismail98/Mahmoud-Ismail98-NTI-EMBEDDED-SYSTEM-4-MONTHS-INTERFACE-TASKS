@@ -1,0 +1,43 @@
+/*
+ * SSDISPLAY_cfg.h
+ *
+ * Created: 10/25/2023 6:30:26 PM
+ *  Author: HP
+ */ 
+
+
+#ifndef SSDISPLAY_CFG_H_
+#define SSDISPLAY_CFG_H_
+
+
+
+/*TO CONFIGURE SSD PINS 
+OPYIANS :   DIO_CHANNEL_0
+            ..............
+            ..............
+            ..............
+            DIO_CHANNEL_31        */
+
+
+#define SSDISPLAY_BCD_10     DIO_CHANNEL_16
+#define SSDISPLAY_BCD_11     DIO_CHANNEL_17   
+#define SSDISPLAY_BCD_12     DIO_CHANNEL_18 
+#define SSDISPLAY_BCD_13     DIO_CHANNEL_19 
+
+#define SSDISPLAY_BCD_20    DIO_CHANNEL_20
+#define SSDISPLAY_BCD_21    DIO_CHANNEL_21   
+#define SSDISPLAY_BCD_22    DIO_CHANNEL_22 
+#define SSDISPLAY_BCD_23    DIO_CHANNEL_23  
+
+
+#define SSDISPLAY_BCD_30    DIO_CHANNEL_0
+#define SSDISPLAY_BCD_31    DIO_CHANNEL_1   
+#define SSDISPLAY_BCD_32    DIO_CHANNEL_2 
+#define SSDISPLAY_BCD_33    DIO_CHANNEL_3  
+
+#define SSDISPLAY_BCD_40    DIO_CHANNEL_4
+#define SSDISPLAY_BCD_41    DIO_CHANNEL_5   
+#define SSDISPLAY_BCD_42    DIO_CHANNEL_6
+#define SSDISPLAY_BCD_43    DIO_CHANNEL_7 
+
+#endif /* SSDISPLAY_CFG_H_ */

@@ -1,0 +1,431 @@
+
+Atmega32Driver.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000276  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000002ea  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000f  00800060  00800060  000002ea  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002ea  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000031c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001c0  00000000  00000000  00000358  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001002  00000000  00000000  00000518  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000a56  00000000  00000000  0000151a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000b07  00000000  00000000  00001f70  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000041c  00000000  00000000  00002a78  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000094b  00000000  00000000  00002e94  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000985  00000000  00000000  000037df  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000160  00000000  00000000  00004164  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__vector_1>
+   8:	0c 94 87 00 	jmp	0x10e	; 0x10e <__vector_2>
+   c:	0c 94 b0 00 	jmp	0x160	; 0x160 <__vector_3>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 e8 00 	jmp	0x1d0	; 0x1d0 <__vector_10>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 d9 00 	jmp	0x1b2	; 0x1b2 <__vector_12>
+  34:	0c 94 1b 01 	jmp	0x236	; 0x236 <__vector_13>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 2a 01 	jmp	0x254	; 0x254 <__vector_15>
+  40:	0c 94 4a 00 	jmp	0x94	; 0x94 <__vector_16>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 e7       	ldi	r30, 0x76	; 118
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	af 36       	cpi	r26, 0x6F	; 111
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 39 01 	jmp	0x272	; 0x272 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+ */ 
+
+
+
+int main(void)
+{
+  92:	ff cf       	rjmp	.-2      	; 0x92 <main>
+
+00000094 <__vector_16>:
+{
+	*Add_pu16Value = Glob_u16Value;
+}
+
+void __vector_16(void) __attribute__((signal));
+void __vector_16(void) {
+  94:	1f 92       	push	r1
+  96:	0f 92       	push	r0
+  98:	0f b6       	in	r0, 0x3f	; 63
+  9a:	0f 92       	push	r0
+  9c:	11 24       	eor	r1, r1
+  9e:	8f 93       	push	r24
+  a0:	9f 93       	push	r25
+     Glob_u16Value = ADC;
+  a2:	84 b1       	in	r24, 0x04	; 4
+  a4:	95 b1       	in	r25, 0x05	; 5
+  a6:	90 93 6c 00 	sts	0x006C, r25	; 0x80006c <Glob_u16Value+0x1>
+  aa:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <Glob_u16Value>
+
+  ae:	9f 91       	pop	r25
+  b0:	8f 91       	pop	r24
+  b2:	0f 90       	pop	r0
+  b4:	0f be       	out	0x3f, r0	; 63
+  b6:	0f 90       	pop	r0
+  b8:	1f 90       	pop	r1
+  ba:	18 95       	reti
+
+000000bc <__vector_1>:
+{
+	EXTINT_SetCallBackExtInt[Copy_u8ExtIntIndex] = Copy_pfun;
+}
+
+void __vector_1(void)  __attribute__((signal));
+void __vector_1(void){
+  bc:	1f 92       	push	r1
+  be:	0f 92       	push	r0
+  c0:	0f b6       	in	r0, 0x3f	; 63
+  c2:	0f 92       	push	r0
+  c4:	11 24       	eor	r1, r1
+  c6:	2f 93       	push	r18
+  c8:	3f 93       	push	r19
+  ca:	4f 93       	push	r20
+  cc:	5f 93       	push	r21
+  ce:	6f 93       	push	r22
+  d0:	7f 93       	push	r23
+  d2:	8f 93       	push	r24
+  d4:	9f 93       	push	r25
+  d6:	af 93       	push	r26
+  d8:	bf 93       	push	r27
+  da:	ef 93       	push	r30
+  dc:	ff 93       	push	r31
+    if(EXTINT_SetCallBackExtInt[EXT_0]!= NULL)
+  de:	e0 91 60 00 	lds	r30, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  e2:	f0 91 61 00 	lds	r31, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  e6:	30 97       	sbiw	r30, 0x00	; 0
+  e8:	09 f0       	breq	.+2      	; 0xec <__vector_1+0x30>
+    {
+        EXTINT_SetCallBackExtInt[EXT_0]();
+  ea:	09 95       	icall
+    }
+    else
+    {
+        /*DO NOTHING*/
+    }
+}
+  ec:	ff 91       	pop	r31
+  ee:	ef 91       	pop	r30
+  f0:	bf 91       	pop	r27
+  f2:	af 91       	pop	r26
+  f4:	9f 91       	pop	r25
+  f6:	8f 91       	pop	r24
+  f8:	7f 91       	pop	r23
+  fa:	6f 91       	pop	r22
+  fc:	5f 91       	pop	r21
+  fe:	4f 91       	pop	r20
+ 100:	3f 91       	pop	r19
+ 102:	2f 91       	pop	r18
+ 104:	0f 90       	pop	r0
+ 106:	0f be       	out	0x3f, r0	; 63
+ 108:	0f 90       	pop	r0
+ 10a:	1f 90       	pop	r1
+ 10c:	18 95       	reti
+
+0000010e <__vector_2>:
+
+void __vector_2(void)  __attribute__((signal));
+void __vector_2(void){
+ 10e:	1f 92       	push	r1
+ 110:	0f 92       	push	r0
+ 112:	0f b6       	in	r0, 0x3f	; 63
+ 114:	0f 92       	push	r0
+ 116:	11 24       	eor	r1, r1
+ 118:	2f 93       	push	r18
+ 11a:	3f 93       	push	r19
+ 11c:	4f 93       	push	r20
+ 11e:	5f 93       	push	r21
+ 120:	6f 93       	push	r22
+ 122:	7f 93       	push	r23
+ 124:	8f 93       	push	r24
+ 126:	9f 93       	push	r25
+ 128:	af 93       	push	r26
+ 12a:	bf 93       	push	r27
+ 12c:	ef 93       	push	r30
+ 12e:	ff 93       	push	r31
+    if(EXTINT_SetCallBackExtInt[EXT_1]!= NULL)
+ 130:	e0 91 62 00 	lds	r30, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 134:	f0 91 63 00 	lds	r31, 0x0063	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+ 138:	30 97       	sbiw	r30, 0x00	; 0
+ 13a:	09 f0       	breq	.+2      	; 0x13e <__vector_2+0x30>
+    {
+        EXTINT_SetCallBackExtInt[EXT_1]();
+ 13c:	09 95       	icall
+    }
+    else
+    {
+        /*DO NOTHING*/
+    }
+}
+ 13e:	ff 91       	pop	r31
+ 140:	ef 91       	pop	r30
+ 142:	bf 91       	pop	r27
+ 144:	af 91       	pop	r26
+ 146:	9f 91       	pop	r25
+ 148:	8f 91       	pop	r24
+ 14a:	7f 91       	pop	r23
+ 14c:	6f 91       	pop	r22
+ 14e:	5f 91       	pop	r21
+ 150:	4f 91       	pop	r20
+ 152:	3f 91       	pop	r19
+ 154:	2f 91       	pop	r18
+ 156:	0f 90       	pop	r0
+ 158:	0f be       	out	0x3f, r0	; 63
+ 15a:	0f 90       	pop	r0
+ 15c:	1f 90       	pop	r1
+ 15e:	18 95       	reti
+
+00000160 <__vector_3>:
+
+void __vector_3(void)  __attribute__((signal));
+void __vector_3(void){
+ 160:	1f 92       	push	r1
+ 162:	0f 92       	push	r0
+ 164:	0f b6       	in	r0, 0x3f	; 63
+ 166:	0f 92       	push	r0
+ 168:	11 24       	eor	r1, r1
+ 16a:	2f 93       	push	r18
+ 16c:	3f 93       	push	r19
+ 16e:	4f 93       	push	r20
+ 170:	5f 93       	push	r21
+ 172:	6f 93       	push	r22
+ 174:	7f 93       	push	r23
+ 176:	8f 93       	push	r24
+ 178:	9f 93       	push	r25
+ 17a:	af 93       	push	r26
+ 17c:	bf 93       	push	r27
+ 17e:	ef 93       	push	r30
+ 180:	ff 93       	push	r31
+    if(EXTINT_SetCallBackExtInt[EXT_2]!= NULL)
+ 182:	e0 91 64 00 	lds	r30, 0x0064	; 0x800064 <__DATA_REGION_ORIGIN__+0x4>
+ 186:	f0 91 65 00 	lds	r31, 0x0065	; 0x800065 <__DATA_REGION_ORIGIN__+0x5>
+ 18a:	30 97       	sbiw	r30, 0x00	; 0
+ 18c:	09 f0       	breq	.+2      	; 0x190 <__vector_3+0x30>
+    {
+        EXTINT_SetCallBackExtInt[EXT_2]();
+ 18e:	09 95       	icall
+    }
+    else
+    {
+        /*DO NOTHING*/
+    }    
+ 190:	ff 91       	pop	r31
+ 192:	ef 91       	pop	r30
+ 194:	bf 91       	pop	r27
+ 196:	af 91       	pop	r26
+ 198:	9f 91       	pop	r25
+ 19a:	8f 91       	pop	r24
+ 19c:	7f 91       	pop	r23
+ 19e:	6f 91       	pop	r22
+ 1a0:	5f 91       	pop	r21
+ 1a2:	4f 91       	pop	r20
+ 1a4:	3f 91       	pop	r19
+ 1a6:	2f 91       	pop	r18
+ 1a8:	0f 90       	pop	r0
+ 1aa:	0f be       	out	0x3f, r0	; 63
+ 1ac:	0f 90       	pop	r0
+ 1ae:	1f 90       	pop	r1
+ 1b0:	18 95       	reti
+
+000001b2 <__vector_12>:
+    *Add_pu8ReciveStr = '\0';
+}
+
+
+void __vector_12(void) __attribute__((signal));
+void __vector_12(void){
+ 1b2:	1f 92       	push	r1
+ 1b4:	0f 92       	push	r0
+ 1b6:	0f b6       	in	r0, 0x3f	; 63
+ 1b8:	0f 92       	push	r0
+ 1ba:	11 24       	eor	r1, r1
+ 1bc:	8f 93       	push	r24
+    Global_u8DataToRecive = SPDR;
+ 1be:	8f b1       	in	r24, 0x0f	; 15
+ 1c0:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <Global_u8DataToRecive>
+ 1c4:	8f 91       	pop	r24
+ 1c6:	0f 90       	pop	r0
+ 1c8:	0f be       	out	0x3f, r0	; 63
+ 1ca:	0f 90       	pop	r0
+ 1cc:	1f 90       	pop	r1
+ 1ce:	18 95       	reti
+
+000001d0 <__vector_10>:
+
+}
+*/
+void __vector_10(void) __attribute__((signal));
+void __vector_10(void)
+{
+ 1d0:	1f 92       	push	r1
+ 1d2:	0f 92       	push	r0
+ 1d4:	0f b6       	in	r0, 0x3f	; 63
+ 1d6:	0f 92       	push	r0
+ 1d8:	11 24       	eor	r1, r1
+ 1da:	8f 93       	push	r24
+ 1dc:	9f 93       	push	r25
+	static u8 Counter=0;
+	if(Counter == 25)
+ 1de:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <Counter.1652>
+ 1e2:	89 31       	cpi	r24, 0x19	; 25
+ 1e4:	e1 f4       	brne	.+56     	; 0x21e <__vector_10+0x4e>
+	{
+	if(Global_u8Counter>0)
+ 1e6:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <Global_u8Counter>
+ 1ea:	90 91 6a 00 	lds	r25, 0x006A	; 0x80006a <Global_u8Counter+0x1>
+ 1ee:	89 2b       	or	r24, r25
+ 1f0:	49 f0       	breq	.+18     	; 0x204 <__vector_10+0x34>
+	{
+		Global_u8Counter--;
+ 1f2:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <Global_u8Counter>
+ 1f6:	90 91 6a 00 	lds	r25, 0x006A	; 0x80006a <Global_u8Counter+0x1>
+ 1fa:	01 97       	sbiw	r24, 0x01	; 1
+ 1fc:	90 93 6a 00 	sts	0x006A, r25	; 0x80006a <Global_u8Counter+0x1>
+ 200:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <Global_u8Counter>
+	}
+	Global_u16CounterUp++;
+ 204:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <Global_u16CounterUp>
+ 208:	90 91 68 00 	lds	r25, 0x0068	; 0x800068 <Global_u16CounterUp+0x1>
+ 20c:	01 96       	adiw	r24, 0x01	; 1
+ 20e:	90 93 68 00 	sts	0x0068, r25	; 0x800068 <Global_u16CounterUp+0x1>
+ 212:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <Global_u16CounterUp>
+	Counter = 0;
+ 216:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <Counter.1652>
+	OCR0 = 233;
+ 21a:	89 ee       	ldi	r24, 0xE9	; 233
+ 21c:	8c bf       	out	0x3c, r24	; 60
+	}
+	Counter++;
+ 21e:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <Counter.1652>
+ 222:	8f 5f       	subi	r24, 0xFF	; 255
+ 224:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <Counter.1652>
+
+	
+
+
+}
+ 228:	9f 91       	pop	r25
+ 22a:	8f 91       	pop	r24
+ 22c:	0f 90       	pop	r0
+ 22e:	0f be       	out	0x3f, r0	; 63
+ 230:	0f 90       	pop	r0
+ 232:	1f 90       	pop	r1
+ 234:	18 95       	reti
+
+00000236 <__vector_13>:
+
+
+
+
+void __vector_13(void) __attribute__((signal));
+void __vector_13(void) {
+ 236:	1f 92       	push	r1
+ 238:	0f 92       	push	r0
+ 23a:	0f b6       	in	r0, 0x3f	; 63
+ 23c:	0f 92       	push	r0
+ 23e:	11 24       	eor	r1, r1
+ 240:	8f 93       	push	r24
+    UDR_Reg = Global_u8DataToSend;
+ 242:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <Global_u8DataToSend>
+ 246:	8c b9       	out	0x0c, r24	; 12
+}
+ 248:	8f 91       	pop	r24
+ 24a:	0f 90       	pop	r0
+ 24c:	0f be       	out	0x3f, r0	; 63
+ 24e:	0f 90       	pop	r0
+ 250:	1f 90       	pop	r1
+ 252:	18 95       	reti
+
+00000254 <__vector_15>:
+
+
+void __vector_15(void) __attribute__((signal));
+void __vector_15(void) {
+ 254:	1f 92       	push	r1
+ 256:	0f 92       	push	r0
+ 258:	0f b6       	in	r0, 0x3f	; 63
+ 25a:	0f 92       	push	r0
+ 25c:	11 24       	eor	r1, r1
+ 25e:	8f 93       	push	r24
+    Global_u8DataToRecive = UDR_Reg;
+ 260:	8c b1       	in	r24, 0x0c	; 12
+ 262:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <Global_u8DataToRecive>
+}
+ 266:	8f 91       	pop	r24
+ 268:	0f 90       	pop	r0
+ 26a:	0f be       	out	0x3f, r0	; 63
+ 26c:	0f 90       	pop	r0
+ 26e:	1f 90       	pop	r1
+ 270:	18 95       	reti
+
+00000272 <_exit>:
+ 272:	f8 94       	cli
+
+00000274 <__stop_program>:
+ 274:	ff cf       	rjmp	.-2      	; 0x274 <__stop_program>
