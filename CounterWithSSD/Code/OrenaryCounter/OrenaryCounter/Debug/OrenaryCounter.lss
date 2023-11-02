@@ -1,0 +1,1390 @@
+
+OrenaryCounter.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000076a  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00800060  0000076a  000007fe  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000a  00800064  00800064  00000802  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000802  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000834  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000180  00000000  00000000  00000870  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000015d1  00000000  00000000  000009f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000ad9  00000000  00000000  00001fc1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000f73  00000000  00000000  00002a9a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000344  00000000  00000000  00003a10  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000856  00000000  00000000  00003d54  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001683  00000000  00000000  000045aa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000290  00000000  00000000  00005c2d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 6e 01 	jmp	0x2dc	; 0x2dc <__vector_1>
+   8:	0c 94 97 01 	jmp	0x32e	; 0x32e <__vector_2>
+   c:	0c 94 c0 01 	jmp	0x380	; 0x380 <__vector_3>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__vector_16>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ea e6       	ldi	r30, 0x6A	; 106
+  68:	f7 e0       	ldi	r31, 0x07	; 7
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a4 36       	cpi	r26, 0x64	; 100
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a4 e6       	ldi	r26, 0x64	; 100
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ae 36       	cpi	r26, 0x6E	; 110
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 07 03 	call	0x60e	; 0x60e <main>
+  8a:	0c 94 b3 03 	jmp	0x766	; 0x766 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <__vector_16>:
+{
+	*Add_pu16Value = Glob_u16Value;
+}
+
+void __vector_16(void) __attribute__((signal));
+void __vector_16(void) {
+  92:	1f 92       	push	r1
+  94:	0f 92       	push	r0
+  96:	0f b6       	in	r0, 0x3f	; 63
+  98:	0f 92       	push	r0
+  9a:	11 24       	eor	r1, r1
+  9c:	8f 93       	push	r24
+  9e:	9f 93       	push	r25
+     Glob_u16Value = ADC;
+  a0:	84 b1       	in	r24, 0x04	; 4
+  a2:	95 b1       	in	r25, 0x05	; 5
+  a4:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <Glob_u16Value+0x1>
+  a8:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <Glob_u16Value>
+
+  ac:	9f 91       	pop	r25
+  ae:	8f 91       	pop	r24
+  b0:	0f 90       	pop	r0
+  b2:	0f be       	out	0x3f, r0	; 63
+  b4:	0f 90       	pop	r0
+  b6:	1f 90       	pop	r1
+  b8:	18 95       	reti
+
+000000ba <DIO_enuWriteChannel>:
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+    if((Copy_u8ChannelId>31)||(Copy_u8ChannelId<0)){
+  ba:	80 32       	cpi	r24, 0x20	; 32
+  bc:	08 f0       	brcs	.+2      	; 0xc0 <DIO_enuWriteChannel+0x6>
+  be:	8e c0       	rjmp	.+284    	; 0x1dc <DIO_enuWriteChannel+0x122>
+        Local_u8Status = DIO_WRONGCHANNEL;
+    }
+    else if((Copy_u8Level>1)||(Copy_u8Level<0))
+  c0:	62 30       	cpi	r22, 0x02	; 2
+  c2:	08 f0       	brcs	.+2      	; 0xc6 <DIO_enuWriteChannel+0xc>
+  c4:	8d c0       	rjmp	.+282    	; 0x1e0 <DIO_enuWriteChannel+0x126>
+    {
+        Local_u8Status = DIO_WRONGDIR;
+	}
+    else{
+        u8 Local_u8Port = Copy_u8ChannelId/8;
+  c6:	98 2f       	mov	r25, r24
+  c8:	96 95       	lsr	r25
+  ca:	96 95       	lsr	r25
+  cc:	96 95       	lsr	r25
+        u8 Local_u8Pin = Copy_u8ChannelId%8;
+  ce:	87 70       	andi	r24, 0x07	; 7
+        switch(Local_u8Port)
+  d0:	91 30       	cpi	r25, 0x01	; 1
+  d2:	39 f1       	breq	.+78     	; 0x122 <DIO_enuWriteChannel+0x68>
+  d4:	38 f0       	brcs	.+14     	; 0xe4 <DIO_enuWriteChannel+0x2a>
+  d6:	92 30       	cpi	r25, 0x02	; 2
+  d8:	09 f4       	brne	.+2      	; 0xdc <DIO_enuWriteChannel+0x22>
+  da:	42 c0       	rjmp	.+132    	; 0x160 <DIO_enuWriteChannel+0xa6>
+  dc:	93 30       	cpi	r25, 0x03	; 3
+  de:	09 f4       	brne	.+2      	; 0xe2 <DIO_enuWriteChannel+0x28>
+  e0:	5e c0       	rjmp	.+188    	; 0x19e <DIO_enuWriteChannel+0xe4>
+  e2:	80 c0       	rjmp	.+256    	; 0x1e4 <DIO_enuWriteChannel+0x12a>
+        {
+            case DIO_PORTA:
+                if(Copy_u8Level==DIO_CHANNEL_LOW)
+  e4:	61 11       	cpse	r22, r1
+  e6:	0f c0       	rjmp	.+30     	; 0x106 <DIO_enuWriteChannel+0x4c>
+                {
+                    CLR_BIT(DIO_PORTA_Reg,Local_u8Pin);
+  e8:	4b b3       	in	r20, 0x1b	; 27
+  ea:	21 e0       	ldi	r18, 0x01	; 1
+  ec:	30 e0       	ldi	r19, 0x00	; 0
+  ee:	b9 01       	movw	r22, r18
+  f0:	02 c0       	rjmp	.+4      	; 0xf6 <DIO_enuWriteChannel+0x3c>
+  f2:	66 0f       	add	r22, r22
+  f4:	77 1f       	adc	r23, r23
+  f6:	8a 95       	dec	r24
+  f8:	e2 f7       	brpl	.-8      	; 0xf2 <DIO_enuWriteChannel+0x38>
+  fa:	cb 01       	movw	r24, r22
+  fc:	80 95       	com	r24
+  fe:	84 23       	and	r24, r20
+ 100:	8b bb       	out	0x1b, r24	; 27
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 102:	84 e0       	ldi	r24, 0x04	; 4
+ 104:	08 95       	ret
+                {
+                    CLR_BIT(DIO_PORTA_Reg,Local_u8Pin);
+                }
+                else
+                {
+                    SET_BIT(DIO_PORTA_Reg,Local_u8Pin);
+ 106:	4b b3       	in	r20, 0x1b	; 27
+ 108:	21 e0       	ldi	r18, 0x01	; 1
+ 10a:	30 e0       	ldi	r19, 0x00	; 0
+ 10c:	b9 01       	movw	r22, r18
+ 10e:	02 c0       	rjmp	.+4      	; 0x114 <DIO_enuWriteChannel+0x5a>
+ 110:	66 0f       	add	r22, r22
+ 112:	77 1f       	adc	r23, r23
+ 114:	8a 95       	dec	r24
+ 116:	e2 f7       	brpl	.-8      	; 0x110 <DIO_enuWriteChannel+0x56>
+ 118:	cb 01       	movw	r24, r22
+ 11a:	84 2b       	or	r24, r20
+ 11c:	8b bb       	out	0x1b, r24	; 27
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 11e:	84 e0       	ldi	r24, 0x04	; 4
+ 120:	08 95       	ret
+                {
+                    SET_BIT(DIO_PORTA_Reg,Local_u8Pin);
+                }   
+            break;
+            case DIO_PORTB:
+                if(Copy_u8Level==DIO_CHANNEL_LOW)
+ 122:	61 11       	cpse	r22, r1
+ 124:	0f c0       	rjmp	.+30     	; 0x144 <DIO_enuWriteChannel+0x8a>
+                {
+                    CLR_BIT(DIO_PORTB_Reg,Local_u8Pin);
+ 126:	48 b3       	in	r20, 0x18	; 24
+ 128:	21 e0       	ldi	r18, 0x01	; 1
+ 12a:	30 e0       	ldi	r19, 0x00	; 0
+ 12c:	b9 01       	movw	r22, r18
+ 12e:	02 c0       	rjmp	.+4      	; 0x134 <DIO_enuWriteChannel+0x7a>
+ 130:	66 0f       	add	r22, r22
+ 132:	77 1f       	adc	r23, r23
+ 134:	8a 95       	dec	r24
+ 136:	e2 f7       	brpl	.-8      	; 0x130 <DIO_enuWriteChannel+0x76>
+ 138:	cb 01       	movw	r24, r22
+ 13a:	80 95       	com	r24
+ 13c:	84 23       	and	r24, r20
+ 13e:	88 bb       	out	0x18, r24	; 24
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 140:	84 e0       	ldi	r24, 0x04	; 4
+ 142:	08 95       	ret
+                {
+                    CLR_BIT(DIO_PORTB_Reg,Local_u8Pin);
+                }
+                else
+                {
+                    SET_BIT(DIO_PORTB_Reg,Local_u8Pin);
+ 144:	48 b3       	in	r20, 0x18	; 24
+ 146:	21 e0       	ldi	r18, 0x01	; 1
+ 148:	30 e0       	ldi	r19, 0x00	; 0
+ 14a:	b9 01       	movw	r22, r18
+ 14c:	02 c0       	rjmp	.+4      	; 0x152 <DIO_enuWriteChannel+0x98>
+ 14e:	66 0f       	add	r22, r22
+ 150:	77 1f       	adc	r23, r23
+ 152:	8a 95       	dec	r24
+ 154:	e2 f7       	brpl	.-8      	; 0x14e <DIO_enuWriteChannel+0x94>
+ 156:	cb 01       	movw	r24, r22
+ 158:	84 2b       	or	r24, r20
+ 15a:	88 bb       	out	0x18, r24	; 24
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 15c:	84 e0       	ldi	r24, 0x04	; 4
+ 15e:	08 95       	ret
+                {
+                    SET_BIT(DIO_PORTB_Reg,Local_u8Pin);
+                }                          
+            break;
+            case DIO_PORTC:
+                if(Copy_u8Level==DIO_CHANNEL_LOW)
+ 160:	61 11       	cpse	r22, r1
+ 162:	0f c0       	rjmp	.+30     	; 0x182 <DIO_enuWriteChannel+0xc8>
+                {
+                    CLR_BIT(DIO_PORTC_Reg,Local_u8Pin);
+ 164:	45 b3       	in	r20, 0x15	; 21
+ 166:	21 e0       	ldi	r18, 0x01	; 1
+ 168:	30 e0       	ldi	r19, 0x00	; 0
+ 16a:	b9 01       	movw	r22, r18
+ 16c:	02 c0       	rjmp	.+4      	; 0x172 <DIO_enuWriteChannel+0xb8>
+ 16e:	66 0f       	add	r22, r22
+ 170:	77 1f       	adc	r23, r23
+ 172:	8a 95       	dec	r24
+ 174:	e2 f7       	brpl	.-8      	; 0x16e <DIO_enuWriteChannel+0xb4>
+ 176:	cb 01       	movw	r24, r22
+ 178:	80 95       	com	r24
+ 17a:	84 23       	and	r24, r20
+ 17c:	85 bb       	out	0x15, r24	; 21
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 17e:	84 e0       	ldi	r24, 0x04	; 4
+ 180:	08 95       	ret
+                {
+                    CLR_BIT(DIO_PORTC_Reg,Local_u8Pin);
+                }
+                else
+                {
+                    SET_BIT(DIO_PORTC_Reg,Local_u8Pin);
+ 182:	45 b3       	in	r20, 0x15	; 21
+ 184:	21 e0       	ldi	r18, 0x01	; 1
+ 186:	30 e0       	ldi	r19, 0x00	; 0
+ 188:	b9 01       	movw	r22, r18
+ 18a:	02 c0       	rjmp	.+4      	; 0x190 <DIO_enuWriteChannel+0xd6>
+ 18c:	66 0f       	add	r22, r22
+ 18e:	77 1f       	adc	r23, r23
+ 190:	8a 95       	dec	r24
+ 192:	e2 f7       	brpl	.-8      	; 0x18c <DIO_enuWriteChannel+0xd2>
+ 194:	cb 01       	movw	r24, r22
+ 196:	84 2b       	or	r24, r20
+ 198:	85 bb       	out	0x15, r24	; 21
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 19a:	84 e0       	ldi	r24, 0x04	; 4
+ 19c:	08 95       	ret
+                {
+                    SET_BIT(DIO_PORTC_Reg,Local_u8Pin);
+                }  
+            break;
+            case DIO_PORTD:
+                if(Copy_u8Level==DIO_CHANNEL_LOW)
+ 19e:	61 11       	cpse	r22, r1
+ 1a0:	0f c0       	rjmp	.+30     	; 0x1c0 <DIO_enuWriteChannel+0x106>
+                {
+                    CLR_BIT(DIO_PORTD_Reg,Local_u8Pin);
+ 1a2:	42 b3       	in	r20, 0x12	; 18
+ 1a4:	21 e0       	ldi	r18, 0x01	; 1
+ 1a6:	30 e0       	ldi	r19, 0x00	; 0
+ 1a8:	b9 01       	movw	r22, r18
+ 1aa:	02 c0       	rjmp	.+4      	; 0x1b0 <DIO_enuWriteChannel+0xf6>
+ 1ac:	66 0f       	add	r22, r22
+ 1ae:	77 1f       	adc	r23, r23
+ 1b0:	8a 95       	dec	r24
+ 1b2:	e2 f7       	brpl	.-8      	; 0x1ac <DIO_enuWriteChannel+0xf2>
+ 1b4:	cb 01       	movw	r24, r22
+ 1b6:	80 95       	com	r24
+ 1b8:	84 23       	and	r24, r20
+ 1ba:	82 bb       	out	0x12, r24	; 18
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 1bc:	84 e0       	ldi	r24, 0x04	; 4
+ 1be:	08 95       	ret
+                {
+                    CLR_BIT(DIO_PORTD_Reg,Local_u8Pin);
+                }
+                else
+                {
+                    SET_BIT(DIO_PORTD_Reg,Local_u8Pin);
+ 1c0:	42 b3       	in	r20, 0x12	; 18
+ 1c2:	21 e0       	ldi	r18, 0x01	; 1
+ 1c4:	30 e0       	ldi	r19, 0x00	; 0
+ 1c6:	b9 01       	movw	r22, r18
+ 1c8:	02 c0       	rjmp	.+4      	; 0x1ce <DIO_enuWriteChannel+0x114>
+ 1ca:	66 0f       	add	r22, r22
+ 1cc:	77 1f       	adc	r23, r23
+ 1ce:	8a 95       	dec	r24
+ 1d0:	e2 f7       	brpl	.-8      	; 0x1ca <DIO_enuWriteChannel+0x110>
+ 1d2:	cb 01       	movw	r24, r22
+ 1d4:	84 2b       	or	r24, r20
+ 1d6:	82 bb       	out	0x12, r24	; 18
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 1d8:	84 e0       	ldi	r24, 0x04	; 4
+ 1da:	08 95       	ret
+    if((Copy_u8ChannelId>31)||(Copy_u8ChannelId<0)){
+        Local_u8Status = DIO_WRONGCHANNEL;
+ 1dc:	80 e0       	ldi	r24, 0x00	; 0
+ 1de:	08 95       	ret
+    }
+    else if((Copy_u8Level>1)||(Copy_u8Level<0))
+    {
+        Local_u8Status = DIO_WRONGDIR;
+ 1e0:	85 e0       	ldi	r24, 0x05	; 5
+ 1e2:	08 95       	ret
+#include "DIO_prv.h"
+
+
+
+DIO_tenuErrorStatus DIO_enuWriteChannel(u8 Copy_u8ChannelId , u8 Copy_u8Level){
+    DIO_tenuErrorStatus Local_u8Status = DIO_OK;
+ 1e4:	84 e0       	ldi	r24, 0x04	; 4
+                /*DO NOTHING*/
+            break;
+        }   
+    }  
+    return Local_u8Status;
+}
+ 1e6:	08 95       	ret
+
+000001e8 <EXT_InterruptPirefralEnable>:
+            default:
+            break;
+        }
+    }
+    return Loc_u8Status;
+}
+ 1e8:	64 30       	cpi	r22, 0x04	; 4
+ 1ea:	08 f0       	brcs	.+2      	; 0x1ee <EXT_InterruptPirefralEnable+0x6>
+ 1ec:	68 c0       	rjmp	.+208    	; 0x2be <EXT_InterruptPirefralEnable+0xd6>
+ 1ee:	84 30       	cpi	r24, 0x04	; 4
+ 1f0:	08 f0       	brcs	.+2      	; 0x1f4 <EXT_InterruptPirefralEnable+0xc>
+ 1f2:	67 c0       	rjmp	.+206    	; 0x2c2 <EXT_InterruptPirefralEnable+0xda>
+ 1f4:	81 30       	cpi	r24, 0x01	; 1
+ 1f6:	61 f1       	breq	.+88     	; 0x250 <EXT_InterruptPirefralEnable+0x68>
+ 1f8:	20 f0       	brcs	.+8      	; 0x202 <EXT_InterruptPirefralEnable+0x1a>
+ 1fa:	82 30       	cpi	r24, 0x02	; 2
+ 1fc:	09 f4       	brne	.+2      	; 0x200 <EXT_InterruptPirefralEnable+0x18>
+ 1fe:	4f c0       	rjmp	.+158    	; 0x29e <EXT_InterruptPirefralEnable+0xb6>
+ 200:	62 c0       	rjmp	.+196    	; 0x2c6 <EXT_InterruptPirefralEnable+0xde>
+ 202:	61 30       	cpi	r22, 0x01	; 1
+ 204:	61 f0       	breq	.+24     	; 0x21e <EXT_InterruptPirefralEnable+0x36>
+ 206:	90 f0       	brcs	.+36     	; 0x22c <EXT_InterruptPirefralEnable+0x44>
+ 208:	62 30       	cpi	r22, 0x02	; 2
+ 20a:	b9 f0       	breq	.+46     	; 0x23a <EXT_InterruptPirefralEnable+0x52>
+ 20c:	63 30       	cpi	r22, 0x03	; 3
+ 20e:	d9 f4       	brne	.+54     	; 0x246 <EXT_InterruptPirefralEnable+0x5e>
+ 210:	85 b7       	in	r24, 0x35	; 53
+ 212:	87 7f       	andi	r24, 0xF7	; 247
+ 214:	85 bf       	out	0x35, r24	; 53
+ 216:	85 b7       	in	r24, 0x35	; 53
+ 218:	84 60       	ori	r24, 0x04	; 4
+ 21a:	85 bf       	out	0x35, r24	; 53
+ 21c:	14 c0       	rjmp	.+40     	; 0x246 <EXT_InterruptPirefralEnable+0x5e>
+ 21e:	85 b7       	in	r24, 0x35	; 53
+ 220:	88 60       	ori	r24, 0x08	; 8
+ 222:	85 bf       	out	0x35, r24	; 53
+ 224:	85 b7       	in	r24, 0x35	; 53
+ 226:	8b 7f       	andi	r24, 0xFB	; 251
+ 228:	85 bf       	out	0x35, r24	; 53
+ 22a:	0d c0       	rjmp	.+26     	; 0x246 <EXT_InterruptPirefralEnable+0x5e>
+ 22c:	85 b7       	in	r24, 0x35	; 53
+ 22e:	88 60       	ori	r24, 0x08	; 8
+ 230:	85 bf       	out	0x35, r24	; 53
+ 232:	85 b7       	in	r24, 0x35	; 53
+ 234:	84 60       	ori	r24, 0x04	; 4
+ 236:	85 bf       	out	0x35, r24	; 53
+ 238:	06 c0       	rjmp	.+12     	; 0x246 <EXT_InterruptPirefralEnable+0x5e>
+ 23a:	85 b7       	in	r24, 0x35	; 53
+ 23c:	87 7f       	andi	r24, 0xF7	; 247
+ 23e:	85 bf       	out	0x35, r24	; 53
+ 240:	85 b7       	in	r24, 0x35	; 53
+ 242:	8b 7f       	andi	r24, 0xFB	; 251
+ 244:	85 bf       	out	0x35, r24	; 53
+ 246:	8b b7       	in	r24, 0x3b	; 59
+ 248:	80 64       	ori	r24, 0x40	; 64
+ 24a:	8b bf       	out	0x3b, r24	; 59
+ 24c:	80 e0       	ldi	r24, 0x00	; 0
+ 24e:	08 95       	ret
+ 250:	61 30       	cpi	r22, 0x01	; 1
+ 252:	61 f0       	breq	.+24     	; 0x26c <EXT_InterruptPirefralEnable+0x84>
+ 254:	90 f0       	brcs	.+36     	; 0x27a <EXT_InterruptPirefralEnable+0x92>
+ 256:	62 30       	cpi	r22, 0x02	; 2
+ 258:	b9 f0       	breq	.+46     	; 0x288 <EXT_InterruptPirefralEnable+0xa0>
+ 25a:	63 30       	cpi	r22, 0x03	; 3
+ 25c:	d9 f4       	brne	.+54     	; 0x294 <EXT_InterruptPirefralEnable+0xac>
+ 25e:	85 b7       	in	r24, 0x35	; 53
+ 260:	87 7f       	andi	r24, 0xF7	; 247
+ 262:	85 bf       	out	0x35, r24	; 53
+ 264:	85 b7       	in	r24, 0x35	; 53
+ 266:	84 60       	ori	r24, 0x04	; 4
+ 268:	85 bf       	out	0x35, r24	; 53
+ 26a:	14 c0       	rjmp	.+40     	; 0x294 <EXT_InterruptPirefralEnable+0xac>
+ 26c:	85 b7       	in	r24, 0x35	; 53
+ 26e:	88 60       	ori	r24, 0x08	; 8
+ 270:	85 bf       	out	0x35, r24	; 53
+ 272:	85 b7       	in	r24, 0x35	; 53
+ 274:	8b 7f       	andi	r24, 0xFB	; 251
+ 276:	85 bf       	out	0x35, r24	; 53
+ 278:	0d c0       	rjmp	.+26     	; 0x294 <EXT_InterruptPirefralEnable+0xac>
+ 27a:	85 b7       	in	r24, 0x35	; 53
+ 27c:	88 60       	ori	r24, 0x08	; 8
+ 27e:	85 bf       	out	0x35, r24	; 53
+ 280:	85 b7       	in	r24, 0x35	; 53
+ 282:	84 60       	ori	r24, 0x04	; 4
+ 284:	85 bf       	out	0x35, r24	; 53
+ 286:	06 c0       	rjmp	.+12     	; 0x294 <EXT_InterruptPirefralEnable+0xac>
+ 288:	85 b7       	in	r24, 0x35	; 53
+ 28a:	87 7f       	andi	r24, 0xF7	; 247
+ 28c:	85 bf       	out	0x35, r24	; 53
+ 28e:	85 b7       	in	r24, 0x35	; 53
+ 290:	8b 7f       	andi	r24, 0xFB	; 251
+ 292:	85 bf       	out	0x35, r24	; 53
+ 294:	8b b7       	in	r24, 0x3b	; 59
+ 296:	80 68       	ori	r24, 0x80	; 128
+ 298:	8b bf       	out	0x3b, r24	; 59
+ 29a:	80 e0       	ldi	r24, 0x00	; 0
+ 29c:	08 95       	ret
+ 29e:	66 23       	and	r22, r22
+ 2a0:	31 f0       	breq	.+12     	; 0x2ae <EXT_InterruptPirefralEnable+0xc6>
+ 2a2:	61 30       	cpi	r22, 0x01	; 1
+ 2a4:	39 f4       	brne	.+14     	; 0x2b4 <EXT_InterruptPirefralEnable+0xcc>
+ 2a6:	84 b7       	in	r24, 0x34	; 52
+ 2a8:	8f 7b       	andi	r24, 0xBF	; 191
+ 2aa:	84 bf       	out	0x34, r24	; 52
+ 2ac:	03 c0       	rjmp	.+6      	; 0x2b4 <EXT_InterruptPirefralEnable+0xcc>
+ 2ae:	84 b7       	in	r24, 0x34	; 52
+ 2b0:	80 64       	ori	r24, 0x40	; 64
+ 2b2:	84 bf       	out	0x34, r24	; 52
+ 2b4:	8b b7       	in	r24, 0x3b	; 59
+ 2b6:	80 62       	ori	r24, 0x20	; 32
+ 2b8:	8b bf       	out	0x3b, r24	; 59
+ 2ba:	80 e0       	ldi	r24, 0x00	; 0
+ 2bc:	08 95       	ret
+ 2be:	81 e0       	ldi	r24, 0x01	; 1
+ 2c0:	08 95       	ret
+ 2c2:	82 e0       	ldi	r24, 0x02	; 2
+ 2c4:	08 95       	ret
+ 2c6:	80 e0       	ldi	r24, 0x00	; 0
+ 2c8:	08 95       	ret
+
+000002ca <EXTINT_voidSetCallBack>:
+
+void EXTINT_voidSetCallBack(void(*Copy_pfun)(void),u8 Copy_u8ExtIntIndex)
+{
+	EXTINT_SetCallBackExtInt[Copy_u8ExtIntIndex] = Copy_pfun;
+ 2ca:	e6 2f       	mov	r30, r22
+ 2cc:	f0 e0       	ldi	r31, 0x00	; 0
+ 2ce:	ee 0f       	add	r30, r30
+ 2d0:	ff 1f       	adc	r31, r31
+ 2d2:	ec 59       	subi	r30, 0x9C	; 156
+ 2d4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2d6:	91 83       	std	Z+1, r25	; 0x01
+ 2d8:	80 83       	st	Z, r24
+ 2da:	08 95       	ret
+
+000002dc <__vector_1>:
+}
+
+void __vector_1(void)  __attribute__((signal));
+void __vector_1(void){
+ 2dc:	1f 92       	push	r1
+ 2de:	0f 92       	push	r0
+ 2e0:	0f b6       	in	r0, 0x3f	; 63
+ 2e2:	0f 92       	push	r0
+ 2e4:	11 24       	eor	r1, r1
+ 2e6:	2f 93       	push	r18
+ 2e8:	3f 93       	push	r19
+ 2ea:	4f 93       	push	r20
+ 2ec:	5f 93       	push	r21
+ 2ee:	6f 93       	push	r22
+ 2f0:	7f 93       	push	r23
+ 2f2:	8f 93       	push	r24
+ 2f4:	9f 93       	push	r25
+ 2f6:	af 93       	push	r26
+ 2f8:	bf 93       	push	r27
+ 2fa:	ef 93       	push	r30
+ 2fc:	ff 93       	push	r31
+    if(EXTINT_SetCallBackExtInt[EXT_0]!= NULL)
+ 2fe:	e0 91 64 00 	lds	r30, 0x0064	; 0x800064 <__data_end>
+ 302:	f0 91 65 00 	lds	r31, 0x0065	; 0x800065 <__data_end+0x1>
+ 306:	30 97       	sbiw	r30, 0x00	; 0
+ 308:	09 f0       	breq	.+2      	; 0x30c <__vector_1+0x30>
+    {
+        EXTINT_SetCallBackExtInt[EXT_0]();
+ 30a:	09 95       	icall
+    }
+    else
+    {
+        /*DO NOTHING*/
+    }
+}
+ 30c:	ff 91       	pop	r31
+ 30e:	ef 91       	pop	r30
+ 310:	bf 91       	pop	r27
+ 312:	af 91       	pop	r26
+ 314:	9f 91       	pop	r25
+ 316:	8f 91       	pop	r24
+ 318:	7f 91       	pop	r23
+ 31a:	6f 91       	pop	r22
+ 31c:	5f 91       	pop	r21
+ 31e:	4f 91       	pop	r20
+ 320:	3f 91       	pop	r19
+ 322:	2f 91       	pop	r18
+ 324:	0f 90       	pop	r0
+ 326:	0f be       	out	0x3f, r0	; 63
+ 328:	0f 90       	pop	r0
+ 32a:	1f 90       	pop	r1
+ 32c:	18 95       	reti
+
+0000032e <__vector_2>:
+
+void __vector_2(void)  __attribute__((signal));
+void __vector_2(void){
+ 32e:	1f 92       	push	r1
+ 330:	0f 92       	push	r0
+ 332:	0f b6       	in	r0, 0x3f	; 63
+ 334:	0f 92       	push	r0
+ 336:	11 24       	eor	r1, r1
+ 338:	2f 93       	push	r18
+ 33a:	3f 93       	push	r19
+ 33c:	4f 93       	push	r20
+ 33e:	5f 93       	push	r21
+ 340:	6f 93       	push	r22
+ 342:	7f 93       	push	r23
+ 344:	8f 93       	push	r24
+ 346:	9f 93       	push	r25
+ 348:	af 93       	push	r26
+ 34a:	bf 93       	push	r27
+ 34c:	ef 93       	push	r30
+ 34e:	ff 93       	push	r31
+    if(EXTINT_SetCallBackExtInt[EXT_1]!= NULL)
+ 350:	e0 91 66 00 	lds	r30, 0x0066	; 0x800066 <__data_end+0x2>
+ 354:	f0 91 67 00 	lds	r31, 0x0067	; 0x800067 <__data_end+0x3>
+ 358:	30 97       	sbiw	r30, 0x00	; 0
+ 35a:	09 f0       	breq	.+2      	; 0x35e <__vector_2+0x30>
+    {
+        EXTINT_SetCallBackExtInt[EXT_1]();
+ 35c:	09 95       	icall
+    }
+    else
+    {
+        /*DO NOTHING*/
+    }
+}
+ 35e:	ff 91       	pop	r31
+ 360:	ef 91       	pop	r30
+ 362:	bf 91       	pop	r27
+ 364:	af 91       	pop	r26
+ 366:	9f 91       	pop	r25
+ 368:	8f 91       	pop	r24
+ 36a:	7f 91       	pop	r23
+ 36c:	6f 91       	pop	r22
+ 36e:	5f 91       	pop	r21
+ 370:	4f 91       	pop	r20
+ 372:	3f 91       	pop	r19
+ 374:	2f 91       	pop	r18
+ 376:	0f 90       	pop	r0
+ 378:	0f be       	out	0x3f, r0	; 63
+ 37a:	0f 90       	pop	r0
+ 37c:	1f 90       	pop	r1
+ 37e:	18 95       	reti
+
+00000380 <__vector_3>:
+
+void __vector_3(void)  __attribute__((signal));
+void __vector_3(void){
+ 380:	1f 92       	push	r1
+ 382:	0f 92       	push	r0
+ 384:	0f b6       	in	r0, 0x3f	; 63
+ 386:	0f 92       	push	r0
+ 388:	11 24       	eor	r1, r1
+ 38a:	2f 93       	push	r18
+ 38c:	3f 93       	push	r19
+ 38e:	4f 93       	push	r20
+ 390:	5f 93       	push	r21
+ 392:	6f 93       	push	r22
+ 394:	7f 93       	push	r23
+ 396:	8f 93       	push	r24
+ 398:	9f 93       	push	r25
+ 39a:	af 93       	push	r26
+ 39c:	bf 93       	push	r27
+ 39e:	ef 93       	push	r30
+ 3a0:	ff 93       	push	r31
+    if(EXTINT_SetCallBackExtInt[EXT_2]!= NULL)
+ 3a2:	e0 91 68 00 	lds	r30, 0x0068	; 0x800068 <__data_end+0x4>
+ 3a6:	f0 91 69 00 	lds	r31, 0x0069	; 0x800069 <__data_end+0x5>
+ 3aa:	30 97       	sbiw	r30, 0x00	; 0
+ 3ac:	09 f0       	breq	.+2      	; 0x3b0 <__vector_3+0x30>
+    {
+        EXTINT_SetCallBackExtInt[EXT_2]();
+ 3ae:	09 95       	icall
+    }
+    else
+    {
+        /*DO NOTHING*/
+    }    
+ 3b0:	ff 91       	pop	r31
+ 3b2:	ef 91       	pop	r30
+ 3b4:	bf 91       	pop	r27
+ 3b6:	af 91       	pop	r26
+ 3b8:	9f 91       	pop	r25
+ 3ba:	8f 91       	pop	r24
+ 3bc:	7f 91       	pop	r23
+ 3be:	6f 91       	pop	r22
+ 3c0:	5f 91       	pop	r21
+ 3c2:	4f 91       	pop	r20
+ 3c4:	3f 91       	pop	r19
+ 3c6:	2f 91       	pop	r18
+ 3c8:	0f 90       	pop	r0
+ 3ca:	0f be       	out	0x3f, r0	; 63
+ 3cc:	0f 90       	pop	r0
+ 3ce:	1f 90       	pop	r1
+ 3d0:	18 95       	reti
+
+000003d2 <GIE_globalInterruptEnable>:
+ */
+#include "Gie.h"
+#include "Gie_prv.h"
+
+void GIE_globalInterruptEnable(void){
+    SET_BIT(SREG,SREG_globalInterruptEnable);  
+ 3d2:	8f b7       	in	r24, 0x3f	; 63
+ 3d4:	80 68       	ori	r24, 0x80	; 128
+ 3d6:	8f bf       	out	0x3f, r24	; 63
+ 3d8:	08 95       	ret
+
+000003da <Counter_StartButton>:
+volatile u8 j_temp = 1;
+volatile u8 Glo_u8Flag=0;
+
+void Counter_StartButton()
+{
+        Glo_u8Flag = 1;
+ 3da:	81 e0       	ldi	r24, 0x01	; 1
+ 3dc:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <Glo_u8Flag>
+ 3e0:	08 95       	ret
+
+000003e2 <Counter_StopButton>:
+}
+void Counter_StopButton()
+{
+        Glo_u8Flag = 0;
+ 3e2:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <Glo_u8Flag>
+ 3e6:	08 95       	ret
+
+000003e8 <Counter_RestartButton>:
+}
+void Counter_RestartButton()
+{
+     Glo_u8Flag = 3;
+ 3e8:	83 e0       	ldi	r24, 0x03	; 3
+ 3ea:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <Glo_u8Flag>
+    x_temp = 1;
+ 3ee:	81 e0       	ldi	r24, 0x01	; 1
+ 3f0:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <x_temp>
+    y_temp = 0;
+ 3f4:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <y_temp>
+    i_temp = 1;
+ 3f8:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <i_temp>
+    j_temp = 1;   
+ 3fc:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 400:	08 95       	ret
+
+00000402 <SSDISPLAY_App>:
+}
+
+void SSDISPLAY_App() {
+ 402:	0f 93       	push	r16
+ 404:	1f 93       	push	r17
+ 406:	cf 93       	push	r28
+ 408:	df 93       	push	r29
+    for (u8 i = i_temp; i_temp <= 9 ; ) {
+ 40a:	10 91 61 00 	lds	r17, 0x0061	; 0x800061 <i_temp>
+ 40e:	f5 c0       	rjmp	.+490    	; 0x5fa <SSDISPLAY_App+0x1f8>
+        for (u8 j = j_temp; j_temp <= 9; ) {
+ 410:	00 91 60 00 	lds	r16, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 414:	b4 c0       	rjmp	.+360    	; 0x57e <SSDISPLAY_App+0x17c>
+            for (u8 x = x_temp; x_temp <= 9 ; ) {
+ 416:	d0 91 62 00 	lds	r29, 0x0062	; 0x800062 <x_temp>
+ 41a:	73 c0       	rjmp	.+230    	; 0x502 <SSDISPLAY_App+0x100>
+                for (u8 y = y_temp; y_temp <= 9 ; ) {
+ 41c:	c0 91 6b 00 	lds	r28, 0x006B	; 0x80006b <y_temp>
+ 420:	33 c0       	rjmp	.+102    	; 0x488 <SSDISPLAY_App+0x86>
+                    if (Glo_u8Flag == 1) {
+ 422:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 426:	81 30       	cpi	r24, 0x01	; 1
+ 428:	99 f4       	brne	.+38     	; 0x450 <SSDISPLAY_App+0x4e>
+                        y = y_temp++;
+ 42a:	c0 91 6b 00 	lds	r28, 0x006B	; 0x80006b <y_temp>
+ 42e:	8c 0f       	add	r24, r28
+ 430:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <y_temp>
+                        SSDISPLAY_enuWriteNumber(y, 1);
+ 434:	61 e0       	ldi	r22, 0x01	; 1
+ 436:	8c 2f       	mov	r24, r28
+ 438:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 43c:	2f e7       	ldi	r18, 0x7F	; 127
+ 43e:	88 e3       	ldi	r24, 0x38	; 56
+ 440:	91 e0       	ldi	r25, 0x01	; 1
+ 442:	21 50       	subi	r18, 0x01	; 1
+ 444:	80 40       	sbci	r24, 0x00	; 0
+ 446:	90 40       	sbci	r25, 0x00	; 0
+ 448:	e1 f7       	brne	.-8      	; 0x442 <SSDISPLAY_App+0x40>
+ 44a:	00 c0       	rjmp	.+0      	; 0x44c <SSDISPLAY_App+0x4a>
+ 44c:	00 00       	nop
+ 44e:	1c c0       	rjmp	.+56     	; 0x488 <SSDISPLAY_App+0x86>
+                        _delay_ms(50);
+                    }
+                    else if(Glo_u8Flag == 0) {
+ 450:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 454:	81 11       	cpse	r24, r1
+ 456:	03 c0       	rjmp	.+6      	; 0x45e <SSDISPLAY_App+0x5c>
+                        y_temp =y;
+ 458:	c0 93 6b 00 	sts	0x006B, r28	; 0x80006b <y_temp>
+ 45c:	15 c0       	rjmp	.+42     	; 0x488 <SSDISPLAY_App+0x86>
+                    }
+                    else if(Glo_u8Flag == 3)
+ 45e:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 462:	83 30       	cpi	r24, 0x03	; 3
+ 464:	89 f4       	brne	.+34     	; 0x488 <SSDISPLAY_App+0x86>
+                    {
+
+                        SSDISPLAY_enuWriteNumber(0, 1);
+ 466:	61 e0       	ldi	r22, 0x01	; 1
+ 468:	80 e0       	ldi	r24, 0x00	; 0
+ 46a:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                        SSDISPLAY_enuWriteNumber(0, 2);
+ 46e:	62 e0       	ldi	r22, 0x02	; 2
+ 470:	80 e0       	ldi	r24, 0x00	; 0
+ 472:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                        SSDISPLAY_enuWriteNumber(0, 3);
+ 476:	63 e0       	ldi	r22, 0x03	; 3
+ 478:	80 e0       	ldi	r24, 0x00	; 0
+ 47a:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                        SSDISPLAY_enuWriteNumber(0, 4);
+ 47e:	64 e0       	ldi	r22, 0x04	; 4
+ 480:	80 e0       	ldi	r24, 0x00	; 0
+ 482:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                        return;
+ 486:	be c0       	rjmp	.+380    	; 0x604 <SSDISPLAY_App+0x202>
+
+void SSDISPLAY_App() {
+    for (u8 i = i_temp; i_temp <= 9 ; ) {
+        for (u8 j = j_temp; j_temp <= 9; ) {
+            for (u8 x = x_temp; x_temp <= 9 ; ) {
+                for (u8 y = y_temp; y_temp <= 9 ; ) {
+ 488:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <y_temp>
+ 48c:	8a 30       	cpi	r24, 0x0A	; 10
+ 48e:	48 f2       	brcs	.-110    	; 0x422 <SSDISPLAY_App+0x20>
+                        SSDISPLAY_enuWriteNumber(0, 3);
+                        SSDISPLAY_enuWriteNumber(0, 4);
+                        return;
+                    }
+                }
+                if (Glo_u8Flag == 1) {
+ 490:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 494:	81 30       	cpi	r24, 0x01	; 1
+ 496:	c9 f4       	brne	.+50     	; 0x4ca <SSDISPLAY_App+0xc8>
+                    x = x_temp++;
+ 498:	d0 91 62 00 	lds	r29, 0x0062	; 0x800062 <x_temp>
+ 49c:	8d 0f       	add	r24, r29
+ 49e:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <x_temp>
+                    y_temp=0;
+ 4a2:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <y_temp>
+                    SSDISPLAY_enuWriteNumber(0, 1);
+ 4a6:	61 e0       	ldi	r22, 0x01	; 1
+ 4a8:	80 e0       	ldi	r24, 0x00	; 0
+ 4aa:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                    SSDISPLAY_enuWriteNumber(x, 2);
+ 4ae:	62 e0       	ldi	r22, 0x02	; 2
+ 4b0:	8d 2f       	mov	r24, r29
+ 4b2:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+ 4b6:	2f e7       	ldi	r18, 0x7F	; 127
+ 4b8:	88 e3       	ldi	r24, 0x38	; 56
+ 4ba:	91 e0       	ldi	r25, 0x01	; 1
+ 4bc:	21 50       	subi	r18, 0x01	; 1
+ 4be:	80 40       	sbci	r24, 0x00	; 0
+ 4c0:	90 40       	sbci	r25, 0x00	; 0
+ 4c2:	e1 f7       	brne	.-8      	; 0x4bc <SSDISPLAY_App+0xba>
+ 4c4:	00 c0       	rjmp	.+0      	; 0x4c6 <SSDISPLAY_App+0xc4>
+ 4c6:	00 00       	nop
+ 4c8:	1c c0       	rjmp	.+56     	; 0x502 <SSDISPLAY_App+0x100>
+                    _delay_ms(50);
+                }
+                else if(Glo_u8Flag == 0)
+ 4ca:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 4ce:	81 11       	cpse	r24, r1
+ 4d0:	03 c0       	rjmp	.+6      	; 0x4d8 <SSDISPLAY_App+0xd6>
+                {
+                    x_temp =x;
+ 4d2:	d0 93 62 00 	sts	0x0062, r29	; 0x800062 <x_temp>
+ 4d6:	15 c0       	rjmp	.+42     	; 0x502 <SSDISPLAY_App+0x100>
+                }
+                else if(Glo_u8Flag == 3) 
+ 4d8:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 4dc:	83 30       	cpi	r24, 0x03	; 3
+ 4de:	89 f4       	brne	.+34     	; 0x502 <SSDISPLAY_App+0x100>
+                {
+                    SSDISPLAY_enuWriteNumber(0, 1);
+ 4e0:	61 e0       	ldi	r22, 0x01	; 1
+ 4e2:	80 e0       	ldi	r24, 0x00	; 0
+ 4e4:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                    SSDISPLAY_enuWriteNumber(0, 2);
+ 4e8:	62 e0       	ldi	r22, 0x02	; 2
+ 4ea:	80 e0       	ldi	r24, 0x00	; 0
+ 4ec:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                    SSDISPLAY_enuWriteNumber(0, 3);
+ 4f0:	63 e0       	ldi	r22, 0x03	; 3
+ 4f2:	80 e0       	ldi	r24, 0x00	; 0
+ 4f4:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                    SSDISPLAY_enuWriteNumber(0, 4);
+ 4f8:	64 e0       	ldi	r22, 0x04	; 4
+ 4fa:	80 e0       	ldi	r24, 0x00	; 0
+ 4fc:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                 
+                    return;
+ 500:	81 c0       	rjmp	.+258    	; 0x604 <SSDISPLAY_App+0x202>
+}
+
+void SSDISPLAY_App() {
+    for (u8 i = i_temp; i_temp <= 9 ; ) {
+        for (u8 j = j_temp; j_temp <= 9; ) {
+            for (u8 x = x_temp; x_temp <= 9 ; ) {
+ 502:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <x_temp>
+ 506:	8a 30       	cpi	r24, 0x0A	; 10
+ 508:	08 f4       	brcc	.+2      	; 0x50c <SSDISPLAY_App+0x10a>
+ 50a:	88 cf       	rjmp	.-240    	; 0x41c <SSDISPLAY_App+0x1a>
+                 
+                    return;
+                }
+            }
+
+            if (Glo_u8Flag == 1) {
+ 50c:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 510:	81 30       	cpi	r24, 0x01	; 1
+ 512:	c9 f4       	brne	.+50     	; 0x546 <SSDISPLAY_App+0x144>
+                j = j_temp++;
+ 514:	00 91 60 00 	lds	r16, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 518:	80 0f       	add	r24, r16
+ 51a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+                x_temp=0;
+ 51e:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <x_temp>
+                SSDISPLAY_enuWriteNumber(0, 2);
+ 522:	62 e0       	ldi	r22, 0x02	; 2
+ 524:	80 e0       	ldi	r24, 0x00	; 0
+ 526:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                SSDISPLAY_enuWriteNumber(j, 3);
+ 52a:	63 e0       	ldi	r22, 0x03	; 3
+ 52c:	80 2f       	mov	r24, r16
+ 52e:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+ 532:	2f e7       	ldi	r18, 0x7F	; 127
+ 534:	88 e3       	ldi	r24, 0x38	; 56
+ 536:	91 e0       	ldi	r25, 0x01	; 1
+ 538:	21 50       	subi	r18, 0x01	; 1
+ 53a:	80 40       	sbci	r24, 0x00	; 0
+ 53c:	90 40       	sbci	r25, 0x00	; 0
+ 53e:	e1 f7       	brne	.-8      	; 0x538 <SSDISPLAY_App+0x136>
+ 540:	00 c0       	rjmp	.+0      	; 0x542 <SSDISPLAY_App+0x140>
+ 542:	00 00       	nop
+ 544:	1c c0       	rjmp	.+56     	; 0x57e <SSDISPLAY_App+0x17c>
+                _delay_ms(50);
+            }
+            else if(Glo_u8Flag == 0) 
+ 546:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 54a:	81 11       	cpse	r24, r1
+ 54c:	03 c0       	rjmp	.+6      	; 0x554 <SSDISPLAY_App+0x152>
+            {
+                j_temp =j;
+ 54e:	00 93 60 00 	sts	0x0060, r16	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 552:	15 c0       	rjmp	.+42     	; 0x57e <SSDISPLAY_App+0x17c>
+            }
+            else if(Glo_u8Flag == 3)
+ 554:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 558:	83 30       	cpi	r24, 0x03	; 3
+ 55a:	89 f4       	brne	.+34     	; 0x57e <SSDISPLAY_App+0x17c>
+            {
+                 SSDISPLAY_enuWriteNumber(0, 1);
+ 55c:	61 e0       	ldi	r22, 0x01	; 1
+ 55e:	80 e0       	ldi	r24, 0x00	; 0
+ 560:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                 SSDISPLAY_enuWriteNumber(0, 2);
+ 564:	62 e0       	ldi	r22, 0x02	; 2
+ 566:	80 e0       	ldi	r24, 0x00	; 0
+ 568:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                 SSDISPLAY_enuWriteNumber(0, 3);
+ 56c:	63 e0       	ldi	r22, 0x03	; 3
+ 56e:	80 e0       	ldi	r24, 0x00	; 0
+ 570:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+                 SSDISPLAY_enuWriteNumber(0, 4);
+ 574:	64 e0       	ldi	r22, 0x04	; 4
+ 576:	80 e0       	ldi	r24, 0x00	; 0
+ 578:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+
+                 return;
+ 57c:	43 c0       	rjmp	.+134    	; 0x604 <SSDISPLAY_App+0x202>
+    j_temp = 1;   
+}
+
+void SSDISPLAY_App() {
+    for (u8 i = i_temp; i_temp <= 9 ; ) {
+        for (u8 j = j_temp; j_temp <= 9; ) {
+ 57e:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 582:	8a 30       	cpi	r24, 0x0A	; 10
+ 584:	08 f4       	brcc	.+2      	; 0x588 <SSDISPLAY_App+0x186>
+ 586:	47 cf       	rjmp	.-370    	; 0x416 <SSDISPLAY_App+0x14>
+
+                 return;
+            }
+        }
+
+        if (Glo_u8Flag == 1) {
+ 588:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 58c:	81 30       	cpi	r24, 0x01	; 1
+ 58e:	c9 f4       	brne	.+50     	; 0x5c2 <SSDISPLAY_App+0x1c0>
+            i = i_temp++;
+ 590:	10 91 61 00 	lds	r17, 0x0061	; 0x800061 <i_temp>
+ 594:	81 0f       	add	r24, r17
+ 596:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <i_temp>
+            j_temp=0;
+ 59a:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+            SSDISPLAY_enuWriteNumber(0, 3);
+ 59e:	63 e0       	ldi	r22, 0x03	; 3
+ 5a0:	80 e0       	ldi	r24, 0x00	; 0
+ 5a2:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+            SSDISPLAY_enuWriteNumber(i, 4);
+ 5a6:	64 e0       	ldi	r22, 0x04	; 4
+ 5a8:	81 2f       	mov	r24, r17
+ 5aa:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+ 5ae:	2f e7       	ldi	r18, 0x7F	; 127
+ 5b0:	88 e3       	ldi	r24, 0x38	; 56
+ 5b2:	91 e0       	ldi	r25, 0x01	; 1
+ 5b4:	21 50       	subi	r18, 0x01	; 1
+ 5b6:	80 40       	sbci	r24, 0x00	; 0
+ 5b8:	90 40       	sbci	r25, 0x00	; 0
+ 5ba:	e1 f7       	brne	.-8      	; 0x5b4 <SSDISPLAY_App+0x1b2>
+ 5bc:	00 c0       	rjmp	.+0      	; 0x5be <SSDISPLAY_App+0x1bc>
+ 5be:	00 00       	nop
+ 5c0:	1c c0       	rjmp	.+56     	; 0x5fa <SSDISPLAY_App+0x1f8>
+            _delay_ms(50);
+        }
+        else if(Glo_u8Flag == 0) 
+ 5c2:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 5c6:	81 11       	cpse	r24, r1
+ 5c8:	03 c0       	rjmp	.+6      	; 0x5d0 <SSDISPLAY_App+0x1ce>
+        {
+            i_temp =i;
+ 5ca:	10 93 61 00 	sts	0x0061, r17	; 0x800061 <i_temp>
+ 5ce:	15 c0       	rjmp	.+42     	; 0x5fa <SSDISPLAY_App+0x1f8>
+        }
+        else if(Glo_u8Flag == 3)
+ 5d0:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <Glo_u8Flag>
+ 5d4:	83 30       	cpi	r24, 0x03	; 3
+ 5d6:	89 f4       	brne	.+34     	; 0x5fa <SSDISPLAY_App+0x1f8>
+        {
+            SSDISPLAY_enuWriteNumber(0, 1);
+ 5d8:	61 e0       	ldi	r22, 0x01	; 1
+ 5da:	80 e0       	ldi	r24, 0x00	; 0
+ 5dc:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+            SSDISPLAY_enuWriteNumber(0, 2);
+ 5e0:	62 e0       	ldi	r22, 0x02	; 2
+ 5e2:	80 e0       	ldi	r24, 0x00	; 0
+ 5e4:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+            SSDISPLAY_enuWriteNumber(0, 3);
+ 5e8:	63 e0       	ldi	r22, 0x03	; 3
+ 5ea:	80 e0       	ldi	r24, 0x00	; 0
+ 5ec:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+            SSDISPLAY_enuWriteNumber(0, 4);
+ 5f0:	64 e0       	ldi	r22, 0x04	; 4
+ 5f2:	80 e0       	ldi	r24, 0x00	; 0
+ 5f4:	0e 94 39 03 	call	0x672	; 0x672 <SSDISPLAY_enuWriteNumber>
+
+            return;
+ 5f8:	05 c0       	rjmp	.+10     	; 0x604 <SSDISPLAY_App+0x202>
+    i_temp = 1;
+    j_temp = 1;   
+}
+
+void SSDISPLAY_App() {
+    for (u8 i = i_temp; i_temp <= 9 ; ) {
+ 5fa:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <i_temp>
+ 5fe:	8a 30       	cpi	r24, 0x0A	; 10
+ 600:	08 f4       	brcc	.+2      	; 0x604 <SSDISPLAY_App+0x202>
+ 602:	06 cf       	rjmp	.-500    	; 0x410 <SSDISPLAY_App+0xe>
+            SSDISPLAY_enuWriteNumber(0, 4);
+
+            return;
+        }
+    }
+}
+ 604:	df 91       	pop	r29
+ 606:	cf 91       	pop	r28
+ 608:	1f 91       	pop	r17
+ 60a:	0f 91       	pop	r16
+ 60c:	08 95       	ret
+
+0000060e <main>:
+
+int main(void)
+{
+    PORT_VoidInit();
+ 60e:	0e 94 2c 03 	call	0x658	; 0x658 <PORT_VoidInit>
+    GIE_globalInterruptEnable();
+ 612:	0e 94 e9 01 	call	0x3d2	; 0x3d2 <GIE_globalInterruptEnable>
+    EXT_InterruptPirefralEnable(EXT_0,EXT_RISING_EDGE);
+ 616:	60 e0       	ldi	r22, 0x00	; 0
+ 618:	80 e0       	ldi	r24, 0x00	; 0
+ 61a:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <EXT_InterruptPirefralEnable>
+    EXT_InterruptPirefralEnable(EXT_1,EXT_RISING_EDGE);
+ 61e:	60 e0       	ldi	r22, 0x00	; 0
+ 620:	81 e0       	ldi	r24, 0x01	; 1
+ 622:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <EXT_InterruptPirefralEnable>
+    EXT_InterruptPirefralEnable(EXT_2,EXT_RISING_EDGE);
+ 626:	60 e0       	ldi	r22, 0x00	; 0
+ 628:	82 e0       	ldi	r24, 0x02	; 2
+ 62a:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <EXT_InterruptPirefralEnable>
+    EXTINT_voidSetCallBack(Counter_StartButton,EXT_0);
+ 62e:	60 e0       	ldi	r22, 0x00	; 0
+ 630:	70 e0       	ldi	r23, 0x00	; 0
+ 632:	8d ee       	ldi	r24, 0xED	; 237
+ 634:	91 e0       	ldi	r25, 0x01	; 1
+ 636:	0e 94 65 01 	call	0x2ca	; 0x2ca <EXTINT_voidSetCallBack>
+    EXTINT_voidSetCallBack(Counter_StopButton,EXT_1);
+ 63a:	61 e0       	ldi	r22, 0x01	; 1
+ 63c:	70 e0       	ldi	r23, 0x00	; 0
+ 63e:	81 ef       	ldi	r24, 0xF1	; 241
+ 640:	91 e0       	ldi	r25, 0x01	; 1
+ 642:	0e 94 65 01 	call	0x2ca	; 0x2ca <EXTINT_voidSetCallBack>
+    EXTINT_voidSetCallBack(Counter_RestartButton,EXT_2);
+ 646:	62 e0       	ldi	r22, 0x02	; 2
+ 648:	70 e0       	ldi	r23, 0x00	; 0
+ 64a:	84 ef       	ldi	r24, 0xF4	; 244
+ 64c:	91 e0       	ldi	r25, 0x01	; 1
+ 64e:	0e 94 65 01 	call	0x2ca	; 0x2ca <EXTINT_voidSetCallBack>
+    while (1) 
+    {
+        SSDISPLAY_App();
+ 652:	0e 94 01 02 	call	0x402	; 0x402 <SSDISPLAY_App>
+ 656:	fd cf       	rjmp	.-6      	; 0x652 <main+0x44>
+
+00000658 <PORT_VoidInit>:
+	#define PORT_INPUT_FLOATING 0
+
+	#undef PORT_INPUT_PULLUP
+	#define PORT_INPUT_PULLUP 0
+   
+	DDRA_Reg = CONC(PORT_PA7_INTIAL_STATE,PORT_PA6_INTIAL_STATE,PORT_PA5_INTIAL_STATE,PORT_PA4_INTIAL_STATE,PORT_PA3_INTIAL_STATE,PORT_PA2_INTIAL_STATE,PORT_PA1_INTIAL_STATE,PORT_PA0_INTIAL_STATE);
+ 658:	8f ef       	ldi	r24, 0xFF	; 255
+ 65a:	8a bb       	out	0x1a, r24	; 26
+    
+	DDRB_Reg = CONC(PORT_PB7_INTIAL_STATE,PORT_PB6_INTIAL_STATE,PORT_PB5_INTIAL_STATE,PORT_PB4_INTIAL_STATE,PORT_PB3_INTIAL_STATE,PORT_PB2_INTIAL_STATE,PORT_PB1_INTIAL_STATE,PORT_PB0_INTIAL_STATE);
+ 65c:	9b e0       	ldi	r25, 0x0B	; 11
+ 65e:	97 bb       	out	0x17, r25	; 23
+   
+	DDRC_Reg = CONC(PORT_PC7_INTIAL_STATE,PORT_PC6_INTIAL_STATE,PORT_PC5_INTIAL_STATE,PORT_PC4_INTIAL_STATE,PORT_PC3_INTIAL_STATE,PORT_PC2_INTIAL_STATE,PORT_PC1_INTIAL_STATE,PORT_PC0_INTIAL_STATE);
+ 660:	84 bb       	out	0x14, r24	; 20
+                  
+	DDRD_Reg = CONC(PORT_PD7_INTIAL_STATE,PORT_PD6_INTIAL_STATE,PORT_PD5_INTIAL_STATE,PORT_PD4_INTIAL_STATE,PORT_PD3_INTIAL_STATE,PORT_PD2_INTIAL_STATE,PORT_PD1_INTIAL_STATE,PORT_PD0_INTIAL_STATE);	
+ 662:	83 ef       	ldi	r24, 0xF3	; 243
+ 664:	81 bb       	out	0x11, r24	; 17
+
+	#undef PORT_INPUT_PULLUP
+	#define PORT_INPUT_PULLUP 1											 
+
+
+	PORTA_Reg = CONC(PORT_PA7_INTIAL_STATE,PORT_PA6_INTIAL_STATE,PORT_PA5_INTIAL_STATE,PORT_PA4_INTIAL_STATE,PORT_PA3_INTIAL_STATE,PORT_PA2_INTIAL_STATE,PORT_PA1_INTIAL_STATE,PORT_PA0_INTIAL_STATE);
+ 666:	1b ba       	out	0x1b, r1	; 27
+	
+    PORTB_Reg = CONC(PORT_PB7_INTIAL_STATE,PORT_PB6_INTIAL_STATE,PORT_PB5_INTIAL_STATE,PORT_PB4_INTIAL_STATE,PORT_PB3_INTIAL_STATE,PORT_PB2_INTIAL_STATE,PORT_PB1_INTIAL_STATE,PORT_PB0_INTIAL_STATE);
+ 668:	90 ef       	ldi	r25, 0xF0	; 240
+ 66a:	98 bb       	out	0x18, r25	; 24
+
+	PORTC_Reg = CONC(PORT_PC7_INTIAL_STATE,PORT_PC6_INTIAL_STATE,PORT_PC5_INTIAL_STATE,PORT_PC4_INTIAL_STATE,PORT_PC3_INTIAL_STATE,PORT_PC2_INTIAL_STATE,PORT_PC1_INTIAL_STATE,PORT_PC0_INTIAL_STATE);  
+ 66c:	15 ba       	out	0x15, r1	; 21
+
+ 	PORTD_Reg = CONC(PORT_PD7_INTIAL_STATE,PORT_PD6_INTIAL_STATE,PORT_PD5_INTIAL_STATE,PORT_PD4_INTIAL_STATE,PORT_PD3_INTIAL_STATE,PORT_PD2_INTIAL_STATE,PORT_PD1_INTIAL_STATE,PORT_PD0_INTIAL_STATE);  
+ 66e:	82 bb       	out	0x12, r24	; 18
+ 670:	08 95       	ret
+
+00000672 <SSDISPLAY_enuWriteNumber>:
+#include "SSDISPLAY.h"
+#include "SSDISPLAY_prv.h"
+#include "SSDISPLAY_cfg.h"
+
+
+SSDISPLAY_enuErrorStatus SSDISPLAY_enuWriteNumber(u8 Copy_u8Number,u8 Copy_u8Seg) {
+ 672:	cf 93       	push	r28
+    SSDISPLAY_enuErrorStatus Loc_tenuStatus = SSDISPLAY_OK;
+    if((Copy_u8Number<0)||(Copy_u8Number>9))
+ 674:	8a 30       	cpi	r24, 0x0A	; 10
+ 676:	08 f0       	brcs	.+2      	; 0x67a <SSDISPLAY_enuWriteNumber+0x8>
+ 678:	71 c0       	rjmp	.+226    	; 0x75c <SSDISPLAY_enuWriteNumber+0xea>
+ 67a:	c8 2f       	mov	r28, r24
+    {
+        Loc_tenuStatus = SSDISPLAY_WRONGNUMBER;
+    }
+    else{
+        switch(Copy_u8Seg)
+ 67c:	62 30       	cpi	r22, 0x02	; 2
+ 67e:	19 f1       	breq	.+70     	; 0x6c6 <SSDISPLAY_enuWriteNumber+0x54>
+ 680:	18 f4       	brcc	.+6      	; 0x688 <SSDISPLAY_enuWriteNumber+0x16>
+ 682:	61 30       	cpi	r22, 0x01	; 1
+ 684:	39 f0       	breq	.+14     	; 0x694 <SSDISPLAY_enuWriteNumber+0x22>
+ 686:	6c c0       	rjmp	.+216    	; 0x760 <SSDISPLAY_enuWriteNumber+0xee>
+ 688:	63 30       	cpi	r22, 0x03	; 3
+ 68a:	b1 f1       	breq	.+108    	; 0x6f8 <SSDISPLAY_enuWriteNumber+0x86>
+ 68c:	64 30       	cpi	r22, 0x04	; 4
+ 68e:	09 f4       	brne	.+2      	; 0x692 <SSDISPLAY_enuWriteNumber+0x20>
+ 690:	4c c0       	rjmp	.+152    	; 0x72a <SSDISPLAY_enuWriteNumber+0xb8>
+ 692:	66 c0       	rjmp	.+204    	; 0x760 <SSDISPLAY_enuWriteNumber+0xee>
+        {
+            case 1:
+                DIO_enuWriteChannel(SSDISPLAY_BCD_10, GET_BIT(Copy_u8Number, 0));
+ 694:	68 2f       	mov	r22, r24
+ 696:	61 70       	andi	r22, 0x01	; 1
+ 698:	80 e1       	ldi	r24, 0x10	; 16
+ 69a:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_11, GET_BIT(Copy_u8Number, 1));
+ 69e:	c1 fb       	bst	r28, 1
+ 6a0:	66 27       	eor	r22, r22
+ 6a2:	60 f9       	bld	r22, 0
+ 6a4:	81 e1       	ldi	r24, 0x11	; 17
+ 6a6:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_12, GET_BIT(Copy_u8Number, 2));
+ 6aa:	c2 fb       	bst	r28, 2
+ 6ac:	66 27       	eor	r22, r22
+ 6ae:	60 f9       	bld	r22, 0
+ 6b0:	82 e1       	ldi	r24, 0x12	; 18
+ 6b2:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_13, GET_BIT(Copy_u8Number, 3));
+ 6b6:	c3 fb       	bst	r28, 3
+ 6b8:	66 27       	eor	r22, r22
+ 6ba:	60 f9       	bld	r22, 0
+ 6bc:	83 e1       	ldi	r24, 0x13	; 19
+ 6be:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+#include "SSDISPLAY_prv.h"
+#include "SSDISPLAY_cfg.h"
+
+
+SSDISPLAY_enuErrorStatus SSDISPLAY_enuWriteNumber(u8 Copy_u8Number,u8 Copy_u8Seg) {
+    SSDISPLAY_enuErrorStatus Loc_tenuStatus = SSDISPLAY_OK;
+ 6c2:	81 e0       	ldi	r24, 0x01	; 1
+                DIO_enuWriteChannel(SSDISPLAY_BCD_10, GET_BIT(Copy_u8Number, 0));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_11, GET_BIT(Copy_u8Number, 1));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_12, GET_BIT(Copy_u8Number, 2));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_13, GET_BIT(Copy_u8Number, 3));
+
+            break;
+ 6c4:	4e c0       	rjmp	.+156    	; 0x762 <SSDISPLAY_enuWriteNumber+0xf0>
+            case 2:
+                DIO_enuWriteChannel(SSDISPLAY_BCD_20, GET_BIT(Copy_u8Number, 0));
+ 6c6:	68 2f       	mov	r22, r24
+ 6c8:	61 70       	andi	r22, 0x01	; 1
+ 6ca:	84 e1       	ldi	r24, 0x14	; 20
+ 6cc:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_21, GET_BIT(Copy_u8Number, 1));
+ 6d0:	c1 fb       	bst	r28, 1
+ 6d2:	66 27       	eor	r22, r22
+ 6d4:	60 f9       	bld	r22, 0
+ 6d6:	85 e1       	ldi	r24, 0x15	; 21
+ 6d8:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_22, GET_BIT(Copy_u8Number, 2));
+ 6dc:	c2 fb       	bst	r28, 2
+ 6de:	66 27       	eor	r22, r22
+ 6e0:	60 f9       	bld	r22, 0
+ 6e2:	86 e1       	ldi	r24, 0x16	; 22
+ 6e4:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_23, GET_BIT(Copy_u8Number, 3));
+ 6e8:	c3 fb       	bst	r28, 3
+ 6ea:	66 27       	eor	r22, r22
+ 6ec:	60 f9       	bld	r22, 0
+ 6ee:	87 e1       	ldi	r24, 0x17	; 23
+ 6f0:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+#include "SSDISPLAY_prv.h"
+#include "SSDISPLAY_cfg.h"
+
+
+SSDISPLAY_enuErrorStatus SSDISPLAY_enuWriteNumber(u8 Copy_u8Number,u8 Copy_u8Seg) {
+    SSDISPLAY_enuErrorStatus Loc_tenuStatus = SSDISPLAY_OK;
+ 6f4:	81 e0       	ldi	r24, 0x01	; 1
+                DIO_enuWriteChannel(SSDISPLAY_BCD_20, GET_BIT(Copy_u8Number, 0));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_21, GET_BIT(Copy_u8Number, 1));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_22, GET_BIT(Copy_u8Number, 2));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_23, GET_BIT(Copy_u8Number, 3));
+
+            break;
+ 6f6:	35 c0       	rjmp	.+106    	; 0x762 <SSDISPLAY_enuWriteNumber+0xf0>
+            case 3:
+                DIO_enuWriteChannel(SSDISPLAY_BCD_30, GET_BIT(Copy_u8Number, 0));
+ 6f8:	68 2f       	mov	r22, r24
+ 6fa:	61 70       	andi	r22, 0x01	; 1
+ 6fc:	80 e0       	ldi	r24, 0x00	; 0
+ 6fe:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_31, GET_BIT(Copy_u8Number, 1));
+ 702:	c1 fb       	bst	r28, 1
+ 704:	66 27       	eor	r22, r22
+ 706:	60 f9       	bld	r22, 0
+ 708:	81 e0       	ldi	r24, 0x01	; 1
+ 70a:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_32, GET_BIT(Copy_u8Number, 2));
+ 70e:	c2 fb       	bst	r28, 2
+ 710:	66 27       	eor	r22, r22
+ 712:	60 f9       	bld	r22, 0
+ 714:	82 e0       	ldi	r24, 0x02	; 2
+ 716:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_33, GET_BIT(Copy_u8Number, 3));
+ 71a:	c3 fb       	bst	r28, 3
+ 71c:	66 27       	eor	r22, r22
+ 71e:	60 f9       	bld	r22, 0
+ 720:	83 e0       	ldi	r24, 0x03	; 3
+ 722:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+#include "SSDISPLAY_prv.h"
+#include "SSDISPLAY_cfg.h"
+
+
+SSDISPLAY_enuErrorStatus SSDISPLAY_enuWriteNumber(u8 Copy_u8Number,u8 Copy_u8Seg) {
+    SSDISPLAY_enuErrorStatus Loc_tenuStatus = SSDISPLAY_OK;
+ 726:	81 e0       	ldi	r24, 0x01	; 1
+                DIO_enuWriteChannel(SSDISPLAY_BCD_30, GET_BIT(Copy_u8Number, 0));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_31, GET_BIT(Copy_u8Number, 1));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_32, GET_BIT(Copy_u8Number, 2));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_33, GET_BIT(Copy_u8Number, 3));
+
+            break;
+ 728:	1c c0       	rjmp	.+56     	; 0x762 <SSDISPLAY_enuWriteNumber+0xf0>
+            case 4:
+                DIO_enuWriteChannel(SSDISPLAY_BCD_40, GET_BIT(Copy_u8Number, 0));
+ 72a:	68 2f       	mov	r22, r24
+ 72c:	61 70       	andi	r22, 0x01	; 1
+ 72e:	84 e0       	ldi	r24, 0x04	; 4
+ 730:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_41, GET_BIT(Copy_u8Number, 1));
+ 734:	c1 fb       	bst	r28, 1
+ 736:	66 27       	eor	r22, r22
+ 738:	60 f9       	bld	r22, 0
+ 73a:	85 e0       	ldi	r24, 0x05	; 5
+ 73c:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_42, GET_BIT(Copy_u8Number, 2));
+ 740:	c2 fb       	bst	r28, 2
+ 742:	66 27       	eor	r22, r22
+ 744:	60 f9       	bld	r22, 0
+ 746:	86 e0       	ldi	r24, 0x06	; 6
+ 748:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+                DIO_enuWriteChannel(SSDISPLAY_BCD_43, GET_BIT(Copy_u8Number, 3));
+ 74c:	c3 fb       	bst	r28, 3
+ 74e:	66 27       	eor	r22, r22
+ 750:	60 f9       	bld	r22, 0
+ 752:	87 e0       	ldi	r24, 0x07	; 7
+ 754:	0e 94 5d 00 	call	0xba	; 0xba <DIO_enuWriteChannel>
+#include "SSDISPLAY_prv.h"
+#include "SSDISPLAY_cfg.h"
+
+
+SSDISPLAY_enuErrorStatus SSDISPLAY_enuWriteNumber(u8 Copy_u8Number,u8 Copy_u8Seg) {
+    SSDISPLAY_enuErrorStatus Loc_tenuStatus = SSDISPLAY_OK;
+ 758:	81 e0       	ldi	r24, 0x01	; 1
+                DIO_enuWriteChannel(SSDISPLAY_BCD_40, GET_BIT(Copy_u8Number, 0));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_41, GET_BIT(Copy_u8Number, 1));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_42, GET_BIT(Copy_u8Number, 2));
+                DIO_enuWriteChannel(SSDISPLAY_BCD_43, GET_BIT(Copy_u8Number, 3));
+
+            break;                       
+ 75a:	03 c0       	rjmp	.+6      	; 0x762 <SSDISPLAY_enuWriteNumber+0xf0>
+
+SSDISPLAY_enuErrorStatus SSDISPLAY_enuWriteNumber(u8 Copy_u8Number,u8 Copy_u8Seg) {
+    SSDISPLAY_enuErrorStatus Loc_tenuStatus = SSDISPLAY_OK;
+    if((Copy_u8Number<0)||(Copy_u8Number>9))
+    {
+        Loc_tenuStatus = SSDISPLAY_WRONGNUMBER;
+ 75c:	80 e0       	ldi	r24, 0x00	; 0
+ 75e:	01 c0       	rjmp	.+2      	; 0x762 <SSDISPLAY_enuWriteNumber+0xf0>
+#include "SSDISPLAY_prv.h"
+#include "SSDISPLAY_cfg.h"
+
+
+SSDISPLAY_enuErrorStatus SSDISPLAY_enuWriteNumber(u8 Copy_u8Number,u8 Copy_u8Seg) {
+    SSDISPLAY_enuErrorStatus Loc_tenuStatus = SSDISPLAY_OK;
+ 760:	81 e0       	ldi	r24, 0x01	; 1
+
+        
+   
+    }
+    return Loc_tenuStatus;
+}
+ 762:	cf 91       	pop	r28
+ 764:	08 95       	ret
+
+00000766 <_exit>:
+ 766:	f8 94       	cli
+
+00000768 <__stop_program>:
+ 768:	ff cf       	rjmp	.-2      	; 0x768 <__stop_program>
