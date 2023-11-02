@@ -1,0 +1,20 @@
+10:47:52 **** Incremental Build of configuration Debug for project AlarmWithTimer ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 AlarmWithTimer.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   14096 bytes (43.0% Full)
+(.text + .data + .bootloader)
+
+Data:        331 bytes (16.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+10:47:53 Build Finished (took 217ms)
+
