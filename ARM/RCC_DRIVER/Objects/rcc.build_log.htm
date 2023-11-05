@@ -1,0 +1,218 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: fady raouf, na, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.8.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\New folder (3)\New folder (2)\rcc.uvprojx
+Project File Date:  11/05/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+main.c(1): warning: In file included from...
+./STD_TYPES.h(30): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+main.c(2): warning: In file included from...
+./BIT_UTILS.h(34): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+main.c(5): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+int main()
+        ^
+         void
+main.c(12): warning: 'return' will never be executed [-Wunreachable-code-return]
+        return 0;
+               ^
+4 warnings generated.
+compiling main.c...
+assembling startup_stm32f401xc.s...
+RCC.c(2): warning: In file included from...
+./STD_TYPES.h(30): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+RCC.c(3): warning: In file included from...
+./BIT_UTILS.h(34): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+RCC.c(5): warning: In file included from...
+./RCC_prv.h(7): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+RCC.c(6): warning: In file included from...
+./RCC_cfg.h(54): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+RCC.c(30): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                        CLR_BIT(MRCC->CR,18U);
+                        ^~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(33): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                        CLR_BIT(MRCC->CFGR,1U);
+                        ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(51): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                    CLR_BIT(MRCC->CFGR,0U);
+                    ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(52): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                    CLR_BIT(MRCC->CFGR,1U);
+                    ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(104): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                        CLR_BIT(MRCC->CFGR,0U);
+                        ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(10): warning: unused parameter 'Copy_u8OldSysClk' [-Wunused-parameter]
+Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(u8 Copy_u8SysClk , u8 Copy_u8OldSysClk) {
+                                                              ^
+RCC.c(111): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+RCC.c(119): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        u8 Counter =0;
+           ^
+RCC.c(127): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        CLR_BIT(MRCC->CR, 0U); // Disable HSI
+        ^~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(133): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        u8 Counter =0;
+           ^
+RCC.c(141): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        CLR_BIT(MRCC->CR, 16U); // Disable HSE
+        ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(147): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        u8 Counter =0;
+           ^
+RCC.c(155): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        CLR_BIT(MRCC->CR, 24U); // Disable PLL
+        ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(159): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+RCC.c(178): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+RCC.c(185): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            CLR_BIT(MRCC-> PLLCFGR ,22);
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(186): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= COPY_u8M<<0;
+                          ~~ ~~~~~~~~^~~
+RCC.c(187): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u16N<<6;
+                          ~~ ~~~~~~~~~^~~
+RCC.c(188): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u8P<<16;
+                          ~~ ~~~~~~~~^~~~
+RCC.c(189): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u8Q<<24;
+                          ~~ ~~~~~~~~^~~~
+RCC.c(195): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= COPY_u8M<<0;
+                          ~~ ~~~~~~~~^~~
+RCC.c(196): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u16N<<6;
+                          ~~ ~~~~~~~~~^~~
+RCC.c(197): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u8P<<16;
+                          ~~ ~~~~~~~~^~~~
+RCC.c(198): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u8Q<<24;
+                          ~~ ~~~~~~~~^~~~
+RCC.c(204): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+RCC.c(229): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+RCC.c(249): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+RCC.c(253): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+RCC.c(253): warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+33 warnings generated.
+compiling RCC.c...
+compiling system_stm32f4xx.c...
+linking...
+Program Size: Code=904 RO-data=420 RW-data=0 ZI-data=1632  
+FromELF: creating hex file...
+".\Objects\rcc.axf" - 0 Error(s), 37 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil.STM32F4xx_DFP.2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/HP/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/HP/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f401xc.s
+      Source file:   MDK/Device/Source/ARM/STM32F401xx_OPT.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
