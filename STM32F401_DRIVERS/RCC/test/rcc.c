@@ -1,5 +1,5 @@
-#include "../../services/Std_types.h"
-#include "../../servicesBit_utils.h"
+#include "Std_types.h"
+#include "Bit_utils.h"
 #include "rcc.h"
 
 typedef struct
@@ -228,4 +228,76 @@ Rcc_tenuErrorStatus Rcc_enuDisablePeriphral(u8 Copy_u8PeriphralBus,
 
 	return Error_Status;
 
+}
+
+Rcc_tenuErrorStatus Rcc_enuCfgBusPrescalers(u32 Copy_u32Prescaler)
+{
+
+	Rcc_tenuErrorStatus Error_Status = Rcc_enuOk;
+	switch (Copy_u32Prescaler)
+	{
+	case RCC_AHB_NOTDIV:
+		RCC->RCC_CFGR &= RCC_AHB_NOTDIV;
+		break;
+	case RCC_AHB_DIV2:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFFF0F) | Copy_u32Prescaler;
+		break;
+	case RCC_AHB_DIV4:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFFF0F) | Copy_u32Prescaler;
+		break;
+	case RCC_AHB_DIV8:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFFF0F) | Copy_u32Prescaler;
+		break;
+	case RCC_AHB_DIV16:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFFF0F) | Copy_u32Prescaler;
+		break;
+	case RCC_AHB_DIV64:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFFF0F) | Copy_u32Prescaler;
+		break;
+	case RCC_AHB_DIV128:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFFF0F) | Copy_u32Prescaler;
+		break;
+	case RCC_AHB_DIV256:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFFF0F) | Copy_u32Prescaler;
+		break;
+	case RCC_AHB_DIV512:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFFF0F) | Copy_u32Prescaler;
+		break;	
+	case RCC_APB1_NOTDIV:
+		RCC->RCC_CFGR &= RCC_APB1_NOTDIV;
+		break;	
+	case RCC_APB1_DIV2:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFE3FF) | Copy_u32Prescaler;
+		break;
+	case RCC_APB1_DIV4:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFE3FF) | Copy_u32Prescaler;
+		break;
+	case RCC_APB1_DIV8:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFE3FF) | Copy_u32Prescaler;
+		break;
+	case RCC_APB1_DIV16:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFFE3FF) | Copy_u32Prescaler;
+		break;
+	
+	case RCC_APB2_NOTDIV:
+		RCC->RCC_CFGR &= RCC_APB2_NOTDIV;
+		break;
+	case RCC_APB2_DIV2:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFF1FFF) | Copy_u32Prescaler;
+		break;
+	case RCC_APB2_DIV4:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFF1FFF) | Copy_u32Prescaler;
+		break;
+	case RCC_APB2_DIV8:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFF1FFF) | Copy_u32Prescaler;
+		break;
+	case RCC_APB2_DIV16:
+		RCC->RCC_CFGR = (RCC->RCC_CFGR & 0xFFFF1FFF) | Copy_u32Prescaler;
+		break;
+	default:
+		Error_Status = Rcc_enuWrongBusPrescalerError;
+		break;
+	}
+
+	return Error_Status;
 }

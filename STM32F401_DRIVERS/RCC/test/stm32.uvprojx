@@ -358,7 +358,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\STM32F401_DRIVERS</IncludePath>
+              <IncludePath></IncludePath>
             </VariousControls>
           </Aads>
           <LDads>
@@ -388,6 +388,26 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>Bit_utils.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\lec\ATMEGA32_DRIVER\services\Bit_utils.h</FilePath>
+            </File>
+            <File>
+              <FileName>Std_types.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\lec\ATMEGA32_DRIVER\services\Std_types.h</FilePath>
+            </File>
+            <File>
+              <FileName>rcc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>rcc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\rcc.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -436,14 +456,5 @@
       </file>
     </files>
   </RTE>
-
-  <LayerInfo>
-    <Layers>
-      <Layer>
-        <LayName>stm32</LayName>
-        <LayPrjMark>1</LayPrjMark>
-      </Layer>
-    </Layers>
-  </LayerInfo>
 
 </Project>

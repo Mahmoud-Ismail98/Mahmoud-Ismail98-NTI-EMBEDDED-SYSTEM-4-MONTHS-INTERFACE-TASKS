@@ -21,36 +21,26 @@ Target DLL:      UL2CM3.DLL V1.164.8.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-D:\NTI\ARM\NTI_KAIL\STM32F401_DRIVERS\stm32.uvprojx
+D:\NTI\mahmoud-ismail_korayem\STM32F401_DRIVERS\RCC\test\stm32.uvprojx
 Project File Date:  11/06/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
 main.c(2): warning: In file included from...
-./services/Std_types.h(37): warning: no newline at end of file [-Wnewline-eof]
+../test/Std_types.h(37): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
 main.c(3): warning: In file included from...
-./services/Bit_utils.h(33): warning: no newline at end of file [-Wnewline-eof]
+../test/Bit_utils.h(33): warning: no newline at end of file [-Wnewline-eof]
 #endif      
             ^
-main.c(6): warning: no previous extern declaration for non-static variable 'check_clk_on_flag' [-Wmissing-variable-declarations]
-u8 check_clk_on_flag;
-   ^
-main.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-u8 check_clk_on_flag;
-^
-3 warnings generated.
+2 warnings generated.
 compiling main.c...
-compiling system_stm32f4xx.c...
 linking...
-.\Objects\stm32.axf: Error: L6218E: Undefined symbol Rcc_enuCnfgrPll (referred from main.o).
-.\Objects\stm32.axf: Error: L6218E: Undefined symbol Rcc_enuEnablePeriphral (referred from main.o).
-Not enough information to list image symbols.
-Not enough information to list load addresses in the image map.
-Finished: 2 information, 0 warning and 2 error messages.
-".\Objects\stm32.axf" - 2 Error(s), 3 Warning(s).
+Program Size: Code=1756 RO-data=420 RW-data=0 ZI-data=1632  
+FromELF: creating hex file...
+".\Objects\stm32.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -77,11 +67,10 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:2.6.3
       Source file:   MDK/Device/Source/ARM/STM32F401xx_OPT.s
-      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
-      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f401xc.s
       Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f401xc.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
-Target not created.
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
