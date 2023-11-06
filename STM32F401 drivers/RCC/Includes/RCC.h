@@ -148,16 +148,16 @@ typedef enum
 
 Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(u8 Copy_u8SysClk) ;
 
-/*Rcc_tenuErrorStatus*/  void Rcc_enuControlCLk(u8 Copy_u8ControlHSI  ,u8 Copy_u8ControlHSE ,u8 Copy_u8ControlPLL) ;
+ void Rcc_enuControlCLk(u8 Copy_u8ControlHSI  ,u8 Copy_u8ControlHSE ,u8 Copy_u8ControlPLL) ;
 
 Rcc_tenuErrorStatus Rcc_enuCheckCLk(u8 Copy_u8CLk, pu8 Add_pu8RdyStatus) ;
 
-/*Rcc_tenuErrorStatus*/void Rcc_enuCnfgrPll( u8 Copy_u8P , u8 Copy_u8SrcPll , u8 Copy_u8Q);
+void Rcc_enuCnfgrPll( u8 Copy_u8P , u8 Copy_u8SrcPll , u8 Copy_u8Q);
 
-/*Rcc_tenuErrorStatus*/void Rcc_enuEnablePeriphral(u8 Copy_u8PeriphralBus , u32 Copy_u32Periphral);
+void Rcc_enuEnablePeriphral(u8 Copy_u8PeriphralBus , u32 Copy_u32Periphral);
 
-/*Rcc_tenuErrorStatus*/ void Rcc_enuDisablePeriphral(u8 Copy_u8PeriphralBus , u32 Copy_u32Periphral);
+ void Rcc_enuDisablePeriphral(u8 Copy_u8PeriphralBus , u32 Copy_u32Periphral);
 
-/*Rcc_tenuErrorStatus*/ void Rcc_enuCfgBusPrescalers(u32 Copy_u32Prescaler);
+void Rcc_enuCfgBusPrescalers(u32 Copy_u32Prescaler);
 ////////////////////////////////////////////////////////////////////////////////////////////
 #endif
