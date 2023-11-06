@@ -1,0 +1,75 @@
+ 
+
+
+#ifndef USART_CFG_H_
+#define USART_CFG_H_
+
+
+
+
+
+
+/*TO CHOOSE Data Bit MODE 
+OPTIANS :USART_5BIT_DATA_BITS     
+         USART_6BIT_DATA_BITS  
+         USART_7BIT_DATA_BITS  
+         USART_8BIT_DATA_BITS  
+         USART_9BIT_DATA_BITS  
+*/
+
+
+#define USART_DATABIT_MODE USART_8BIT_DATA_BITS
+
+/*TO CHOOSE Data Bit MODE 
+OPTIANS :USART_RX_ENABLE      
+         USART_RX_DISABLE    
+
+*/
+#define USART_RX_STATE   USART_RX_ENABLE
+/*TO CHOOSE Data Bit MODE 
+OPTIANS :USART_TX_ENABLE      
+         USART_TX_DISABLE    
+
+*/
+#define USART_TX_STATE   USART_TX_ENABLE
+
+
+/*TO CHOOSE STOP Bit MODE 
+OPTIANS :USART_1STOPBIT_MODE      
+         USART_2STOPBIT_MODE    
+
+*/
+
+
+#define USART_STOPBIT_MODE  USART_2STOPBIT_MODE
+
+/*TO CHOOSE MODE  Synch or Asynch
+OPTIANS :USART_ASYNCH_MODE      
+         USART_SYNCH_MODE    
+
+*/
+
+#define USART_MODE_SELECT  USART_ASYNCH_MODE
+
+/*TO CHOOSE MODE  Synch or Asynch    
+ OPTIANS:USART_PARITY_BIT_Disabled         
+         USART_PARITY_BIT_Enabled_EVEN     
+         USART_PARITY_BIT_Enabled_ODD      
+*/
+
+#define USART_PARITY_BIT_MODE  USART_PARITY_BIT_Disabled
+
+/*TO CHOOSE MODE  Synch or Asynch    
+ 
+  OPTIANS: USART_BAUDRATE_2400         
+            USART_BAUDRATE_4800         
+            USART_BAUDRATE_9600        
+            USART_BAUDRATE_14_4k       
+            USART_BAUDRATE_19_2k      
+    */
+
+#define USART_BAUD_RATE  USART_BAUDRATE_9600
+
+
+
+#endif /* USART_CFG_H_ */
