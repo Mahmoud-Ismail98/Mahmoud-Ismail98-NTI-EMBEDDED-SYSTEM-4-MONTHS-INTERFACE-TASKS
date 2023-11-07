@@ -55,6 +55,44 @@ There are three
 
 ![Screenshot_33](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/d438cd9d-5a60-43ab-9660-22abb5d51a14)
 
+# 2)the general-purpose I/O ports(GPIO)
+is a pin on an IC (Integrated Circuit). It can be used for driving loads, reading digital and analog signals, controlling external components, generating triggers for external devices etc. Each of the general-purpose I/O ports has two 32-bit configuration registers, two 32-bit data registers, a 32-bit set/reset register , a 16-bit reset register and a 32-bit locking register.
+
+**Input floating**
+
+**Input pull-up**
+
+**Input-pull-down**
+**Analog**
+
+**Output open-drain**
+
+**Output push-pull**
+
+**Alternate function push-pull**
+
+**Alternate function open-drain**
+
+## the GPIO function  debuging on keil 
+
+### 1.Gpio_init(&led_configuraion);
+    GpioPinCfg_t led_configuraion={GPIO_MODE_u64_OUTPUT_PP,GPIO_PUPD_u32_FLOATING,GPIO_SPEED_LOW,GPIO_PIN_01,GPIO_PORT_B};
+
+![Screenshot_39](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/7f03f5d1-7298-4e1d-89c6-732c9412004b)
+
+### 2.Gpio_setPinValue(&led_configuraion,GPIO_ODR_HIGH);
+
+![Screenshot_36](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/84cf9e0a-4b20-46ca-ac66-b9438a87b9da)
+
+![Screenshot_38](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/e5a1eafe-2ce6-4b9e-b187-e096344b6afb)
+
+### 3.Gpio_readPinValue(&led_configuraion,&PIN_STATUS);
+    GpioPinCfg_t led_configuraion={GPIO_MODE_u64_INPUT,GPIO_PUPD_u32_PULL_UP,GPIO_SPEED_MEDIUM,GPIO_PIN_00,GPIO_PORT_B};
+when i set pin1 in portB as input pullup we notice the regesters are changed except IDR that suppose it deected high as he connected on pullup but the regester value and passed argument not channged i thought that KEIL no support directly changed in hardware pullup input mode 
+
+![Screenshot_40](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/16c14d2c-730f-4930-8fc1-8d2642f1b060)
+
+
 
 
 

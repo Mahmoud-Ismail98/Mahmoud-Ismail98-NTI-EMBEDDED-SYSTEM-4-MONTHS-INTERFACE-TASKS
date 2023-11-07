@@ -1,0 +1,222 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ÂµVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: mahmoud korayem, imt, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.8.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\NTI\NTI_KEIL\GPIO\test\stm32.uvprojx
+Project File Date:  11/06/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+main.c(2): warning: In file included from...
+../test/Std_types.h(37): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+main.c(3): warning: In file included from...
+../test/Bit_utils.h(33): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+main.c(7): warning: no previous extern declaration for non-static variable 'PIN_STATUS' [-Wmissing-variable-declarations]
+u32 PIN_STATUS=0;
+    ^
+main.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+u32 PIN_STATUS=0;
+^
+main.c(32): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+GpioPinCfg_t led_configuraion={GPIO_MODE_u64_INPUT,GPIO_PUPD_u32_PULL_UP,GPIO_SPEED_MEDIUM,GPIO_PIN_00,GPIO_PORT_B};
+             ^
+4 warnings generated.
+compiling main.c...
+GPIO.c(1): warning: In file included from...
+../test/Std_types.h(37): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+GPIO.c(2): warning: In file included from...
+../test/Bit_utils.h(33): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+GPIO.c(34): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                              ^~~~~
+GPIO.c(23): note: expanded from macro 'GPIOA'
+#define GPIOA    ((volatile GPIO_t*)(GPIO_A_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(34): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                                    ^~~~~
+GPIO.c(24): note: expanded from macro 'GPIOB'
+#define GPIOB    ((volatile GPIO_t*)(GPIO_B_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(34): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                                          ^~~~~
+GPIO.c(25): note: expanded from macro 'GPIOC'
+#define GPIOC    ((volatile GPIO_t*)(GPIO_C_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(41): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_MODER  &= ~(0x00000003<<(PIN*2));
+                                              ~~ ^~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(47): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_MODER  &= ~ (0x00000003<<(PIN*2));
+                                              ~~ ^~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(51): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_MODER &= ~ (0x00000003<<(PIN*2));
+                                             ~~ ^~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(59): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_PUPDR &= ~ (GPIO_PUPD_u32_FLOATING<<PIN*2);
+                                             ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(63): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_PUPDR &= ~ (GPIO_PUPD_u32_FLOATING<<(PIN*2));
+                                             ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(67): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_PUPDR &= ~ (GPIO_PUPD_u32_FLOATING<<PIN*2);
+                                             ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(68): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_PUPDR |=   (GPIO_PUPD_u32_PULL_DOWN<<PIN*2);
+                                             ~~    ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+GPIO.c(76): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_OSPEEDER &= ~ (0x00000003 << (PIN*2 ));
+                                                ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(79): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_OSPEEDER &= ~ (0x00000003 << (PIN*2));
+                                                ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(83): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_OSPEEDER &= ~ (0x00000003 << (PIN*2));
+                                                ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(84): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_OSPEEDER |=   (GPIO_SPEED_HIGH << (PIN*2));
+                                                ~~    ~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(87): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_OSPEEDER &= ~ (0x00000003 << (PIN*2));
+                                                ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(88): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                ARRY_GPIO[PORT]->GPIOx_OSPEEDER |=   (GPIO_SPEED_VHIGH << (PIN*2));
+                                                ~~    ~~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(35): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u32' (aka 'unsigned long') [-Wshorten-64-to-32]
+        u32 PORT= Add_CnfgStruct->gpio_port_x;
+            ~~~~  ~~~~~~~~~~~~~~~~^~~~~~~~~~~
+GPIO.c(36): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u32' (aka 'unsigned long') [-Wshorten-64-to-32]
+        u32 PIN= Add_CnfgStruct->gpio_pin_x;
+            ~~~  ~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(101): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                              ^~~~~
+GPIO.c(23): note: expanded from macro 'GPIOA'
+#define GPIOA    ((volatile GPIO_t*)(GPIO_A_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(101): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                                    ^~~~~
+GPIO.c(24): note: expanded from macro 'GPIOB'
+#define GPIOB    ((volatile GPIO_t*)(GPIO_B_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(101): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                                          ^~~~~
+GPIO.c(25): note: expanded from macro 'GPIOC'
+#define GPIOC    ((volatile GPIO_t*)(GPIO_C_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(102): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        u8 PORT= Add_pu8CnfgStatus->gpio_port_x;
+           ~~~~  ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+GPIO.c(103): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        u8 PIN= Add_pu8CnfgStatus->gpio_pin_x;
+           ~~~  ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(111): warning: operator '<<' has lower precedence than '+'; '+' will be evaluated first [-Wshift-op-parentheses]
+                SET_BIT(ARRY_GPIO[PORT]->GPIOx_BSRR,PIN+15);
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+../test/Bit_utils.h(4): note: expanded from macro 'SET_BIT'
+#define SET_BIT(Reg,Bit)                Reg|=(1<<Bit)
+                                               ~~^~~
+GPIO.c(111): note: place parentheses around the '+' expression to silence this warning
+                SET_BIT(ARRY_GPIO[PORT]->GPIOx_BSRR,PIN+15);
+                                                    ~~~^~~
+../test/Bit_utils.h(4): note: expanded from macro 'SET_BIT'
+#define SET_BIT(Reg,Bit)                Reg|=(1<<Bit)
+                                                 ^~~
+GPIO.c(123): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                              ^~~~~
+GPIO.c(23): note: expanded from macro 'GPIOA'
+#define GPIOA    ((volatile GPIO_t*)(GPIO_A_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(123): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                                    ^~~~~
+GPIO.c(24): note: expanded from macro 'GPIOB'
+#define GPIOB    ((volatile GPIO_t*)(GPIO_B_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(123): warning: initializing 'GPIO_t *' with an expression of type 'volatile GPIO_t *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        GPIO_t* ARRY_GPIO[3]={GPIOA,GPIOB,GPIOC};
+                                          ^~~~~
+GPIO.c(25): note: expanded from macro 'GPIOC'
+#define GPIOC    ((volatile GPIO_t*)(GPIO_C_BASE))
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(136): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+GPIO.c(124): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u32' (aka 'unsigned long') [-Wshorten-64-to-32]
+        u32 PORT= Add_CnfgStruct->gpio_port_x;
+            ~~~~  ~~~~~~~~~~~~~~~~^~~~~~~~~~~
+GPIO.c(125): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u32' (aka 'unsigned long') [-Wshorten-64-to-32]
+        u32 PIN= Add_CnfgStruct->gpio_pin_x;
+            ~~~  ~~~~~~~~~~~~~~~~^~~~~~~~~~
+32 warnings generated.
+compiling GPIO.c...
+linking...
+Program Size: Code=1656 RO-data=420 RW-data=0 ZI-data=1640  
+FromELF: creating hex file...
+".\Objects\stm32.axf" - 0 Error(s), 36 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil.STM32F4xx_DFP.2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/mkora/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/mkora/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Source file:   MDK/Device/Source/ARM/STM32F401xx_OPT.s
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f401xc.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
