@@ -25,9 +25,14 @@
 #include <Services/Memory_Map.h>
 #include <MCAL/RCC/RCC_Includes/RCC.h>
 #include <MCAL/GPIO/GPIO_Includes/Gpio.h>
-
-
+void RCC_Debug(void);
 int main()
+{
+	RCC_Debug();
+	return 0;
+}
+
+void RCC_Debug(void)
 {
 	Rcc_enuCnfgrPll(2,3,RCC_PLLP_DIVBY_2, RCC_PLLSRC_HSE, RCC_Q_DIVBY_2 );
 	Rcc_enuControlCLk(RCC_CNTROL_HSION, RCC_CNTROL_HSEON, RCC_CNTROL_PLLMainON, RCC_CNTROL_PLLI2SON);
@@ -35,8 +40,4 @@ int main()
 	Rcc_enuEnablePeriphral(RCC_REGISTER_AHB1, AHB1_GPIOA_EN);
 	Rcc_enuDisablePeriphral(RCC_REGISTER_AHB1, AHB1_GPIOA_EN);
 	Rcc_enuCfgBusPrescalers(RCC_REGISTER_APB2, RCC_APB2_DIV4);
-
-	return 0;
 }
-
-

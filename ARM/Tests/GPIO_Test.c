@@ -18,7 +18,7 @@
  */
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
 
@@ -26,10 +26,18 @@
 #include <MCAL/RCC/RCC_Includes/RCC.h>
 #include <MCAL/GPIO/GPIO_Includes/Gpio.h>
 
+void GPIO_Debug(void);
+
 int main()
 {
-	//GPIO_Init_Static1(GPIO_PORT_B);
+	GPIO_Debug();
+	return 0;
+}
+
+void GPIO_Debug(void)
+{
 	GPIO_Init_Static2(GPIO_PORT_C);
+	GPIO_Init_Static2(GPIO_PORT_E);
 	GpioPinCfg_t CnfgStruct = {GPIO_MODE_OUTPUT_PP, GPIO_PUPD_u32_PULL_DOWN, GPIO_SPEED_HIGH, GPIO_PIN_05, GPIO_PORT_E};
 	Gpio_init(&CnfgStruct);
 	Gpio_setPinValue1(&CnfgStruct, GPIO_PIN_HIGH);
@@ -38,5 +46,6 @@ int main()
 	CnfgStruct.gpio_pin_x = GPIO_PIN_11;
 	Gpio_init(&CnfgStruct);
 	Gpio_SetAlternateFunction(&CnfgStruct, GPIO_AF_13);
-	return 0;
+	Rcc_enuEnablePeriphral(RCC_REGISTER_AHB1, AHB1_GPIOA_EN);
 }
+

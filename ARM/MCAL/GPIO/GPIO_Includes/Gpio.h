@@ -30,6 +30,11 @@ uint32 gpio_pin_x;
 uint32 gpio_port_x;
 }GpioPinCfg_t;
 
+////////////////////////////////STRUCT for First four registers value///////////////////////////////////////////////
+typedef struct{
+	uint32 First_4Reg[4];
+}GPIOx_First_4Reg_t;
+
 //////////////////////////STRUCT PORT OPTIONS////////////////////////////////////////////////////
 #define GPIO_PORT_A											0
 #define GPIO_PORT_B											1
@@ -116,9 +121,9 @@ Gpio_tenuErrorStatus Gpio_setPinValue2(uint32 Copy32Port ,uint32 Copyu32Pin ,uin
 Gpio_tenuErrorStatus Gpio_readPinValue(GpioPinCfg_t  *Add_CnfgStruct , Puint32 Add_pu32PinValue);
 Gpio_tenuErrorStatus Gpio_SetAlternateFunction(GpioPinCfg_t  *Add_CnfgStruct , uint32 CopyAF);
 Gpio_tenuErrorStatus Gpio_LockPin(uint32 Copyu32Port ,uint32 Copyu32Pin[16]);
-
 void GPIO_Init_Static1(uint32 GPIO_PORTx);
 void GPIO_Init_Static2(uint32 GPIO_PORTx);
+
 //////////////////////////////////////////////////////////////////////////////////
 
 #endif
