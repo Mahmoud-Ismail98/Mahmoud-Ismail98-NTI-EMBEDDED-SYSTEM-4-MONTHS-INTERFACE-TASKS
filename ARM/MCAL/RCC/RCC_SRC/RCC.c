@@ -8,13 +8,13 @@
 #include "MCAL/RCC/RCC_Includes/RCC.h"
 
 
-Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(uint8 Copy_u8SysClk , uint8 Copy_u8OldSysClk)
+Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(uint32 Copy_u32SysClk , uint32 Copy_u32OldSysClk)
 {
 	uint8 Ready_Flag_Value = 0;
 	uint8 Ready_Flag_Location = 0;
 
 	//get flag location to read according to the desired clock to select
-	switch(Copy_u8SysClk)
+	switch(Copy_u32SysClk)
 	{
 	case RCC_CLK_HSI:
 		Ready_Flag_Location = 1;
@@ -45,12 +45,12 @@ Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(uint8 Copy_u8SysClk , uint8 Copy_u8OldSy
 		uint8 Old_Clock = Bit_Band_Peripheral(RCC->RCC_CFGR, 2) | (Bit_Band_Peripheral(RCC->RCC_CFGR, 3) << 1);
 
 		//select the new clock
-		Bit_Band_Peripheral(RCC->RCC_CFGR, 0) = GET_BIT(Copy_u8SysClk, 0);
-		Bit_Band_Peripheral(RCC->RCC_CFGR, 1) = GET_BIT(Copy_u8SysClk, 1);
+		Bit_Band_Peripheral(RCC->RCC_CFGR, 0) = GET_BIT(Copy_u32SysClk, 0);
+		Bit_Band_Peripheral(RCC->RCC_CFGR, 1) = GET_BIT(Copy_u32SysClk, 1);
 
 		//check if the old clock is not the new clock and the user wants to close the clock
 		//wait commented for keil
-		if(Copy_u8OldSysClk && Old_Clock != Copy_u8SysClk)
+		if(Copy_u32OldSysClk && Old_Clock != Copy_u32SysClk)
 		{
 			switch(Old_Clock)// disable old clock
 			{
@@ -71,34 +71,34 @@ Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(uint8 Copy_u8SysClk , uint8 Copy_u8OldSy
 	return Rcc_enuOk;
 }
 
-Rcc_tenuErrorStatus Rcc_enuControlCLk(uint8 Copy_u8ControlHSI  ,uint8 Copy_u8ControlHSE ,uint8 Copy_u8ControlPLL_Main, uint8 Copy_u8ControlPLL_I2S)
+Rcc_tenuErrorStatus Rcc_enuControlCLk(uint32 Copy_u32ControlHSI  ,uint32 Copy_u32ControlHSE ,uint32 Copy_u32ControlPLL_Main, uint32 Copy_u32ControlPLL_I2S)
 {
 	// read the current clock but commented for keil
 	uint8 System_Clock = Bit_Band_Peripheral(RCC->RCC_CFGR, 2) | (Bit_Band_Peripheral(RCC->RCC_CFGR, 3) << 1);
 
 	if(System_Clock != RCC_CLK_PLL) //commented for keil
 		//main PLL
-		Bit_Band_Peripheral(RCC->RCC_CR, 24) = Copy_u8ControlPLL_Main;
+		Bit_Band_Peripheral(RCC->RCC_CR, 24) = Copy_u32ControlPLL_Main;
 
 	//I2S PLL
-	Bit_Band_Peripheral(RCC->RCC_CR, 26) = Copy_u8ControlPLL_I2S;
+	Bit_Band_Peripheral(RCC->RCC_CR, 26) = Copy_u32ControlPLL_I2S;
 
 	//HSE
-	Bit_Band_Peripheral(RCC->RCC_CR, 16) = Copy_u8ControlHSE;
+	Bit_Band_Peripheral(RCC->RCC_CR, 16) = Copy_u32ControlHSE;
 
 	//HSI
-	Bit_Band_Peripheral(RCC->RCC_CR, 0) = Copy_u8ControlHSI;
+	Bit_Band_Peripheral(RCC->RCC_CR, 0) = Copy_u32ControlHSI;
 
 	return Rcc_enuOk;
 }
 
-Rcc_tenuErrorStatus Rcc_enuCheckCLk(uint8 Copy_u8CLk, Puint8 Add_pu8RdyStatus)
+Rcc_tenuErrorStatus Rcc_enuCheckCLk(uint32 Copy_u32CLk, Puint8 Add_pu32RdyStatus)
 {
 	uint8 Ready_Flag_Value = 0;
 	uint8 Ready_Flag_Location = 0;
 
 	//get flag location to read according to the desired clock to select
-	switch(Copy_u8CLk)
+	switch(Copy_u32CLk)
 	{
 	case RCC_CLK_HSI:
 		Ready_Flag_Location = 1;
@@ -119,62 +119,86 @@ Rcc_tenuErrorStatus Rcc_enuCheckCLk(uint8 Copy_u8CLk, Puint8 Add_pu8RdyStatus)
 		Ready_Flag_Value = Bit_Band_Peripheral(RCC->RCC_CFGR, Ready_Flag_Location);
 	}
 
-	*Add_pu8RdyStatus = Ready_Flag_Value;
+	*Add_pu32RdyStatus = Ready_Flag_Value;
 	return Rcc_enuOk;
 }
 
-Rcc_tenuErrorStatus Rcc_enuCnfgrPll(uint8 COPY_u8M , uint16 Copy_u16N , uint8 Copy_u8P , uint8 Copy_u8SrcPll , uint8 Copy_u8Q)
+Rcc_tenuErrorStatus Rcc_enuCnfgrPll(uint32 COPY_u32M , uint32 Copy_u16N , uint32 Copy_u32P , uint32 Copy_u32SrcPll , uint32 Copy_u32Q)
 {
-	RCC->RCC_PLLCFGR = ( COPY_u8M << 0) | (Copy_u16N << 6) | (Copy_u8P) | (Copy_u8SrcPll) | (Copy_u8Q);
+	RCC->RCC_PLLCFGR = ( COPY_u32M << 0) | (Copy_u16N << 6) | (Copy_u32P) | (Copy_u32SrcPll) | (Copy_u32Q);
 	return Rcc_enuOk;
 }
 
-Rcc_tenuErrorStatus Rcc_enuEnablePeriphral(uint8 Copy_u8PeriphralBus , uint32 Copy_u32Periphral)
+Rcc_tenuErrorStatus Rcc_enuEnablePeriphral(uint32 Copy_u32PeriphralBus , uint32 Copy_u32Periphral)
 {
-	uint32 Temp_Reg = RCC->RCC_AHB1ENR;
-	Temp_Reg &= ~(Copy_u32Periphral);
-	switch(Copy_u8PeriphralBus)
+	switch(Copy_u32PeriphralBus)
 	{
 	case RCC_REGISTER_AHB1:
+		Bit_Band_Peripheral(RCC->RCC_AHB1ENR, Copy_u32Periphral) = 1;
+		break;
+
 	case RCC_REGISTER_AHB2:
+		Bit_Band_Peripheral(RCC->RCC_AHB2ENR , Copy_u32Periphral) = 1;
+		break;
+
 	case RCC_REGISTER_APB1:
+		Bit_Band_Peripheral(RCC->RCC_APB1ENR , Copy_u32Periphral) = 1;
+		break;
+
 	case RCC_REGISTER_APB2:
-		Temp_Reg |= Copy_u32Periphral;
-		RCC->RCC_AHB1ENR = Temp_Reg;
-	break;
+		Bit_Band_Peripheral(RCC->RCC_APB2ENR , Copy_u32Periphral) = 1;
+		break;
 	}
 	return Rcc_enuOk;
 }
 
-Rcc_tenuErrorStatus Rcc_enuDisablePeriphral(uint8 Copy_u8PeriphralBus , uint32 Copy_u32Periphral)
+Rcc_tenuErrorStatus Rcc_enuDisablePeriphral(uint32 Copy_u32PeriphralBus , uint32 Copy_u32Periphral)
 {
-	uint32 Temp_Reg = RCC->RCC_AHB1ENR;
-	switch(Copy_u8PeriphralBus)
+	switch(Copy_u32PeriphralBus)
 	{
 	case RCC_REGISTER_AHB1:
+		Bit_Band_Peripheral(RCC->RCC_AHB1ENR, Copy_u32Periphral) = 0;
+		break;
+
 	case RCC_REGISTER_AHB2:
+		Bit_Band_Peripheral(RCC->RCC_AHB2ENR , Copy_u32Periphral) = 0;
+		break;
+
 	case RCC_REGISTER_APB1:
+		Bit_Band_Peripheral(RCC->RCC_APB1ENR , Copy_u32Periphral) = 0;
+		break;
+
 	case RCC_REGISTER_APB2:
-		Temp_Reg &= ~(Copy_u32Periphral);
-		RCC->RCC_APB2ENR = Temp_Reg;
-	break;
+		Bit_Band_Peripheral(RCC->RCC_APB2ENR , Copy_u32Periphral) = 0;
+		break;
 	}
 	return Rcc_enuOk;
 }
 
-Rcc_tenuErrorStatus Rcc_enuCfgBusPrescalers(uint8 Copy_u8PeriphralBus, uint32 Copy_u32Prescaler)
+
+Rcc_tenuErrorStatus Rcc_enuCfgBusPrescalers(uint32 Copy_u32PeriphralBus, uint32 Copy_u32Prescaler)
 {
-	uint32 Temp_Reg = RCC->RCC_AHB1ENR;
-	Temp_Reg &= ~(Copy_u32Prescaler);
-	switch(Copy_u8PeriphralBus)
+	uint32 temp_reg = RCC->RCC_CFGR;
+	switch(Copy_u32PeriphralBus)
 	{
 	case RCC_REGISTER_AHB1:
 	case RCC_REGISTER_AHB2:
+		temp_reg &= ~(RCC_AHB_DIV512); //clear the four bits of the bus Prescaler in the temp_reg
+		temp_reg |= Copy_u32Prescaler;
+		 RCC->RCC_CFGR = temp_reg;
+		break;
+
 	case RCC_REGISTER_APB1:
+		temp_reg &= ~(RCC_APB1_DIV16 ); //clear the three bits of the bus Prescaler in the temp_reg
+		temp_reg |= Copy_u32Prescaler;
+		 RCC->RCC_CFGR = temp_reg;
+		break;
+
 	case RCC_REGISTER_APB2:
-		Temp_Reg |= Copy_u32Prescaler;
-		RCC->RCC_AHB1ENR = Temp_Reg;
-	break;
+		temp_reg &= ~(RCC_APB2_DIV16 ); //clear the three bits of the bus Prescaler in the temp_reg
+		temp_reg |= Copy_u32Prescaler;
+		 RCC->RCC_CFGR = temp_reg;
+		break;
 	}
 	return Rcc_enuOk;
 }

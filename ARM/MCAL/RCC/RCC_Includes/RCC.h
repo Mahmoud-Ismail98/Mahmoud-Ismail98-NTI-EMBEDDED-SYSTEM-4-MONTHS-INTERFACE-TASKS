@@ -92,45 +92,45 @@ typedef enum
 
 /*Copy_u8Periphral  OPTIONS*/
 /*AHB1_Periphral_bitmask*/
-#define AHB1_GPIOA_EN   (1 << 0)
-#define AHB1_GPIOB_EN   (1 << 1)
-#define AHB1_GPIOC_EN   (1 << 2)
-#define AHB1_GPIOD_EN   (1 << 3)
-#define AHB1_GPIOE_EN   (1 << 4)
-#define AHB1_GPIOH_EN   (1 << 7)
-#define AHB1_CRC_EN     (1 << 12)
-#define AHB1_DMA1_EN    (1 << 21)
-#define AHB1_DMA2_EN    (1 << 22)
+#define AHB1_GPIOA_EN   (0)
+#define AHB1_GPIOB_EN   (1)
+#define AHB1_GPIOC_EN   (2)
+#define AHB1_GPIOD_EN   (3)
+#define AHB1_GPIOE_EN   (4)
+#define AHB1_GPIOH_EN   (7)
+#define AHB1_CRC_EN     (12)
+#define AHB1_DMA1_EN    (21)
+#define AHB1_DMA2_EN    (22)
 
 /*AHB2_Periphral_bitmask*/
 #define AHB2_OTGFS_EN   (7)
 
 /*APB1_Periphral_bitmask*/
-#define APB1_TIM2_EN    (1 << 0)
-#define APB1_TIM3_EN    (1<< 1)
-#define APB1_TIM4_EN    (1 << 2)
-#define APB1_TIM5_EN    (1 << 3)
-#define APB1_WWDG_EN    (1 << 11)
-#define APB1_SPI2_EN    (1 << 14)
-#define APB1_SPI3_EN    (1 << 15)
-#define APB1_USART2_EN  (1 << 17)
-#define APB1_I2C1_EN    (1 << 21)
-#define APB1_I2C2_EN    (1 << 22)
-#define APB1_I2C3_EN    (1 << 23)
-#define APB1_PWR_EN     (1 << 28)
+#define APB1_TIM2_EN    (0)
+#define APB1_TIM3_EN    (1)
+#define APB1_TIM4_EN    (2)
+#define APB1_TIM5_EN    (3)
+#define APB1_WWDG_EN    (11)
+#define APB1_SPI2_EN    (14)
+#define APB1_SPI3_EN    (15)
+#define APB1_USART2_EN  (17)
+#define APB1_I2C1_EN    (21)
+#define APB1_I2C2_EN    (22)
+#define APB1_I2C3_EN    (23)
+#define APB1_PWR_EN     (28)
 
 /*APB2_Periphral_bitmask*/
-#define APB2_TIM1_EN    (1 << 0)
-#define	APB2_USART1_EN  (1 << 4)
-#define APB2_USART6_EN  (1 << 5)
-#define APB2_ADC1_EN    (1 << 8)
-#define	APB2_SDIO_EN    (1 << 11)
-#define APB2_SPI1_EN    (1 << 12)
-#define APB2_SPI4_EN    (1 << 13)
-#define APB2_SYSCFG_EN  (1 << 14)
-#define APB2_TIM9_EN    (1 << 16)
-#define APB2_TIM10_EN   (1 << 17)
-#define APB2_TIM11_EN   (1 << 18)
+#define APB2_TIM1_EN    (0)
+#define	APB2_USART1_EN  (4)
+#define APB2_USART6_EN  (5)
+#define APB2_ADC1_EN    (8)
+#define	APB2_SDIO_EN    (11)
+#define APB2_SPI1_EN    (12)
+#define APB2_SPI4_EN    (13)
+#define APB2_SYSCFG_EN  (14)
+#define APB2_TIM9_EN    (16)
+#define APB2_TIM10_EN   (17)
+#define APB2_TIM11_EN   (18)
 
 ///////////////////////INPUTS FOR Rcc_enuCfgBusPrescalers///////////////////////////////////
 
@@ -162,19 +162,19 @@ typedef enum
 
 ///////////////////////////////////////*FUNCTIONS*///////////////////////////////////////////
 
-Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(uint8 Copy_u8SysClk , uint8 Copy_u8OldSysClk) ;
+Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(uint32 Copy_u32SysClk , uint32 Copy_u32OldSysClk) ;
 
-Rcc_tenuErrorStatus Rcc_enuControlCLk(uint8 Copy_u8ControlHSI  ,uint8 Copy_u8ControlHSE ,uint8 Copy_u8ControlPLL_Main, uint8 Copy_u8ControlPLL_I2S);
+Rcc_tenuErrorStatus Rcc_enuControlCLk(uint32 Copy_u32ControlHSI  ,uint32 Copy_u32ControlHSE ,uint32 Copy_u32ControlPLL_Main, uint32 Copy_u32ControlPLL_I2S);
 
-Rcc_tenuErrorStatus Rcc_enuCheckCLk(uint8 Copy_u8CLk, Puint8 Add_pu8RdyStatus) ;
+Rcc_tenuErrorStatus Rcc_enuCheckCLk(uint32 Copy_u32CLk, Puint8 Add_pu32RdyStatus) ;
 
-Rcc_tenuErrorStatus Rcc_enuCnfgrPll(uint8 COPY_u8M , uint16 Copy_u16N , uint8 Copy_u8P , uint8 Copy_u8SrcPll , uint8 Copy_u8Q);
+Rcc_tenuErrorStatus Rcc_enuCnfgrPll(uint32 COPY_u32M , uint32 Copy_u16N , uint32 Copy_u32P , uint32 Copy_u32SrcPll , uint32 Copy_u32Q);
 
-Rcc_tenuErrorStatus Rcc_enuEnablePeriphral(uint8 Copy_u8PeriphralBus , uint32 Copy_u32Periphral);
+Rcc_tenuErrorStatus Rcc_enuEnablePeriphral(uint32 Copy_u32PeriphralBus , uint32 Copy_u32Periphral);
 
-Rcc_tenuErrorStatus Rcc_enuDisablePeriphral(uint8 Copy_u8PeriphralBus , uint32 Copy_u32Periphral);
+Rcc_tenuErrorStatus Rcc_enuDisablePeriphral(uint32 Copy_u32PeriphralBus , uint32 Copy_u32Periphral);
 
-Rcc_tenuErrorStatus Rcc_enuCfgBusPrescalers(uint8 Copy_u8PeriphralBus, uint32 Copy_u32Prescaler);
+Rcc_tenuErrorStatus Rcc_enuCfgBusPrescalers(uint32 Copy_u32PeriphralBus, uint32 Copy_u32Prescaler);
 ////////////////////////////////////////////////////////////////////////////////////////////
 #endif /* MCAL_RCC_RCC_H_ */
 
