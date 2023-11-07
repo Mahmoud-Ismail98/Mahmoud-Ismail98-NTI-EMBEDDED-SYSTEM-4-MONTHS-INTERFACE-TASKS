@@ -1,0 +1,14 @@
+HAL/lm35/SRC/LM35.d HAL/lm35/SRC/LM35.o: ../HAL/lm35/SRC/LM35.c \
+ ../Services/INCLUDES/STD_TYPES.h ../Services/INCLUDES/BIT_MATH.h \
+ ../Services/INCLUDES/CLCK.h ../MCAL/ADC/INCLUDES/ADC.h \
+ ../HAL/lm35/INCLUDES/LM35.h
+
+../Services/INCLUDES/STD_TYPES.h:
+
+../Services/INCLUDES/BIT_MATH.h:
+
+../Services/INCLUDES/CLCK.h:
+
+../MCAL/ADC/INCLUDES/ADC.h:
+
+../HAL/lm35/INCLUDES/LM35.h:
