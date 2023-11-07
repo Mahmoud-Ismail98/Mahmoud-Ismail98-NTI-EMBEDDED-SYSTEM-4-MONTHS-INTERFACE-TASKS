@@ -10,11 +10,34 @@
 #include <MCAL/GPIO/GPIO_Includes/Gpio.h>
 #include <MCAL/GPIO/GPIO_Includes/GPIO_CFG.h>
 
-
 static GPIOx_t* (Loc_Arr_Gpiox[6]) = {GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOH};
 
-
 void GPIO_Init_Static2(uint32 GPIO_PORTx)
+{
+	switch(GPIO_PORTx)
+	{
+	case GPIO_PORT_A:
+		*GPIOA_First_4Reg = GPIOA_First_4Reg_CFG;
+		break;
+	case GPIO_PORT_B:
+		*GPIOB_First_4Reg = GPIOB_First_4Reg_CFG;
+		break;
+	case GPIO_PORT_C:
+		*GPIOC_First_4Reg = GPIOC_First_4Reg_CFG;
+		break;
+	case GPIO_PORT_D:
+		*GPIOD_First_4Reg = GPIOD_First_4Reg_CFG;
+		break;
+	case GPIO_PORT_E:
+		*GPIOE_First_4Reg = GPIOE_First_4Reg_CFG;
+		break;
+	case GPIO_PORT_H:
+		*GPIOH_First_4Reg = GPIOH_First_4Reg_CFG;
+		break;
+	}
+}
+
+void GPIO_Init_Static1(uint32 GPIO_PORTx)
 {
 	if(GPIO_PORTx == GPIO_PORT_A)
 	{
@@ -82,7 +105,6 @@ Gpio_tenuErrorStatus Gpio_init(GpioPinCfg_t  *Add_CnfgStruct)
 
 	switch (Add_CnfgStruct->gpio_mode_x)
 	{
-
 	case GPIO_MODE_INPUT:
 		//set configurations
 		Loc_Arr_Gpiox[Add_CnfgStruct->gpio_port_x]->MODER |= GPIO_Input << (Add_CnfgStruct->gpio_pin_x * 2);
@@ -114,9 +136,9 @@ Gpio_tenuErrorStatus Gpio_init(GpioPinCfg_t  *Add_CnfgStruct)
 		Loc_Arr_Gpiox[Add_CnfgStruct->gpio_port_x]->MODER |= GPIO_Analog << (Add_CnfgStruct->gpio_pin_x * 2);
 		break;
 	}
-
 	return Gpio_enuOk;
 }
+
 
 Gpio_tenuErrorStatus Gpio_setPinValue1(GpioPinCfg_t  *Add_pu32CnfgStatus , uint32 Copyu32PinValue)
 {
@@ -124,17 +146,20 @@ Gpio_tenuErrorStatus Gpio_setPinValue1(GpioPinCfg_t  *Add_pu32CnfgStatus , uint3
 	return Gpio_enuOk;
 }
 
+
 Gpio_tenuErrorStatus Gpio_setPinValue2(uint32 Copyu32Port ,uint32 Copyu32Pin ,uint32 Copyu32Value)
 {
 	Bit_Band_Peripheral(Loc_Arr_Gpiox[Copyu32Port]->ODR, Copyu32Pin) = Copyu32Value;
 	return Gpio_enuOk;
 }
 
+
 Gpio_tenuErrorStatus Gpio_readPinValue(GpioPinCfg_t  *Add_CnfgStruct , Puint32 Add_pu32PinValue)
 {
 	*Add_pu32PinValue = (uint8)Bit_Band_Peripheral(Loc_Arr_Gpiox[Add_CnfgStruct->gpio_port_x]->IDR, Add_CnfgStruct->gpio_pin_x);
 	return Gpio_enuOk;
 }
+
 
 Gpio_tenuErrorStatus Gpio_SetAlternateFunction(GpioPinCfg_t  *Add_CnfgStruct , uint32 CopyAF)
 {
@@ -151,11 +176,12 @@ Gpio_tenuErrorStatus Gpio_SetAlternateFunction(GpioPinCfg_t  *Add_CnfgStruct , u
 	return Gpio_enuOk;
 }
 
+
 Gpio_tenuErrorStatus Gpio_LockPin(uint32 Copyu32Port ,uint32 Copyu32Pin[16])
 {
 	for(uint8 PINx = 0; PINx < 16; PINx++)
 	{
-			Bit_Band_Peripheral(Loc_Arr_Gpiox[Copyu32Port]->LCKR, PINx) = Copyu32Pin[PINx] ;
+		Bit_Band_Peripheral(Loc_Arr_Gpiox[Copyu32Port]->LCKR, PINx) = Copyu32Pin[PINx] ;
 	}
 	uint32 temp_reg = Loc_Arr_Gpiox[Copyu32Port]->LCKR;
 	temp_reg |= (1 << 16);
@@ -164,8 +190,8 @@ Gpio_tenuErrorStatus Gpio_LockPin(uint32 Copyu32Port ,uint32 Copyu32Pin[16])
 	Loc_Arr_Gpiox[Copyu32Port]->LCKR = temp_reg;
 	temp_reg |= (1 << 16);
 	Loc_Arr_Gpiox[Copyu32Port]->LCKR = temp_reg;
-	return Gpio_enuOk;
 
+	return Gpio_enuOk;
 }
 
 #endif /* GPIO_GPIO_SRC_GPIO_C_ */
