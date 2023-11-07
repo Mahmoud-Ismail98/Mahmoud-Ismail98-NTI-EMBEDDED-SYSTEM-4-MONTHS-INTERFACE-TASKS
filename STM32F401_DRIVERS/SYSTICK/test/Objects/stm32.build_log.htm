@@ -1,0 +1,112 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ÂµVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: mahmoud korayem, imt, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.8.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\NTI\NTI_KEIL\SYSTICK\test\stm32.uvprojx
+Project File Date:  11/07/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+systic.c(1): warning: In file included from...
+../test/Std_types.h(37): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+systic.c(2): warning: In file included from...
+../test/Bit_utils.h(33): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+systic.c(3): warning: In file included from...
+../test/systic.h(35): warning: no newline at end of file [-Wnewline-eof]
+#endif /* MCAL_SYSTICK_SYSTICK_H_ */
+                                    ^
+systic.c(20): warning: no previous extern declaration for non-static variable 'COUNTER_MS' [-Wmissing-variable-declarations]
+volatile u32 COUNTER_MS=0;
+             ^
+systic.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile u32 COUNTER_MS=0;
+         ^
+systic.c(48): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        CLR_BIT((SYSTICK->STK_CTRL),0);   // disable systick 
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../test/Bit_utils.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+systic.c(73): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    CLR_BIT((SYSTICK->STK_CTRL),1);             
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../test/Bit_utils.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+systic.c(66): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
+void SysTick_Handler (void)
+     ^
+systic.c(66): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void SysTick_Handler (void)
+^
+static 
+systic.c(19): warning: no previous extern declaration for non-static variable 'SysticK_C_BF' [-Wmissing-variable-declarations]
+Systick_Cbf SysticK_C_BF;
+            ^
+systic.c(19): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+Systick_Cbf SysticK_C_BF;
+^
+8 warnings generated.
+compiling systic.c...
+linking...
+Program Size: Code=1244 RO-data=436 RW-data=40 ZI-data=1640  
+FromELF: creating hex file...
+".\Objects\stm32.axf" - 0 Error(s), 8 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil.STM32F4xx_DFP.2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/mkora/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/mkora/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   MDK/Device/Source/ARM/STM32F401xx_OPT.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f401xc.s
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

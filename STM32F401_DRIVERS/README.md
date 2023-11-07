@@ -93,6 +93,43 @@ when i set pin1 in portB as input pullup we notice the regesters are changed exc
 ![Screenshot_40](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/16c14d2c-730f-4930-8fc1-8d2642f1b060)
 
 
+# 3)SysTick timer (STK)
+SysTick is a simple timer that is part of the NVIC controller in the Cortex-M microprocessor. Its intended purpose is to provide a periodic interrupt 
+
+## the SysTick function  debuging on keil 
+
+**The systick a 24-bit system timer, SysTick, that counts down from the reload value to zero, reloads the value in the STK_LOAD register on the next clock edge, then counts down on subsequent clocks**
+
+![Screenshot_46](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/fdecbc4a-e6ee-45cd-873d-19a40255d2dc)
+
+### 1.Systick_Init(1000);
+
+    working on AHP/8 prescaller so we need cont 2000 to reach 1 ms so i made counter for COUNTER_MS variable that every ISR for SYSTICK decressed and when this var reach to zero that mean reach the required
+    ms timing and we can take action  
+
+![Screenshot_47](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/e8d67da3-d108-49ee-a45b-15b816f74c09)
+
+### 2.Systick_Start();
+    Enables the counter. When ENABLE the counter loads the RELOAD value from the LOAD register and then counts down. On reaching 0, it sets the COUNTFLAG to 1 and optionally asserts the SysTick depending on the value of TICKINT. It then loads the RELOAD
+    value again, and begins counting.
+
+![Screenshot_48](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/20578c48-5208-4a1c-9ac9-d5b1770bbf03)
+
+### 3.Systick_RegisterCbf(ISR_SYSTICK);	
+    ISR_SYSTICK is excuted after COUNTER_MS reached to zero after excuted the output pin2 in PORTB become HIGH 
+
+![Screenshot_49](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/436f5b49-5f49-4914-806c-debc474c643c)
+
+![Screenshot_50](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/05ba6927-b1f4-42ca-90c8-afa26d51aaab)
+
+### 4.void SysTick_Handler (void)
+    tacking another action when  COUNTER_MS become zero and after excuted the callBack function i   Disable STK Interrupt  and Stop Timer 
+
+![Screenshot_52](https://github.com/MAHMOUD-ELIMBABI/NTI_Interfacing/assets/63348980/cd50b01b-aae4-4565-8dd2-13db2c9deae5)
+
+
+
+
 
 
 
