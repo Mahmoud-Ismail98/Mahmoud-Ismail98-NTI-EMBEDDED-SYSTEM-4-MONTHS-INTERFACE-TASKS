@@ -1,0 +1,17 @@
+MCAL/ICUHW/ICUHW.d MCAL/ICUHW/ICUHW.o: ../MCAL/ICUHW/ICUHW.c \
+ ../MCAL/ICUHW/../../SERVICES/Standard_Data_Types.h \
+ ../MCAL/ICUHW/../../SERVICES/Bit_Wise_Operations.h \
+ ../MCAL/ICUHW/../PORT/PORT.h ../MCAL/ICUHW/../PORT/PORT_PRIV.h \
+ ../MCAL/ICUHW/ICUHW_PRIV.h ../MCAL/ICUHW/ICUHW.h
+
+../MCAL/ICUHW/../../SERVICES/Standard_Data_Types.h:
+
+../MCAL/ICUHW/../../SERVICES/Bit_Wise_Operations.h:
+
+../MCAL/ICUHW/../PORT/PORT.h:
+
+../MCAL/ICUHW/../PORT/PORT_PRIV.h:
+
+../MCAL/ICUHW/ICUHW_PRIV.h:
+
+../MCAL/ICUHW/ICUHW.h:
