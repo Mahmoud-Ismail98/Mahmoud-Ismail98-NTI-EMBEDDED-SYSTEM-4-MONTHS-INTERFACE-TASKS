@@ -1,0 +1,8 @@
+../SERVICES/calculation_functions.c:32:16:Convert_IntToString	24	static
+../SERVICES/calculation_functions.c:45:16:Convert_FloatToString	64	static
+../SERVICES/calculation_functions.c:87:16:Convert_StringTou8	72	static
+../SERVICES/calculation_functions.c:110:16:Convert_StringTou16	72	static
+../SERVICES/calculation_functions.c:133:16:Convert_StringTou32	72	static
+../SERVICES/calculation_functions.c:156:16:Convert_StringTou64	72	static
+../SERVICES/calculation_functions.c:179:16:Convert_BCDToInt	24	static
+../SERVICES/calculation_functions.c:200:16:Convert_VoltToTempLm35	24	static

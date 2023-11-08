@@ -1,0 +1,8 @@
+../SERVICES/calculation_functions.c:32:16:Convert_IntToString	2
+../SERVICES/calculation_functions.c:45:16:Convert_FloatToString	3
+../SERVICES/calculation_functions.c:87:16:Convert_StringTou8	4
+../SERVICES/calculation_functions.c:110:16:Convert_StringTou16	4
+../SERVICES/calculation_functions.c:133:16:Convert_StringTou32	4
+../SERVICES/calculation_functions.c:156:16:Convert_StringTou64	4
+../SERVICES/calculation_functions.c:179:16:Convert_BCDToInt	2
+../SERVICES/calculation_functions.c:200:16:Convert_VoltToTempLm35	2

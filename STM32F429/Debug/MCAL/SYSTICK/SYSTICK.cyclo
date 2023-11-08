@@ -1,0 +1,10 @@
+../MCAL/SYSTICK/SYSTICK.c:60:25:Systick_enuInit	1
+../MCAL/SYSTICK/SYSTICK.c:75:25:Systick_enuEnableInterrupt	1
+../MCAL/SYSTICK/SYSTICK.c:85:25:Systick_enuDisableInterrupt	1
+../MCAL/SYSTICK/SYSTICK.c:96:25:Systick_enuSetBusyWait	2
+../MCAL/SYSTICK/SYSTICK.c:125:25:Systick_enuSetIntervalOneTimeTicks	2
+../MCAL/SYSTICK/SYSTICK.c:157:25:Systick_enuSetIntervalPeriodicTicks	2
+../MCAL/SYSTICK/SYSTICK.c:191:25:Systick_enuStopTimer	1
+../MCAL/SYSTICK/SYSTICK.c:200:25:Systick_enuGetElapsedTimeTicks	2
+../MCAL/SYSTICK/SYSTICK.c:215:25:Systick_enuGetRemainingTimeTicks	2
+../MCAL/SYSTICK/SYSTICK.c:232:6:SysTick_Handler	3
