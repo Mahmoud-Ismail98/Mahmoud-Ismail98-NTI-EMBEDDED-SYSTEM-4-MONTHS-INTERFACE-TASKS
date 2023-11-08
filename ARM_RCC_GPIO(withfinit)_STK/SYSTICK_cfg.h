@@ -1,0 +1,10 @@
+#ifndef  SYSTICK_CFG_H
+#define  SYSTICK_CFG_H
+
+
+
+
+#define STK_PRESCALER   STK_PRESCALER_DIV1
+#define STK_TICKINT     STK_INTERRUPT_DIS
+
+#endif 

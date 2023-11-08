@@ -1,0 +1,301 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.38.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: fady raouf, na, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.38.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.19
+Assembler:       Armasm.exe V6.19
+Linker/Locator:  ArmLink.exe V6.19
+Library Manager: ArmAr.exe V6.19
+Hex Converter:   FromElf.exe V6.19
+CPU DLL:         SARMCM3.DLL V5.38.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.1.0.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\New folder (3)\New folder (2)\rcc.uvprojx
+Project File Date:  11/07/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+main.c(1): warning: In file included from...
+./STD_TYPES.h(30): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+main.c(2): warning: In file included from...
+./BIT_UTILS.h(41): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+main.c(4): warning: In file included from...
+./GPIO.h(194): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+main.c(6): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+int main()
+        ^
+         void
+main.c(42): warning: 'return' will never be executed [-Wunreachable-code-return]
+        return 0;
+               ^
+5 warnings generated.
+compiling main.c...
+GPIO.c(1): warning: In file included from...
+./STD_TYPES.h(30): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+GPIO.c(2): warning: In file included from...
+./BIT_UTILS.h(41): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+GPIO.c(3): warning: In file included from...
+./GPIO.h(194): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+GPIO.c(4): warning: In file included from...
+./GPIO_prv.h(33): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+GPIO.c(5): warning: In file included from...
+./GPIO_cfg.h(153): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+GPIO.c(219): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+            u8 PORT_ID = Add_CnfgStruct->gpio_port_x;
+               ~~~~~~~   ~~~~~~~~~~~~~~~~^~~~~~~~~~~
+GPIO.c(220): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+            u8 PIN_ID = Add_CnfgStruct->gpio_pin_x;
+               ~~~~~~   ~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(284): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+            u8 PORT_ID = Add_pu8CnfgStatus->gpio_port_x;
+               ~~~~~~~   ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+GPIO.c(285): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+            u8 PIN_ID = Add_pu8CnfgStatus->gpio_pin_x;
+               ~~~~~~   ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(286): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            GPIO_Arr[PORT_ID]->ODR &= ~(Copyu8PinValue << PIN_ID);
+                                   ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(287): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            GPIO_Arr[PORT_ID]->ODR |= (Copyu8PinValue << PIN_ID);
+                                   ~~  ~~~~~~~~~~~~~~~^~~~~~~~~
+GPIO.c(300): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        GPIO_Arr[Copyu8Port]->ODR |= (Copyu8Value << Copyu8Pin);
+                                  ~~  ~~~~~~~~~~~~^~~~~~~~~~~~
+GPIO.c(312): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+            u8 PORT_ID = Add_CnfgStruct->gpio_port_x;
+               ~~~~~~~   ~~~~~~~~~~~~~~~~^~~~~~~~~~~
+GPIO.c(313): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+            u8 PIN_ID = Add_CnfgStruct->gpio_pin_x;
+               ~~~~~~   ~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(329): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                u8 PORT_ID = Add_CnfgStruct->gpio_port_x;
+                   ~~~~~~~   ~~~~~~~~~~~~~~~~^~~~~~~~~~~
+GPIO.c(330): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                u8 PIN_ID = Add_CnfgStruct->gpio_pin_x;
+                   ~~~~~~   ~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(331): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                GPIO_Arr[PORT_ID]->AFRL &= ~(CopyAF << (4 * PIN_ID));
+                                        ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(332): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                GPIO_Arr[PORT_ID]->AFRL |= (CopyAF << (4 * PIN_ID));
+                                        ~~  ~~~~~~~^~~~~~~~~~~~~~~
+GPIO.c(335): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                u8 PORT_ID = Add_CnfgStruct->gpio_port_x;
+                   ~~~~~~~   ~~~~~~~~~~~~~~~~^~~~~~~~~~~
+GPIO.c(336): warning: implicit conversion loses integer precision: 'u64' (aka 'unsigned long long') to 'u8' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                u8 PIN_ID = Add_CnfgStruct->gpio_pin_x;
+                   ~~~~~~   ~~~~~~~~~~~~~~~~^~~~~~~~~~
+GPIO.c(337): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                GPIO_Arr[PORT_ID]->AFRH &= ~(CopyAF << (4 * PIN_ID));
+                                        ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~
+GPIO.c(338): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                GPIO_Arr[PORT_ID]->AFRH |= (CopyAF << (4 * PIN_ID));
+                                        ~~  ~~~~~~~^~~~~~~~~~~~~~~
+22 warnings generated.
+compiling GPIO.c...
+RCC.c(2): warning: In file included from...
+./STD_TYPES.h(30): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+RCC.c(3): warning: In file included from...
+./BIT_UTILS.h(41): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+RCC.c(5): warning: In file included from...
+./RCC_prv.h(7): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+RCC.c(6): warning: In file included from...
+./RCC_cfg.h(54): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+RCC.c(26): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                CLR_BIT(MRCC->CR, 18U);
+                ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(29): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                CLR_BIT(MRCC->CFGR, 1U);
+                ^~~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(40): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                CLR_BIT(MRCC->CFGR, 0U);
+                ^~~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(41): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                CLR_BIT(MRCC->CFGR, 1U);
+                ^~~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(13): warning: unused variable 'Counter' [-Wunused-variable]
+    u8 Counter = 0;
+       ^
+RCC.c(11): warning: unused parameter 'Copy_u8OldSysClk' [-Wunused-parameter]
+Rcc_tenuErrorStatus Rcc_enuSelectSysCLk(u8 Copy_u8SysClk, u8 Copy_u8OldSysClk) {
+                                                             ^
+RCC.c(82): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                CLR_BIT(MRCC->CR, 0U); 
+                ^~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(101): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                CLR_BIT(MRCC->CR, 16U); 
+                ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(119): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                CLR_BIT(MRCC->CR, 24U); 
+                ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(160): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            CLR_BIT(MRCC->PLLCFGR, 22);
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+RCC.c(161): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= COPY_u8M << 0;
+                          ~~ ~~~~~~~~~^~~~
+RCC.c(162): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u16N << 6;
+                          ~~ ~~~~~~~~~~^~~~
+RCC.c(163): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u8P << 16;
+                          ~~ ~~~~~~~~~^~~~~
+RCC.c(164): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u8Q << 24;
+                          ~~ ~~~~~~~~~^~~~~
+RCC.c(169): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= COPY_u8M << 0;
+                          ~~ ~~~~~~~~~^~~~
+RCC.c(170): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u16N << 6;
+                          ~~ ~~~~~~~~~~^~~~
+RCC.c(171): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u8P << 16;
+                          ~~ ~~~~~~~~~^~~~~
+RCC.c(172): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+            MRCC->PLLCFGR |= Copy_u8Q << 24;
+                          ~~ ~~~~~~~~~^~~~~
+22 warnings generated.
+compiling RCC.c...
+SYSTICK.c(2): warning: In file included from...
+./STD_TYPES.h(30): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+SYSTICK.c(3): warning: In file included from...
+./BIT_UTILS.h(41): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+SYSTICK.c(5): warning: In file included from...
+./SYSTICK_prv.h(16): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+SYSTICK.c(6): warning: In file included from...
+./SYSTICK_cfg.h(10): warning: no newline at end of file [-Wnewline-eof]
+#endif 
+       ^
+SYSTICK.c(20): warning: 'STK_PRESCALER_DIV1' is not defined, evaluates to 0 [-Wundef]
+#if STK_PRESCALER == STK_PRESCALER_DIV1
+    ^
+./SYSTICK_cfg.h(7): note: expanded from macro 'STK_PRESCALER'
+#define STK_PRESCALER   STK_PRESCALER_DIV1
+                        ^
+SYSTICK.c(20): warning: 'STK_PRESCALER_DIV1' is not defined, evaluates to 0 [-Wundef]
+#if STK_PRESCALER == STK_PRESCALER_DIV1
+                     ^
+SYSTICK.c(30): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    CLR_BIT(MSTK->CTRL, 1);
+    ^~~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+SYSTICK.c(59): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+    CLR_BIT(MSTK->CTRL,0);
+    ^~~~~~~~~~~~~~~~~~~~~
+./BIT_UTILS.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+SYSTICK.c(70): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+9 warnings generated.
+compiling SYSTICK.c...
+assembling startup_stm32f401xc.s...
+compiling system_stm32f4xx.c...
+linking...
+Program Size: Code=980 RO-data=420 RW-data=0 ZI-data=1640  
+FromELF: creating hex file...
+".\Objects\rcc.axf" - 0 Error(s), 58 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil.STM32F4xx_DFP.2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/HP/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/HP/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   MDK/Device/Source/ARM/STM32F401xx_OPT.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f401xc.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>
