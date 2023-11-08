@@ -1,0 +1,48 @@
+Dependencies for Project 'RCC', Target 'APP': (DO NOT MODIFY !)
+CompilerVersion: 6160000::V6.16::ARMCLANG
+F (.\src\main.c)(0x654C15F6)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./inc/MCAL/RCC -I ./inc/LIB -I ./src -I ./inc/LIB -I ./inc/MCAL/GPIO -I ./inc/MCAL/SYSTIC-I./RTE/_APP-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F401xC -D_RTE_-o ./objects/main.o -MD)
+I (inc\LIB\Std_types.h)(0x65479866)
+I (inc\LIB\Bit_utils.h)(0x654799D1)
+I (inc\MCAL\RCC\RCC.h)(0x654C14C3)
+I (inc\MCAL\GPIO\GPIO.h)(0x654C1123)
+I (inc\MCAL\SYSTIC\SYSTIC.h)(0x654A3A8D)
+F (.\inc\MCAL\RCC\RCC_prv.h)(0x654A2D86)()
+F (.\inc\MCAL\RCC\RCC.h)(0x654C14C3)()
+F (.\src\RCC.c)(0x654C1515)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./inc/MCAL/RCC -I ./inc/LIB -I ./src -I ./inc/LIB -I ./inc/MCAL/GPIO -I ./inc/MCAL/SYSTIC-I./RTE/_APP-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F401xC -D_RTE_-o ./objects/rcc.o -MD)
+I (inc\LIB\Std_types.h)(0x65479866)
+I (inc\LIB\Bit_utils.h)(0x654799D1)
+I (inc\MCAL\RCC\RCC.h)(0x654C14C3)
+I (inc\MCAL\RCC\RCC_prv.h)(0x654A2D86)
+I (inc\MCAL\RCC\RCC_cfg.h)(0x6548ACF3)
+F (.\inc\LIB\Std_types.h)(0x65479866)()
+F (.\inc\LIB\Bit_utils.h)(0x654799D1)()
+F (.\inc\MCAL\RCC\RCC_cfg.h)(0x6548ACF3)()
+F (.\inc\MCAL\GPIO\GPIO.h)(0x654C1123)()
+F (.\inc\MCAL\GPIO\GPIO_cfg.h)(0x654A338B)()
+F (.\inc\MCAL\GPIO\GPIO_prv.h)(0x654A07F2)()
+F (.\src\GPIO.c)(0x654C1121)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./inc/MCAL/RCC -I ./inc/LIB -I ./src -I ./inc/LIB -I ./inc/MCAL/GPIO -I ./inc/MCAL/SYSTIC-I./RTE/_APP-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F401xC -D_RTE_-o ./objects/gpio.o -MD)
+I (inc\LIB\Std_types.h)(0x65479866)
+I (inc\LIB\Bit_utils.h)(0x654799D1)
+I (inc\MCAL\GPIO\GPIO.h)(0x654C1123)
+I (inc\MCAL\GPIO\GPIO_prv.h)(0x654A07F2)
+I (inc\MCAL\GPIO\GPIO_cfg.h)(0x654A338B)
+F (.\src\SYSTIC.c)(0x654A3A8D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./inc/MCAL/RCC -I ./inc/LIB -I ./src -I ./inc/LIB -I ./inc/MCAL/GPIO -I ./inc/MCAL/SYSTIC-I./RTE/_APP-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F401xC -D_RTE_-o ./objects/systic.o -MD)
+I (inc\LIB\Std_types.h)(0x65479866)
+I (inc\LIB\Bit_utils.h)(0x654799D1)
+I (inc\MCAL\SYSTIC\SYSTIC.h)(0x654A3A8D)
+I (inc\MCAL\SYSTIC\SYSTIC_prv.h)(0x654A3C06)
+I (inc\MCAL\SYSTIC\SYSTIC_cfg.h)(0x654A3A8D)
+F (.\inc\MCAL\SYSTIC\SYSTIC.h)(0x654A3A8D)()
+F (.\inc\MCAL\SYSTIC\SYSTIC_cfg.h)(0x654A3A8D)()
+F (.\inc\MCAL\SYSTIC\SYSTIC_prv.h)(0x654A3C06)()
+F (RTE\Device\STM32F401CCUx\startup_stm32f401xc.s)(0x6374903A)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_APP-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 536" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"STM32F401xC SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o ./objects/startup_stm32f401xc.o)
+F (RTE\Device\STM32F401CCUx\system_stm32f4xx.c)(0x6374903A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./inc/MCAL/RCC -I ./inc/LIB -I ./src -I ./inc/LIB -I ./inc/MCAL/GPIO -I ./inc/MCAL/SYSTIC-I./RTE/_APP-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/bishoy18126/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F401xC -D_RTE_-o ./objects/system_stm32f4xx.o -MD)
+I (C:\Users\bishoy18126\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6374903A)
+I (C:\Users\bishoy18126\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xc.h)(0x6374903A)
+I (C:\Users\bishoy18126\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm4.h)(0x626F831E)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60354E20)
+I (C:\Users\bishoy18126\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F831E)
+I (C:\Users\bishoy18126\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F831E)
+I (C:\Users\bishoy18126\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x626F831E)
+I (C:\Users\bishoy18126\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv7.h)(0x626F831E)
+I (C:\Users\bishoy18126\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6374903A)

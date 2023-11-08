@@ -1,0 +1,198 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.36.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: beshoy soliman, benha university, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.36.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.16
+Assembler:       Armasm.exe V6.16
+Linker/Locator:  ArmLink.exe V6.16
+Library Manager: ArmAr.exe V6.16
+Hex Converter:   FromElf.exe V6.16
+CPU DLL:         SARMCM3.DLL V5.36.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.53.0.0
+ 
+<h2>Project:</h2>
+D:\NTI\02 - projects\KEIL projects\RCC_test\RCC.uvprojx
+Project File Date:  11/07/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'APP'
+src/main.c(2): warning: In file included from...
+./inc/LIB\Bit_utils.h(40): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+src/main.c(4): warning: In file included from...
+./inc/MCAL/RCC\RCC.h(130): warning: 'AHB_2' macro redefined [-Wmacro-redefined]
+#define AHB_2           4
+        ^
+./inc/MCAL/RCC\RCC.h(119): note: previous definition is here
+#define AHB_2           8
+        ^
+./inc/MCAL/RCC\RCC.h(131): warning: 'AHB_4' macro redefined [-Wmacro-redefined]
+#define AHB_4           5
+        ^
+./inc/MCAL/RCC\RCC.h(120): note: previous definition is here
+#define AHB_4           9
+        ^
+./inc/MCAL/RCC\RCC.h(132): warning: 'AHB_8' macro redefined [-Wmacro-redefined]
+#define AHB_8           6
+        ^
+./inc/MCAL/RCC\RCC.h(121): note: previous definition is here
+#define AHB_8           10
+        ^
+./inc/MCAL/RCC\RCC.h(133): warning: 'AHB_16' macro redefined [-Wmacro-redefined]
+#define AHB_16          7
+        ^
+./inc/MCAL/RCC\RCC.h(122): note: previous definition is here
+#define AHB_16          11
+        ^
+src/main.c(7): warning: In file included from...
+./inc/MCAL/SYSTIC\SYSTIC.h(8): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+src/main.c(34): warning: 'return' will never be executed [-Wunreachable-code-return]
+        return 0;
+               ^
+7 warnings generated.
+compiling main.c...
+src/GPIO.c(2): warning: In file included from...
+./inc/LIB\Bit_utils.h(40): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+src/GPIO.c(5): warning: In file included from...
+./inc/MCAL/GPIO\GPIO_prv.h(22): warning: no previous extern declaration for non-static variable 'GPIO' [-Wmissing-variable-declarations]
+volatile GPIOx_t* GPIO[6] =
+                  ^
+./inc/MCAL/GPIO\GPIO_prv.h(22): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile GPIOx_t* GPIO[6] =
+         ^
+2 warnings generated.
+compiling GPIO.c...
+src/RCC.c(2): warning: In file included from...
+./inc/LIB\Bit_utils.h(40): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+src/RCC.c(4): warning: In file included from...
+./inc/MCAL/RCC\RCC.h(130): warning: 'AHB_2' macro redefined [-Wmacro-redefined]
+#define AHB_2           4
+        ^
+./inc/MCAL/RCC\RCC.h(119): note: previous definition is here
+#define AHB_2           8
+        ^
+./inc/MCAL/RCC\RCC.h(131): warning: 'AHB_4' macro redefined [-Wmacro-redefined]
+#define AHB_4           5
+        ^
+./inc/MCAL/RCC\RCC.h(120): note: previous definition is here
+#define AHB_4           9
+        ^
+./inc/MCAL/RCC\RCC.h(132): warning: 'AHB_8' macro redefined [-Wmacro-redefined]
+#define AHB_8           6
+        ^
+./inc/MCAL/RCC\RCC.h(121): note: previous definition is here
+#define AHB_8           10
+        ^
+./inc/MCAL/RCC\RCC.h(133): warning: 'AHB_16' macro redefined [-Wmacro-redefined]
+#define AHB_16          7
+        ^
+./inc/MCAL/RCC\RCC.h(122): note: previous definition is here
+#define AHB_16          11
+        ^
+src/RCC.c(7): warning: incompatible integer to pointer conversion initializing 'RCC_t *' with an expression of type 'int' [-Wint-conversion]
+RCC_t *RCC = 0x40023800;
+       ^     ~~~~~~~~~~
+src/RCC.c(7): warning: no previous extern declaration for non-static variable 'RCC' [-Wmissing-variable-declarations]
+src/RCC.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+RCC_t *RCC = 0x40023800;
+^
+7 warnings generated.
+compiling RCC.c...
+src/SYSTIC.c(3): warning: In file included from...
+./inc/LIB\Bit_utils.h(40): warning: no newline at end of file [-Wnewline-eof]
+#endif      
+            ^
+src/SYSTIC.c(5): warning: In file included from...
+./inc/MCAL/SYSTIC\SYSTIC.h(8): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+src/SYSTIC.c(7): warning: In file included from...
+./inc/MCAL/SYSTIC\SYSTIC_cfg.h(12): warning: no newline at end of file [-Wnewline-eof]
+#endif
+      ^
+src/SYSTIC.c(14): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        CLR_BIT(STK->CTRL,2);
+        ^~~~~~~~~~~~~~~~~~~~
+./inc/LIB\Bit_utils.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+src/SYSTIC.c(20): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        CLR_BIT(STK->CTRL,1);
+        ^~~~~~~~~~~~~~~~~~~~
+./inc/LIB\Bit_utils.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+src/SYSTIC.c(34): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+                        CLR_BIT(STK->CTRL,16);
+                        ^~~~~~~~~~~~~~~~~~~~~
+./inc/LIB\Bit_utils.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+src/SYSTIC.c(40): warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        CLR_BIT(STK->CTRL,16);
+        ^~~~~~~~~~~~~~~~~~~~~
+./inc/LIB\Bit_utils.h(5): note: expanded from macro 'CLR_BIT'
+#define CLR_BIT(Reg,Bit)                Reg&=~(1<<Bit)
+                                           ~~^~~~~~~~~
+src/SYSTIC.c(41): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+8 warnings generated.
+compiling SYSTIC.c...
+assembling startup_stm32f401xc.s...
+compiling system_stm32f4xx.c...
+linking...
+Program Size: Code=828 RO-data=820 RW-data=28 ZI-data=1632  
+".\Objects\RCC.axf" - 0 Error(s), 24 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil.STM32F4xx_DFP.2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_APP
+  C:\Users\bishoy18126\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include
+  C:\Users\bishoy18126\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f401xc.s
+      Source file:   MDK\Device\Source\ARM\STM32F401xx_OPT.s
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
